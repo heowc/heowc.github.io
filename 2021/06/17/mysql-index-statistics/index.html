@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="허원철의 개발 블로그">
+<meta name="keyword" content="허원철,개발,블로그">
+
+<!-- canonical -->
+<link rel="canonical" href="https://heowc.dev/2021/06/17/mysql-index-statistics/">
+
+<!-- open graph -->
+<meta property="og:title" content="허원철의 개발 블로그">
+<meta property="og:description" content="MySQL 인덱스 통계">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://heowc.dev/2021/06/17/mysql-index-statistics/">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+
+<!-- naver webmaster -->
+<meta name="naver-site-verification" content="c8078357cb88dc72964f9089507aaf7bb0dd1b3b">
+
+  <title>
+    
+      MySQL 인덱스 통계 | 허원철의 개발 블로그
+    
+  </title>
+
+  
+    <link rel="shortcut icon" type="image/ico" href="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/resources/css/gdemo.css">
+<link rel="stylesheet" href="/resources/css/index.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/algolia.searchbox.css">
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-5618198218047336",
+      enable_page_level_ads: true
+    });
+  </script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<div class="wechat-share">
+  
+    <img alt="preview image" src="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>허원철의 개발 블로그</span>
+    </a>
+    <ul class="right-list">
+      <li class="list-item">
+        <label for="search-query-nav"></label>
+        <input type="text" id="search-query-nav" class="search-query">
+      </li>
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="https://heowc.dev/programming-study/repo/" class="item-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="https://heowc.dev/programming-study/repo/" class="menu-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>MySQL 인덱스 통계</h2>
+  <p class="post-date">2021-06-17</p>
+  <div class="arrow-down">
+    <a href="#"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><blockquote>
+<p>쿼리를 실행시에 예상했던 인덱스를 타지 않는 현상을 알아보고자 합니다.</p>
+</blockquote>
+<span id="more"></span>
+<p>다음과 같은 테이블이 있다고 가정해보자.</p>
+<h3 id="테이블-생성">테이블 생성</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `payment_history` (</span><br><span class="line">    `id` <span class="type">bigint</span>(<span class="number">20</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT, <span class="comment">-- 결제 id</span></span><br><span class="line">    `user_id` <span class="type">varchar</span>(<span class="number">100</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>, <span class="comment">-- 유저 정보</span></span><br><span class="line">    `status` <span class="type">varchar</span>(<span class="number">10</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>, <span class="comment">-- 결제 상태</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY (`id`),</span><br><span class="line">    KEY `idx_user_id` (`user_id`),</span><br><span class="line">    KEY `idx_user_id_status` (`user_id`, `status`),</span><br><span class="line">    ...</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="explain">explain</h3>
+<p>그리고 다음과 같은 쿼리를 실행한다면 어떤 인덱스를 타게 될까요?</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span>    `payment_history`</span><br><span class="line"><span class="keyword">WHERE</span>   `user_id` <span class="operator">=</span> <span class="string">&#x27;AAAAAAA&#x27;</span></span><br><span class="line"><span class="keyword">AND</span>     `status` <span class="operator">=</span> <span class="string">&#x27;Completed&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>다음과 같은 실행 계획을 예상해볼 수 있습니다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">... | possible_keys                   | key                | ... | rows  | ...</span><br><span class="line">------------------------------------------------------------------------</span><br><span class="line">... | idx_user_id, idx_user_id_status | idx_user_id_status | ... | 17714 | ...</span><br></pre></td></tr></table></figure>
+<p>하지만 경우에 따라, 이는 다른 실행 계획 결과가 도출될 수 있습니다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">... | possible_keys                   | key                | ... | rows  | ...</span><br><span class="line">------------------------------------------------------------------------</span><br><span class="line">... | idx_user_id, idx_user_id_status | idx_user_id        | ... | 16670 | ...</span><br></pre></td></tr></table></figure>
+<p>그 이유는 <strong>옵티마이저가 예상과 다른 인덱스를 탐색</strong>했기 때문입니다. 옵티마이저는 최적의 실행계획을 세우기 위해 인덱스 통계 정보를 의존하게 되는데, MySQL 같은 경우는 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://dev.mysql.com/doc/refman/5.6/en/innodb-persistent-stats.html#innodb-index-stats-table"><code>mysql.innodb_index_stats</code></a> 라는 테이블에서 해당 정보를 얻을 수 있습니다.</p>
+<h3 id="innodb-index-stats">innodb_index_stats</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span>    `mysql.innodb_index_stats`</span><br><span class="line"><span class="keyword">WHERE</span>   `database_name` <span class="operator">=</span> <span class="string">&#x27;test&#x27;</span> </span><br><span class="line"><span class="keyword">AND</span>     `table_name` <span class="operator">=</span> <span class="string">&#x27;payment_history&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">... | table_name      | index_name         | ... | stat_name    | stat_value | ... | stat_description</span><br><span class="line">-------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">... | payment_history | PRIMARY            | ... | n_diff_pfx01 |        ... | ... | id</span><br><span class="line">... | payment_history | PRIMARY            | ... | n_leaf_pages |        ... | ... | Number of leaf pages in the index</span><br><span class="line">... | payment_history | PRIMARY            | ... | size         |        ... | ... | Number of pages in the index</span><br><span class="line">... | payment_history | idx_user_id        | ... | n_diff_pfx01 |  1,360,401 | ... | id</span><br><span class="line">... | payment_history | idx_user_id        | ... | n_diff_pfx02 | 17,432,752 | ... | user_id,id</span><br><span class="line">... | payment_history | idx_user_id        | ... | n_leaf_pages |     66,084 | ... | Number of leaf pages in the index</span><br><span class="line">... | payment_history | idx_user_id        | ... | size         |     75,904 | ... | Number of pages in the index</span><br><span class="line">... | payment_history | idx_user_id_status | ... | n_diff_pfx01 |  1,566,677 | ... | user_id</span><br><span class="line">... | payment_history | idx_user_id_status | ... | n_diff_pfx02 |  1,660,688 | ... | user_id,status</span><br><span class="line">... | payment_history | idx_user_id_status | ... | n_diff_pfx03 | 15,970,551 | ... | user_id,status,id</span><br><span class="line">... | payment_history | idx_user_id_status | ... | n_leaf_pages |     81,288 | ... | Number of leaf pages in the index</span><br><span class="line">... | payment_history | idx_user_id_status | ... | size         |     93,540 | ... | Number of pages in the index</span><br></pre></td></tr></table></figure>
+<p>여기서 각 인덱스에 대한 <code>stat_value</code>를 보고 대략적으로 판단할 수 있는건, 위 쿼리에서 <code>idx_user_id</code>를 탐색하는 것이 보다 빠르다는 것을 기대할 수 있을 것 같습니다.</p>
+<h3 id="인덱스-통계-구성법">인덱스 통계 구성법</h3>
+<ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://dev.mysql.com/doc/refman/5.6/en/innodb-performance-optimizer-statistics.html">https://dev.mysql.com/doc/refman/5.6/en/innodb-performance-optimizer-statistics.html</a></li>
+</ul>
+<h4 id="1-innodb-stats-persistent-ON">1. innodb_stats_persistent=ON</h4>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar_innodb_stats_persistent">innodb_stats_persistent</a>은 MySQL 5.6.2에서 생겼으며, 5.6.6부터 기본값이 ON입니다.</p>
+<br>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar_innodb_stats_auto_recalc">innodb_stats_auto_recalc</a>은 자동 계산 여부를 지정하는 옵션입니다. (기본값은 ON) 테이블의 10% 변경이 있을 때 재계산을 하는데, 아쉽게도 이 값은 하드코딩 되어있어 변경할 수 없습니다. (<a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/mysql/mysql-server/blob/5.6/storage/innobase/row/row0mysql.cc#L1106">mysql/mysql-server</a>)</p>
+<h4 id="2-innodb-stats-persistent-OFF">2. innodb_stats_persistent=OFF</h4>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar_innodb_stats_on_metadata">innodb_stats_on_metadata</a>을 ON하면 다음 쿼리시 재계산을 할 수 있습니다. (기본값은 OFF)</p>
+<ul>
+<li>SHOW TABLE STATUS</li>
+<li>SHOW INDEX</li>
+<li>INFORMATION_SCHEMA.TABLES</li>
+<li>INFORMATION_SCHEMA.STATISTICS</li>
+</ul>
+<h4 id="3-ANALYZE-TABLE-table-name">3. ANALYZE TABLE {table_name}</h4>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://dev.mysql.com/doc/refman/5.6/en/analyze-table.html">ANALYZE TABLE {table_name}</a></p>
+<ul>
+<li>
+<p>인덱스 통계 테이블을 재계산합니다.</p>
+</li>
+<li>
+<p>하지만 역시 막쓰는게 아닌 것이… 너무 느리기도 하고 테이블 read lock이 걸리기 때문에 조심해서 사용해야 합니다</p>
+<blockquote>
+<p>During the analysis, the table is locked with a read lock for InnoDB and MyISAM.</p>
+</blockquote>
+</li>
+<li>
+<p>또한 재계산한다고 좋아진다는 보장이 없습니다. 결국 랜덤으로 샘플링을 하기 때문에 좋아질 수도, 나빠질 수도 있습니다.</p>
+</li>
+</ul>
+<h3 id="그렇다면-어떻게-해야할까">그렇다면 어떻게 해야할까?</h3>
+<ul>
+<li>테이블 별로 <code>innodb_stats_persistent_sample_pages</code>를 조절하자</li>
+<li>적절히 <code>ANALYZE TABLE</code>를 사용하자</li>
+</ul>
+<h3 id="참고">참고</h3>
+<ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://dev.mysql.com/doc/refman/5.6/en/innodb-performance-optimizer-statistics.html">https://dev.mysql.com/doc/refman/5.6/en/innodb-performance-optimizer-statistics.html</a></li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://dev.mysql.com/doc/refman/5.6/en/innodb-analyze-table-complexity.html">https://dev.mysql.com/doc/refman/5.6/en/innodb-analyze-table-complexity.html</a></li>
+</ul>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#mysql">
+    <span class="tag-code">mysql</span>
+  </a>
+
+  <a href="/tags#index">
+    <span class="tag-code">index</span>
+  </a>
+
+  <a href="/tags#index-statistics">
+    <span class="tag-code">index-statistics</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2021/05/23/amazone-linux-log-issue/">
+        <span class="nav-arrow">← </span>
+        
+          Amazon Linux에서 /var/log가 꽉차는 이슈
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2021/07/15/spring-websocket-with-stomp/">
+        
+          Spring WebSocket (with STOMP)
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+        <!-- Disqus START -->
+        <div id="disqus_thread"></div>
+        <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%83%9D%EC%84%B1"><span class="toc-nav-text">테이블 생성</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#explain"><span class="toc-nav-text">explain</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#innodb-index-stats"><span class="toc-nav-text">innodb_index_stats</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EC%9D%B8%EB%8D%B1%EC%8A%A4-%ED%86%B5%EA%B3%84-%EA%B5%AC%EC%84%B1%EB%B2%95"><span class="toc-nav-text">인덱스 통계 구성법</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-innodb-stats-persistent-ON"><span class="toc-nav-text">1. innodb_stats_persistent&#x3D;ON</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-innodb-stats-persistent-OFF"><span class="toc-nav-text">2. innodb_stats_persistent&#x3D;OFF</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-ANALYZE-TABLE-table-name"><span class="toc-nav-text">3. ANALYZE TABLE {table_name}</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EA%B7%B8%EB%A0%87%EB%8B%A4%EB%A9%B4-%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%95%B4%EC%95%BC%ED%95%A0%EA%B9%8C"><span class="toc-nav-text">그렇다면 어떻게 해야할까?</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EC%B0%B8%EA%B3%A0"><span class="toc-nav-text">참고</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://heowc.dev/2021/06/17/mysql-index-statistics/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+<script>
+  var disqus_shortname = 'heowc-ithub-io';
+  
+  var disqus_url = 'https://heowc.dev/2021/06/17/mysql-index-statistics/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>
+    <br>
+    Theme by <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js");
+</script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.32.0/algoliasearch.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.35.0/autocomplete.min.js"></script>
+<script>
+  const client = algoliasearch('Z12OUS9993', '87e1c2ec8b3ce58795cdac97dd583138');
+  const index = client.initIndex('heowc.github.io');
+
+  autocomplete('#search-query-nav', {hint: false}, [
+    {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 10}),
+      displayKey: 'name',
+      templates: {
+        suggestion: function (suggestion) {
+          return suggestion.title;
+        }
+      }
+    }
+  ]).on('autocomplete:selected', function (event, suggestion, dataset, context) {
+    location.href = "/" + suggestion.path
+  });
+</script>
+
+
+  <script>
+    (function(b, o, i, l, e, r) {
+      b.GoogleAnalyticsObject = l;
+      b[l] || (b[l] = function() {
+        (b[l].q = b[l].q || []).push(arguments)
+      });
+      b[l].l = +new Date;
+      e = o.createElement(i);
+      r = o.getElementsByTagName(i)[0];
+      e.src = '//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-88462807-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="허원철의 개발 블로그">
+<meta name="keyword" content="허원철,개발,블로그">
+
+<!-- canonical -->
+<link rel="canonical" href="https://heowc.dev/2018/01/14/spring-boot-hibernate-validation/">
+
+<!-- open graph -->
+<meta property="og:title" content="허원철의 개발 블로그">
+<meta property="og:description" content="Spring Boot - Validation">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://heowc.dev/2018/01/14/spring-boot-hibernate-validation/">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+
+<!-- naver webmaster -->
+<meta name="naver-site-verification" content="c8078357cb88dc72964f9089507aaf7bb0dd1b3b">
+
+  <title>
+    
+      Spring Boot - Validation | 허원철의 개발 블로그
+    
+  </title>
+
+  
+    <link rel="shortcut icon" type="image/ico" href="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/resources/css/gdemo.css">
+<link rel="stylesheet" href="/resources/css/index.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/algolia.searchbox.css">
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-5618198218047336",
+      enable_page_level_ads: true
+    });
+  </script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<div class="wechat-share">
+  
+    <img alt="preview image" src="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>허원철의 개발 블로그</span>
+    </a>
+    <ul class="right-list">
+      <li class="list-item">
+        <label for="search-query-nav"></label>
+        <input type="text" id="search-query-nav" class="search-query">
+      </li>
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="https://heowc.dev/programming-study/repo/" class="item-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="https://heowc.dev/programming-study/repo/" class="menu-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Spring Boot - Validation</h2>
+  <p class="post-date">2018-01-14</p>
+  <div class="arrow-down">
+    <a href="#"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><blockquote>
+<p>데이터에 대한 유효성 검증을 효과적으로 도와줄 수 있다.</p>
+</blockquote>
+<span id="more"></span>
+<h3 id="bean-validation-hibernate-validator">bean-validation? hibernate-validator?</h3>
+<p><strong>Bean-validation</strong>: <a target="_blank" rel="external nofollow noopener noreferrer" href="https://jcp.org/en/jsr/detail?id=380">JSR-380</a>, 애노테이션을 이용하여 bean 유효성 검사를 위한 Java API 스펙</p>
+<p><strong>Hibernate-validator</strong>: Bean Validation을 구현한 Java API</p>
+<h3 id="Dependency">Dependency</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123; </span><br><span class="line">    compile(<span class="string">&#x27;org.springframework.boot:spring-boot-starter-web&#x27;</span>) </span><br><span class="line">    compile(<span class="string">&#x27;org.springframework.boot:spring-boot-starter-validation&#x27;</span>) </span><br><span class="line">    compile(<span class="string">&#x27;org.projectlombok:lombok&#x27;</span>)</span><br><span class="line">    runtime(<span class="string">&#x27;com.h2database:h2&#x27;</span>)</span><br><span class="line">    testCompile(<span class="string">&#x27;org.springframework.boot:spring-boot-starter-test&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Entity">Entity</h3>
+<p>애노테이션을 사용하면 쉽게 Entity에 대한 유효성 검사를 할 수 있다. 해당 애노테이션은 javax.validation.constraints패키지에 정의되어 있으며, 이를 아래와 같이 활용할 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Member</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Long idx;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@NotNull(message=&quot;name null&quot;)</span></span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Min(value=14, message=&quot;min 14&quot;)</span></span><br><span class="line">	<span class="keyword">private</span> Integer age;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@NotNull(message=&quot;tel null&quot;)</span></span><br><span class="line">	<span class="keyword">private</span> String tel;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>@NotNull</code>: null 검증<br>
+<code>@Min</code>, <code>@Max</code>: 최소값, 최대값 검증<br>
+<code>@Size</code>: 범위 검증<br>
+<code>@Email</code>: e-mail 검증<br>
+<code>@AssertTrue</code>: true 검증<br>
+<br><br>
+<code>@NotEmpty</code>: null이나 size가 0 검증 (String, Collection)<br>
+<code>@NotBlank</code>: null이나 whitespace 검증 (String)<br>
+<code>@Positive</code>, <code>@PositiveOrZero</code>: 숫자 검증<br>
+<code>@Negative</code>, <code>@NegativeOrZero</code>: 숫자 검증<br>
+<code>@Past</code>, <code>@PastOrPresent</code>: 날짜 검증<br>
+<code>@Future</code>, <code>@FutureOrPresent</code>: 날짜 검증</p>
+<h3 id="Controller">Controller</h3>
+<p>검증하고자 하는 Entity에 @Valid를 붙이며, 이에 대한 결과를 받기 위해 BindingResult를 추가하여 사용할 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;member&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MemberController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> Logger logger = Logger.getLogger(MemberController.class);</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> ZERO = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    	</span><br><span class="line">    <span class="meta">@PostMapping</span></span><br><span class="line">    <span class="keyword">public</span> ResponseEntity&lt;?&gt; add(<span class="meta">@Valid</span> <span class="meta">@RequestBody</span> Member member, BindingResult bindingResult)&#123;</span><br><span class="line">        <span class="keyword">if</span>(bindingResult.hasErrors())&#123;</span><br><span class="line">            String errorMessage = bindingResult.getAllErrors().get(ZERO).getDefaultMessage();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ResponseEntity&lt;&gt;(errorMessage, HttpStatus.BAD_REQUEST); </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ResponseEntity&lt;&gt;(member, HttpStatus.OK);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Custom-Validation">Custom Validation</h3>
+<p>제공해주는 애노테이션도 많지만 사용자 정의 검증 애노테이션을 만들어야 하는 상황이 있을 수 있다.</p>
+<h4 id="interface-정의">@interface 정의</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Constraint(validatedBy = PhoneValidator.class)</span></span><br><span class="line"><span class="meta">@Target( &#123; ElementType.METHOD, ElementType.FIELD &#125;)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Phone &#123;</span><br><span class="line">    <span class="function">String <span class="title">message</span><span class="params">()</span> <span class="keyword">default</span> &quot;Invalid phone number&quot;</span>;</span><br><span class="line">    Class&lt;?&gt;[] groups() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line">    Class&lt;? extends Payload&gt;[] payload() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="ConstraintValidator-구현">ConstraintValidator 구현</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PhoneValidator</span> <span class="keyword">implements</span> <span class="title">ConstraintValidator</span>&lt;<span class="title">Phone</span>, <span class="title">String</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initialize</span><span class="params">(Phone phone)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String field, ConstraintValidatorContext cxt)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> field != <span class="keyword">null</span> &amp;&amp; field.matches(<span class="string">&quot;[0-9]+&quot;</span>)</span><br><span class="line">                &amp;&amp; (field.length() &gt; <span class="number">8</span>) &amp;&amp; (field.length() &lt; <span class="number">14</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="활용">활용</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Phone</span></span><br><span class="line"><span class="keyword">private</span> String phone;</span><br></pre></td></tr></table></figure>
+<h3 id="Test-Code">Test Code</h3>
+<p>자세한 코드는 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/heowc/SpringBootSample/blob/master/SpringBootValidator/src/test/java/com/example/web/MemberControllerTest.java">GitHub</a>을 참고</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith(SpringRunner.class)</span></span><br><span class="line"><span class="meta">@WebMvcTest(MemberController.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MemberControllerTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> MockMvc mvc;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ObjectMapper objectMapper;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test_success</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Member member = <span class="keyword">new</span> Member(TEST_NAME, TEST_AGE, TEST_PHONE);</span><br><span class="line">        String memberToJson = objectMapper.writeValueAsString(member);</span><br><span class="line"></span><br><span class="line">        mockRequest(memberToJson, status().isOk(), memberToJson);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">mockRequest</span><span class="params">(String memberToJson, ResultMatcher matcher, String result)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        mvc.perform(post(TEST_END_POINT)</span><br><span class="line">                .content(memberToJson)</span><br><span class="line">                .contentType(MediaType.APPLICATION_JSON_UTF8)</span><br><span class="line">                .accept(MediaType.APPLICATION_JSON_UTF8))</span><br><span class="line">                .andExpect(matcher)</span><br><span class="line">                .andExpect(content().json(result));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="참고">참고</h3>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/heowc/SpringBootSample/tree/master/SpringBootValidator">SpringBootSample / SpringBootValidator</a><br>
+<a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.baeldung.com/spring-mvc-custom-validator">Baeldung / spring-mvc-custom-validator</a></p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#spring">
+    <span class="tag-code">spring</span>
+  </a>
+
+  <a href="/tags#spring-boot">
+    <span class="tag-code">spring-boot</span>
+  </a>
+
+  <a href="/tags#hibernate-validation">
+    <span class="tag-code">hibernate-validation</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/01/09/spring-boot-data-jpa/">
+        <span class="nav-arrow">← </span>
+        
+          Spring Boot - Data JPA
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/02/05/spring-boot-cache/">
+        
+          Spring Boot - Cache
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+        <!-- Disqus START -->
+        <div id="disqus_thread"></div>
+        <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#bean-validation-hibernate-validator"><span class="toc-nav-text">bean-validation? hibernate-validator?</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Dependency"><span class="toc-nav-text">Dependency</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Entity"><span class="toc-nav-text">Entity</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Controller"><span class="toc-nav-text">Controller</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Custom-Validation"><span class="toc-nav-text">Custom Validation</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#interface-%EC%A0%95%EC%9D%98"><span class="toc-nav-text">@interface 정의</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ConstraintValidator-%EA%B5%AC%ED%98%84"><span class="toc-nav-text">ConstraintValidator 구현</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%ED%99%9C%EC%9A%A9"><span class="toc-nav-text">활용</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Test-Code"><span class="toc-nav-text">Test Code</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EC%B0%B8%EA%B3%A0"><span class="toc-nav-text">참고</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://heowc.dev/2018/01/14/spring-boot-hibernate-validation/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+<script>
+  var disqus_shortname = 'heowc-ithub-io';
+  
+  var disqus_url = 'https://heowc.dev/2018/01/14/spring-boot-hibernate-validation/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>
+    <br>
+    Theme by <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js");
+</script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.32.0/algoliasearch.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.35.0/autocomplete.min.js"></script>
+<script>
+  const client = algoliasearch('Z12OUS9993', '87e1c2ec8b3ce58795cdac97dd583138');
+  const index = client.initIndex('heowc.github.io');
+
+  autocomplete('#search-query-nav', {hint: false}, [
+    {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 10}),
+      displayKey: 'name',
+      templates: {
+        suggestion: function (suggestion) {
+          return suggestion.title;
+        }
+      }
+    }
+  ]).on('autocomplete:selected', function (event, suggestion, dataset, context) {
+    location.href = "/" + suggestion.path
+  });
+</script>
+
+
+  <script>
+    (function(b, o, i, l, e, r) {
+      b.GoogleAnalyticsObject = l;
+      b[l] || (b[l] = function() {
+        (b[l].q = b[l].q || []).push(arguments)
+      });
+      b[l].l = +new Date;
+      e = o.createElement(i);
+      r = o.getElementsByTagName(i)[0];
+      e.src = '//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-88462807-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

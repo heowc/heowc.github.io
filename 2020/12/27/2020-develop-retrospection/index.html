@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="허원철의 개발 블로그">
+<meta name="keyword" content="허원철,개발,블로그">
+
+<!-- canonical -->
+<link rel="canonical" href="https://heowc.dev/2020/12/27/2020-develop-retrospection/">
+
+<!-- open graph -->
+<meta property="og:title" content="허원철의 개발 블로그">
+<meta property="og:description" content="2020년 개발 회고">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://heowc.dev/2020/12/27/2020-develop-retrospection/">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+
+<!-- naver webmaster -->
+<meta name="naver-site-verification" content="c8078357cb88dc72964f9089507aaf7bb0dd1b3b">
+
+  <title>
+    
+      2020년 개발 회고 | 허원철의 개발 블로그
+    
+  </title>
+
+  
+    <link rel="shortcut icon" type="image/ico" href="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/resources/css/gdemo.css">
+<link rel="stylesheet" href="/resources/css/index.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/algolia.searchbox.css">
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-5618198218047336",
+      enable_page_level_ads: true
+    });
+  </script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<div class="wechat-share">
+  
+    <img alt="preview image" src="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>허원철의 개발 블로그</span>
+    </a>
+    <ul class="right-list">
+      <li class="list-item">
+        <label for="search-query-nav"></label>
+        <input type="text" id="search-query-nav" class="search-query">
+      </li>
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="https://heowc.dev/programming-study/repo/" class="item-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="https://heowc.dev/programming-study/repo/" class="menu-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>2020년 개발 회고</h2>
+  <p class="post-date">2020-12-27</p>
+  <div class="arrow-down">
+    <a href="#"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>2019년 회고에 이어 2020년에 대한 회고를 하려고 한다.</p>
+<span id="more"></span>
+<br>
+<h4 id="2019년에-세웠던-계획과-2020년-일을-되돌아-보며…"><em>2019년에 세웠던 계획과 2020년 일을 되돌아 보며…</em></h4>
+<blockquote>
+<p>별다른 일이 없다면, 꾸준히 <strong>Armeria에 컨트리뷰션</strong> 해볼 생각이다. 아직은 부족한게 많으니 부족한 점을 하나씩 채우면서 보다 딥한 이슈를 처리해보는 것이 첫번째 목표 중 하나이다.</p>
+</blockquote>
+<p>2019년에 이어 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/line/armeria">armeria</a>에 십여 개의 다양한 PR을 진행했다. (내가 만들어낸 버그도 수정해보고…) 언제나 그렇듯 덕분에 너무 재밌었고, 많은 인사이트를 얻어 갈 수 있었다. 그리고 뜻 밖의 선물도 받아 내년에도 열심히 기여를 해야겠다는 생각이 든다. (음?)</p>
+<p><img src="/resources/img/2020-develop-retrospection/armeria_gift.png" alt="Alt armeria gift"><br>
+<em>(개개인에게 다른 메시지를 보낸 준 것에 또 한 번 감동이다.)</em></p>
+<br>
+<p>2019년에 이어 2020년에도 컨트리뷰톤에 참여했다. 이번 오픈소스는 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/pinpoint-apm/pinpoint">pinpoint</a> 였으며, 개발자로서 APM 개발이라는 색다른 영역의 경험을 할 수 있었다. 다만, 아쉬운 부분이라면 활발히 참여하지 못해 하고자 했던 목표를 달성하지 못 하고 간단한 작업밖에 하지 못 했다.<br>
+<br><br>
+<em>그리고 장려상을 수상했다.</em></p>
+<br>
+<p>그 외에도 여러 오픈소스에 다양한 기여를 해보았다.</p>
+<ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/Playtika/testcontainers-spring-boot/pull/540">https://github.com/Playtika/testcontainers-spring-boot/pull/540</a> (<code>typo</code>)</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/ua-parser/uap-core/pull/451">https://github.com/ua-parser/uap-core/pull/451</a> (<code>new feature</code>)</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/LogNet/grpc-spring-boot-starter/issues/169">https://github.com/LogNet/grpc-spring-boot-starter/issues/169</a> (<code>clean up</code>)</li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/glorious-codes/glorious-demo/issues/77">https://github.com/glorious-codes/glorious-demo/issues/77</a> (<code>suggestion</code>)</li>
+</ul>
+<p>마지막으로 올해는 아쉽게도 Hacktoberfest를 완주하지 못 했다.</p>
+<blockquote>
+<p>현 회사에서 내년에 전체적인 아키텍처 개선을 할 것이라고 하여 <strong>업무에 집중</strong>할 생각이다. 물론, 개선 과정에서 트러블 슈팅이 있다면 이를 명확히 알고 블로깅 해보는 것도 생각하고 있다.</p>
+</blockquote>
+<br>
+<p><em>결론을 얘기하자면, 아키텍처 개선은 없었다…</em></p>
+<br>
+<p>하지만 기술적인 큰 변화가 있었다면, 스프링 버전 업그레이드(<code>4.3</code> -&gt; <code>5.1</code>)와 레디스 클라이언트 변경(<code>jedis</code> -&gt; <code>lettuce</code>)을 하였다. <code>lettuce</code>는 적은 커넥션으로 높은 처리량을 자랑하여 많이들 사용하는 라이브러리이다. 하지만 <code>spring-data-redis</code>을 기반으로 사용한다면 특정 버전, 특정 환경에서 문제가 있었고, 이는 <code>2.1.0.RELEASE</code>에서 해결되었다. 혹시 클러스터 환경에서 <code>lettuce</code>를 사용한다면, <code>spring-data-redis</code>를 사용한다면, <code>2.1.0.RELEASE</code> 이상을 사용하고 있는지 확인해보기 바란다.</p>
+<ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/lettuce-io/lettuce-core/issues/816">https://github.com/lettuce-io/lettuce-core/issues/816</a></li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://jira.spring.io/browse/DATAREDIS-731">https://jira.spring.io/browse/DATAREDIS-731</a></li>
+</ul>
+<p>그리고 이메일 발송 기능이 필요하여 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://aws.amazon.com/ko/ses/">AWS SES</a>를 활용해보기도 했다. 처음 경험해보는 도메인이지만, 잘 정리된 문서, 쉬운 인터페이스덕분에 러닝커브가 많이 높지 않았다. 다만, 평판이라는 개념은 아직도 익숙하지 않다… (이것 때문에 꽤 고생을 했다… - <a href="https://heowc.dev/2020/04/11/aws-ses-review/">AWS - SES 사용 후기</a>)</p>
+<blockquote>
+<p>읽기로한 개발 도서 읽는 것에 소홀히 하지 않아야 겠다. <strong>다독이 아닌 정독!</strong> 2020년 첫 도서로는 Netty 관련 내용이 될 것 같은데… Armeria 컨트리뷰션에 조금 보탬이 되지 않을까싶다.</p>
+</blockquote>
+<p>정독이 목표였지만… 애초에 책을 읽는 것에 소홀해졌다.</p>
+<ul>
+<li><code>스프링 인 액션</code></li>
+<li><code>http 완벽 가이드</code></li>
+</ul>
+<blockquote>
+<p>프로그래밍 관련은 아니지만 그 동안 몸에 너무 소홀히 한 것 같아 <strong>운동</strong>을 할 생각이다. 헬스 정기권 같은 것만 하면 금방 안할게 뻔하니 P.T나 다른 대안책을 찾아보는 중 이다.</p>
+</blockquote>
+<p>상반기까지는 식단 관리도 하고 필라테스도 하며 몸이 건강해졌지는 것을 느낄 수 있었다. 하지만 하반기부터는 여러가지 이유로 못 하게되어 다시 소홀해졌고 원상복구 중 이다…</p>
+<h4 id="2021년-계획">2021년 계획</h4>
+<p>2020년은 코로나 19로 인해 몸도 마음도 느러지는 한 해였던 것 같다. 다시 마음을 다 잡고 보다 의미있는 일, 보람찬 일, 재미있는 일을 찾아 2021년에는 뜻깊은 한 해를 보내야겠다.</p>
+<ul>
+<li>꾸준한 식단관리</li>
+<li>독서 4권 이상</li>
+<li>적극적인 오픈소스 참여</li>
+</ul>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#develop">
+    <span class="tag-code">develop</span>
+  </a>
+
+  <a href="/tags#retrospection">
+    <span class="tag-code">retrospection</span>
+  </a>
+
+  <a href="/tags#2020">
+    <span class="tag-code">2020</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2020/10/21/introduction-network-json-filter-as-chrome-extension/">
+        <span class="nav-arrow">← </span>
+        
+          Network JSON Filter 소개 (Chrome Extension)
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2021/02/13/aurora-cluster-failover/">
+        
+          AWS Aurora DB Cluster - FailOver 대응하기
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+        <!-- Disqus START -->
+        <div id="disqus_thread"></div>
+        <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2019%EB%85%84%EC%97%90-%EC%84%B8%EC%9B%A0%EB%8D%98-%EA%B3%84%ED%9A%8D%EA%B3%BC-2020%EB%85%84-%EC%9D%BC%EC%9D%84-%EB%90%98%EB%8F%8C%EC%95%84-%EB%B3%B4%EB%A9%B0%E2%80%A6"><span class="toc-nav-text">2019년에 세웠던 계획과 2020년 일을 되돌아 보며…</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2021%EB%85%84-%EA%B3%84%ED%9A%8D"><span class="toc-nav-text">2021년 계획</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://heowc.dev/2020/12/27/2020-develop-retrospection/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+<script>
+  var disqus_shortname = 'heowc-ithub-io';
+  
+  var disqus_url = 'https://heowc.dev/2020/12/27/2020-develop-retrospection/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>
+    <br>
+    Theme by <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js");
+</script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.32.0/algoliasearch.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.35.0/autocomplete.min.js"></script>
+<script>
+  const client = algoliasearch('Z12OUS9993', '87e1c2ec8b3ce58795cdac97dd583138');
+  const index = client.initIndex('heowc.github.io');
+
+  autocomplete('#search-query-nav', {hint: false}, [
+    {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 10}),
+      displayKey: 'name',
+      templates: {
+        suggestion: function (suggestion) {
+          return suggestion.title;
+        }
+      }
+    }
+  ]).on('autocomplete:selected', function (event, suggestion, dataset, context) {
+    location.href = "/" + suggestion.path
+  });
+</script>
+
+
+  <script>
+    (function(b, o, i, l, e, r) {
+      b.GoogleAnalyticsObject = l;
+      b[l] || (b[l] = function() {
+        (b[l].q = b[l].q || []).push(arguments)
+      });
+      b[l].l = +new Date;
+      e = o.createElement(i);
+      r = o.getElementsByTagName(i)[0];
+      e.src = '//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-88462807-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="허원철의 개발 블로그">
+<meta name="keyword" content="허원철,개발,블로그">
+
+<!-- canonical -->
+<link rel="canonical" href="https://heowc.dev/2021/12/28/2021-develop-retrospection/">
+
+<!-- open graph -->
+<meta property="og:title" content="허원철의 개발 블로그">
+<meta property="og:description" content="2021년 개발 회고">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://heowc.dev/2021/12/28/2021-develop-retrospection/">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+
+<!-- naver webmaster -->
+<meta name="naver-site-verification" content="c8078357cb88dc72964f9089507aaf7bb0dd1b3b">
+
+  <title>
+    
+      2021년 개발 회고 | 허원철의 개발 블로그
+    
+  </title>
+
+  
+    <link rel="shortcut icon" type="image/ico" href="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/resources/css/gdemo.css">
+<link rel="stylesheet" href="/resources/css/index.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/algolia.searchbox.css">
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-5618198218047336",
+      enable_page_level_ads: true
+    });
+  </script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<div class="wechat-share">
+  
+    <img alt="preview image" src="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>허원철의 개발 블로그</span>
+    </a>
+    <ul class="right-list">
+      <li class="list-item">
+        <label for="search-query-nav"></label>
+        <input type="text" id="search-query-nav" class="search-query">
+      </li>
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="https://heowc.dev/programming-study/repo/" class="item-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="https://heowc.dev/programming-study/repo/" class="menu-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>2021년 개발 회고</h2>
+  <p class="post-date">2021-12-29</p>
+  <div class="arrow-down">
+    <a href="#"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>2020년 회고에 이어 2021년에 대한 회고를 하려고 한다.</p>
+<span id="more"></span>
+<br>
+<p>올해는 상당히 많은 일들이 있었다. 개인적인 일들과 공적인 일들, 좋은 일들과 나쁜 일들… 전부 언급할 순 없지만 개발 관련된 내용만 언급해보고자한다.</p>
+<h3 id="오픈소스">오픈소스</h3>
+<p><img src="/resources/img/2021-develop-retrospection/2021-github.png" alt="Alt 2021-github"></p>
+<p>사실 전부 다 기여한 것도 아니고, 기여했어도 대부분 typo 수정 정도다… 😆</p>
+<h4 id="스프링-프로젝트-컨트리뷰션">스프링 프로젝트 컨트리뷰션</h4>
+<p>올해는 작년보다 꽤나 많은 오픈소스에 기여를 해왔다. 개인적으로 좋았던 점은 드디어 <strong>스프링 프로젝트에 내 이름 한줄을 넣어보았다는 것이다.</strong> 단순한 기능 추가였기에 살짝(?) 아쉽지만, 그래도 (언제였는지 기억은 안나지만…) 목표로했던 스프링 프로젝트에 이름을 올려본 셈이다.</p>
+<br>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/spring-projects/spring-security/pull/10278">https://github.com/spring-projects/spring-security/pull/10278</a><br>
+(빨리 5.7.0 GA 됐으면 좋겠네요 🙏🙏)</p>
+<h4 id="아르메리아-컨트리뷰션">아르메리아 컨트리뷰션</h4>
+<p>그리고 어김없이 아르메리아에 지속적인 기여도 해왔다. 횟수를 거듭할 수록 발전해나가야 하는데… 그런 모습은 보이지 않아서 개인적으로 많이 노력해야겠다고 다짐했다. 그 와중에 조금 나아진게 있다면, 바로, <strong>테스트 작성하기</strong>이다. 메인테이너분들이 항상 테스트를 작성해달라는 needs가 있었고, 덕분에 계속 작성하다보니 그래도 이전보다는 ‘테스트 좀 작성해본 사람이다’ 라고 얘기할 수 있을 것 같다.</p>
+<br>
+<p>테스트를 작성하면서 느낀 것은 <strong>테스트는 다다익선</strong>이다.</p>
+<h4 id="젯브레인-all-product-pack">젯브레인 all-product pack</h4>
+<p>이러한 오픈소스 활동 덕분인지, 젯브레인에 오픈소스로서 라이센스를 받을 수 없냐고 문의를 넣자마자 답변으로 라이센스를 받을 수 있었다. 오픈 소스 기여를 장려하기 위해 이와 같은 라이센스가 있다는 걸 알고 있었기에, 어떻게 신청하는지 내가 해온 이력과 함께 문의를 넣었는데, 스피드하게 줘서 굉장히 당황스럽고, 놀랍고, 기뻤다…! 😍</p>
+<br>
+<p><img src="/resources/img/2021-develop-retrospection/jetbrain-allproduct-pack.png" alt="Alt jetbrain-allproduct-pack"></p>
+<p><strong>(사랑해요~ 젯브레인 😍)</strong></p>
+<h4 id="hackoberfest">hackoberfest</h4>
+<p><img src="/resources/img/2021-develop-retrospection/hacktoberfest-completed.png" alt="Alt hacktoberfest-completed"></p>
+<p>19년에 달성하고 20년에는 달성하지 못한 hackoberfest를 올해는 달성했다. 올해는 상품 중에 약간 특이하게 내 이름으로 기증하는(?) 나무를 심을 수 있다고 하여 나무를 선택했다. 🌳</p>
+<p><img src="/resources/img/2021-develop-retrospection/hacktoberfest-gift.png" alt="Alt hacktoberfest-gift"></p>
+<br>
+<p>그리곤 아직까지 연락이 없는데… 뭐 언젠가 연락주지 않을까 싶은…</p>
+<h3 id="스터디">스터디</h3>
+<p>올해는 그토록 바랬던 사내 스터디도 해보았고, 색다른 스터디도 이것저것 해보았다. 현재진행형으로 이펙티브자바 3판을 하고 있는데, 항상 느끼는거지만 이펙티브자바는 여러번 읽어야할 정도로 너무 어려운 책인 것 같다.</p>
+<br>
+<p>스터디를 해오면서 아쉬운 점이 있다면, 바쁠때 하던 '블로깅하기’를 제대로 참여하지 못했다. 이를 계기로 소홀했던 블로그도 보다 더 작성해보고, 이를 발표(?), 공유(?)하면서 말하는 연습도 하고 싶었지만, 시기가 적절하지 못 했던지, 마음가짐이 삐뚤었던 것 인지…(음?)</p>
+<h3 id="독서">독서</h3>
+<p>JPA 프로그래밍, 함께 자라기, 테스트 관련 도서들… (분명 더 읽은 것 같은데 기억이 잘 나질 않는다…🤣)</p>
+<p><strong>가장 좋았던 책은 ‘함께 자라기’ 이다.</strong> 평소의 나의 태도를 다시 돌아보게 되고, 내가 앞으로 어떤 개발자가 되어야할지 고민을 하게된 책이다. 이제 시니어로 넘어가게 되는 년차이다보니 더더욱 와닿았던 책이였음이 분명하다… 👍</p>
+<ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="http://www.yes24.com/Product/Goods/67350256">함께자라기</a></li>
+</ul>
+<h3 id="블로그">블로그</h3>
+<p>올해는 대략 5,6개의 블로그를 작성해보았다. 대다수는 서비스를 개발하면서, 운영하면서 분석해보고, 이를 기록한 것들인데 내년에는 이 보다 디테일하고 면밀히 살펴보며 보다 나은 개발자가 되어야 겠다…! 끝!</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#develop">
+    <span class="tag-code">develop</span>
+  </a>
+
+  <a href="/tags#retrospection">
+    <span class="tag-code">retrospection</span>
+  </a>
+
+  <a href="/tags#2021">
+    <span class="tag-code">2021</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2021/11/27/hibernate-nativequery-bug-with-postgres/">
+        <span class="nav-arrow">← </span>
+        
+          Hibernate NativeQuery HHH-14778 issue (with Postgres)
+        
+      </a>
+    
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+        <!-- Disqus START -->
+        <div id="disqus_thread"></div>
+        <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4"><span class="toc-nav-text">오픈소스</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EC%8A%A4%ED%94%84%EB%A7%81-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%BB%A8%ED%8A%B8%EB%A6%AC%EB%B7%B0%EC%85%98"><span class="toc-nav-text">스프링 프로젝트 컨트리뷰션</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EC%95%84%EB%A5%B4%EB%A9%94%EB%A6%AC%EC%95%84-%EC%BB%A8%ED%8A%B8%EB%A6%AC%EB%B7%B0%EC%85%98"><span class="toc-nav-text">아르메리아 컨트리뷰션</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EC%A0%AF%EB%B8%8C%EB%A0%88%EC%9D%B8-all-product-pack"><span class="toc-nav-text">젯브레인 all-product pack</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#hackoberfest"><span class="toc-nav-text">hackoberfest</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EC%8A%A4%ED%84%B0%EB%94%94"><span class="toc-nav-text">스터디</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EB%8F%85%EC%84%9C"><span class="toc-nav-text">독서</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EB%B8%94%EB%A1%9C%EA%B7%B8"><span class="toc-nav-text">블로그</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://heowc.dev/2021/12/28/2021-develop-retrospection/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+<script>
+  var disqus_shortname = 'heowc-ithub-io';
+  
+  var disqus_url = 'https://heowc.dev/2021/12/28/2021-develop-retrospection/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>
+    <br>
+    Theme by <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js");
+</script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.32.0/algoliasearch.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.35.0/autocomplete.min.js"></script>
+<script>
+  const client = algoliasearch('Z12OUS9993', '87e1c2ec8b3ce58795cdac97dd583138');
+  const index = client.initIndex('heowc.github.io');
+
+  autocomplete('#search-query-nav', {hint: false}, [
+    {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 10}),
+      displayKey: 'name',
+      templates: {
+        suggestion: function (suggestion) {
+          return suggestion.title;
+        }
+      }
+    }
+  ]).on('autocomplete:selected', function (event, suggestion, dataset, context) {
+    location.href = "/" + suggestion.path
+  });
+</script>
+
+
+  <script>
+    (function(b, o, i, l, e, r) {
+      b.GoogleAnalyticsObject = l;
+      b[l] || (b[l] = function() {
+        (b[l].q = b[l].q || []).push(arguments)
+      });
+      b[l].l = +new Date;
+      e = o.createElement(i);
+      r = o.getElementsByTagName(i)[0];
+      e.src = '//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-88462807-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

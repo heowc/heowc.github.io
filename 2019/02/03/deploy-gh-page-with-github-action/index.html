@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="허원철의 개발 블로그">
+<meta name="keyword" content="허원철,개발,블로그">
+
+<!-- canonical -->
+<link rel="canonical" href="https://heowc.dev/2019/02/03/deploy-gh-page-with-github-action/">
+
+<!-- open graph -->
+<meta property="og:title" content="허원철의 개발 블로그">
+<meta property="og:description" content="GitHub Action을 활용한 GitHub Page 배포">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://heowc.dev/2019/02/03/deploy-gh-page-with-github-action/">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+
+<!-- naver webmaster -->
+<meta name="naver-site-verification" content="c8078357cb88dc72964f9089507aaf7bb0dd1b3b">
+
+  <title>
+    
+      GitHub Action을 활용한 GitHub Page 배포 | 허원철의 개발 블로그
+    
+  </title>
+
+  
+    <link rel="shortcut icon" type="image/ico" href="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/resources/css/gdemo.css">
+<link rel="stylesheet" href="/resources/css/index.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/algolia.searchbox.css">
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-5618198218047336",
+      enable_page_level_ads: true
+    });
+  </script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<div class="wechat-share">
+  
+    <img alt="preview image" src="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>허원철의 개발 블로그</span>
+    </a>
+    <ul class="right-list">
+      <li class="list-item">
+        <label for="search-query-nav"></label>
+        <input type="text" id="search-query-nav" class="search-query">
+      </li>
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="https://heowc.dev/programming-study/repo/" class="item-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="https://heowc.dev/programming-study/repo/" class="menu-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>GitHub Action을 활용한 GitHub Page 배포</h2>
+  <p class="post-date">2019-02-03</p>
+  <div class="arrow-down">
+    <a href="#"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><blockquote>
+<p><code>GitHub Action</code>에 대한 간단한 소개와 이를 활용한 GitHub Page 배포 방법를 얘기해보려 한다.</p>
+</blockquote>
+<span id="more"></span>
+<h3 id="GitHub-Action이란"><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/features/actions">GitHub Action</a>이란?</h3>
+<p><strong>GitHub 이벤트(push, issue, release 등)를 트리거하여 개발 워크플로를 구성할 수 있는 GitHub 서비스</strong>이다. 기존에는 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://travis-ci.org/"><code>Travis CI</code></a>, <a target="_blank" rel="external nofollow noopener noreferrer" href="https://circleci.com/"><code>Circle CI</code></a> 등이 대표적인 서드파티 서비스라고 할 수 있으며, 이를 연동하여 정적 분석, 테스트, 빌드하는 것이 보통 이였다. 하지만 이제는 GitHub에서 직접 지원하기 시작하였다.</p>
+<h3 id="목적">목적</h3>
+<p>위에서 언급한 바와 같이 GitHub Action을 이용해서 배포 자동화(=지속적인 배포)를 해보려고 한다. push 한 번으로 GitHub Page에 게시물이 반영되는 것이 최종 목표이다.</p>
+<h3 id="준비">준비</h3>
+<ul>
+<li>
+<p>GitHub Action를 사용하려면 해당 페이지에서 승인 과정을 거쳐야 한다. [<a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/features/actions">click</a>]</p>
+</li>
+<li>
+<p>블로그는 Hexo로 만들었다.</p>
+</li>
+<li>
+<p>게시글을 보관하기 위한 아카이빙용 레포지토리(Private Repository)와 실제 <strong>{GitHub ID}.github.io</strong> 에 반영될 GitHub Page용 레포지토리(Public Repository)가 있다.</p>
+<blockquote>
+<p>아카이빙용 레포지토리를 Private Repository로 지정한 이유?</p>
+<ol>
+<li>민감한 정보가 설정에 포함되어있다.</li>
+<li><s>아직 베타 수준인 GitHub Action은 Public Repository에 지원이 제한되어있다.</s></li>
+</ol>
+</blockquote>
+<p>※ 2019년 1월 7일 기준으로, 일반 사용자도 무료로 private 레포지토리를 만들 수 있다. (<a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.blog/2019-01-07-new-year-new-github/">관련 기사</a>)</p>
+</li>
+</ul>
+<h3 id="워크플로">워크플로</h3>
+<p>간단하게 시퀀스 다이어그램으로 표현하면 아래와 같다.</p>
+<div class="mermaid">
+  sequenceDiagram
+    participant pr as Private Repository
+    participant ga as GitHub Action
+    participant pu as Public Repository
+    pr-->>ga: ① trigger push event
+    ga->>ga: ② execute GitHub Workflow
+    opt Blog Deploy
+        ga->>ga: npm build
+        ga->>ga: hexo algolia
+        ga->>ga: hexo clean
+        ga->>ga: hexo generate
+        ga->>ga: hexo deploy
+    end
+    ga->>pu: ③ push event
+</div>
+
+<p>① workflow를 push 이벤트에 트리거 될 수 있도록 설정한다. 보다 많은 이벤트를 설정할 수 있으니 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://developer.github.com/actions/creating-workflows/workflow-configuration-options/#events-supported-in-workflow-files">공식 문서</a>를 참고하면 좋다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">workflow &quot;Blog Deploy&quot; &#123;</span><br><span class="line">    on = &quot;push&quot;</span><br><span class="line">    resolves = &quot;Hexo Deploy&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>② <code>resoleves</code> 으로 action을 지정할 수 있다. 그리고 <code>resoleves</code>에 지정한 action 이전에 필요한 action은 각 action에서 <code>needs</code>를 활용하면 된다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">workflow &quot;Blog Deploy&quot; &#123;</span><br><span class="line">    on = &quot;push&quot;</span><br><span class="line">    resolves = &quot;Hexo Deploy&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// ...</span><br><span class="line"></span><br><span class="line">action &quot;Hexo Deploy&quot; &#123;</span><br><span class="line">    needs = [&quot;Hexo Generate&quot;]</span><br><span class="line">    uses = &quot;heowc/action-hexo@master&quot;</span><br><span class="line">    args = &quot;deploy&quot;</span><br><span class="line">    // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>custom action을 활용하기 위해서 <code>uses</code>에 해당 action을 지정하면 된다.</li>
+<li>hexo 관련 action이 없어서 간단하게 custom action을 만들어봤다. (<a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/heowc/action-hexo">https://github.com/heowc/action-hexo</a>)</li>
+</ul>
+<p>③ public repository에 deploy하는 방법은 기존과 동일하게 <code>hexo-deployer-git</code>를 사용하면 된다. 기존에는 직접 <code>hexo deploy</code> 했다면, 이제는 push 마다 GitHub Action이 동작하여 이를 자동화해줄 것 이다.</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://&#123;ACCESS</span> <span class="string">TOKEN&#125;@github.com/heowc/heowc.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<h3 id="최종-형태">최종 형태</h3>
+<p><code>Build</code> → <code>Algolia</code> → <code>Hexo Clean</code> → <code>Hexo Generate</code> → <code>Hexo Deploy</code> 순차 처리된다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">workflow &quot;Blog Deploy&quot; &#123;</span><br><span class="line">    on = &quot;push&quot;</span><br><span class="line">    resolves = &quot;Hexo Deploy&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">action &quot;Build&quot; &#123;</span><br><span class="line">    uses = &quot;actions/npm@master&quot;</span><br><span class="line">    args = &quot;install&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">action &quot;Hexo Clean&quot; &#123;</span><br><span class="line">    needs = [&quot;Build&quot;]</span><br><span class="line">    uses = &quot;heowc/action-hexo@master&quot;</span><br><span class="line">    args = &quot;clean&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">action &quot;Hexo Generate&quot; &#123;</span><br><span class="line">    needs = [&quot;Hexo Clean&quot;]</span><br><span class="line">    uses = &quot;heowc/action-hexo@master&quot;</span><br><span class="line">    args = &quot;generate&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">action &quot;Hexo Deploy&quot; &#123;</span><br><span class="line">    needs = [&quot;Hexo Generate&quot;]</span><br><span class="line">    uses = &quot;heowc/action-hexo@master&quot;</span><br><span class="line">    args = &quot;deploy&quot;</span><br><span class="line">    env = &#123;</span><br><span class="line">        NAME  = &quot;heowc&quot;</span><br><span class="line">        EMAIL = &quot;heowc1992@gmail.com&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="결과">결과</h3>
+<p>workflow에 대한 결과는 다음과 같이 확인해볼 수 있다.</p>
+<p><img src="/resources/img/deploy-gh-page-with-github-action/screenshot.png" alt="alt screenshot"></p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#hexo">
+    <span class="tag-code">hexo</span>
+  </a>
+
+  <a href="/tags#github-action">
+    <span class="tag-code">github-action</span>
+  </a>
+
+  <a href="/tags#continuous-deployment">
+    <span class="tag-code">continuous-deployment</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019/01/16/spring-boot-dynamodb-using-testcontainer/">
+        <span class="nav-arrow">← </span>
+        
+          Spring Boot - testContainer를 활용한 AWS DynamoDB 테스트
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2019/02/09/using-mysql-jdbc-to-handle-large-table-1/">
+        
+          MySQL - 큰 테이블을 다루는 jdbc 활용법 ①
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+        <!-- Disqus START -->
+        <div id="disqus_thread"></div>
+        <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#GitHub-Action%EC%9D%B4%EB%9E%80"><span class="toc-nav-text">GitHub Action이란?</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EB%AA%A9%EC%A0%81"><span class="toc-nav-text">목적</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EC%A4%80%EB%B9%84"><span class="toc-nav-text">준비</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EC%9B%8C%ED%81%AC%ED%94%8C%EB%A1%9C"><span class="toc-nav-text">워크플로</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EC%B5%9C%EC%A2%85-%ED%98%95%ED%83%9C"><span class="toc-nav-text">최종 형태</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EA%B2%B0%EA%B3%BC"><span class="toc-nav-text">결과</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://heowc.dev/2019/02/03/deploy-gh-page-with-github-action/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+<script>
+  var disqus_shortname = 'heowc-ithub-io';
+  
+  var disqus_url = 'https://heowc.dev/2019/02/03/deploy-gh-page-with-github-action/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>
+    <br>
+    Theme by <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js");
+</script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.32.0/algoliasearch.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.35.0/autocomplete.min.js"></script>
+<script>
+  const client = algoliasearch('Z12OUS9993', '87e1c2ec8b3ce58795cdac97dd583138');
+  const index = client.initIndex('heowc.github.io');
+
+  autocomplete('#search-query-nav', {hint: false}, [
+    {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 10}),
+      displayKey: 'name',
+      templates: {
+        suggestion: function (suggestion) {
+          return suggestion.title;
+        }
+      }
+    }
+  ]).on('autocomplete:selected', function (event, suggestion, dataset, context) {
+    location.href = "/" + suggestion.path
+  });
+</script>
+
+
+  <script>
+    (function(b, o, i, l, e, r) {
+      b.GoogleAnalyticsObject = l;
+      b[l] || (b[l] = function() {
+        (b[l].q = b[l].q || []).push(arguments)
+      });
+      b[l].l = +new Date;
+      e = o.createElement(i);
+      r = o.getElementsByTagName(i)[0];
+      e.src = '//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-88462807-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

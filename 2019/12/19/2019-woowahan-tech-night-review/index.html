@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="허원철의 개발 블로그">
+<meta name="keyword" content="허원철,개발,블로그">
+
+<!-- canonical -->
+<link rel="canonical" href="https://heowc.dev/2019/12/19/2019-woowahan-tech-night-review/">
+
+<!-- open graph -->
+<meta property="og:title" content="허원철의 개발 블로그">
+<meta property="og:description" content="2019 우아한 테크의 밤 - 요약">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://heowc.dev/2019/12/19/2019-woowahan-tech-night-review/">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+
+<!-- naver webmaster -->
+<meta name="naver-site-verification" content="c8078357cb88dc72964f9089507aaf7bb0dd1b3b">
+
+  <title>
+    
+      2019 우아한 테크의 밤 - 요약 | 허원철의 개발 블로그
+    
+  </title>
+
+  
+    <link rel="shortcut icon" type="image/ico" href="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/resources/css/gdemo.css">
+<link rel="stylesheet" href="/resources/css/index.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/algolia.searchbox.css">
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-5618198218047336",
+      enable_page_level_ads: true
+    });
+  </script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<div class="wechat-share">
+  
+    <img alt="preview image" src="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>허원철의 개발 블로그</span>
+    </a>
+    <ul class="right-list">
+      <li class="list-item">
+        <label for="search-query-nav"></label>
+        <input type="text" id="search-query-nav" class="search-query">
+      </li>
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="https://heowc.dev/programming-study/repo/" class="item-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="https://heowc.dev/programming-study/repo/" class="menu-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>2019 우아한 테크의 밤 - 요약</h2>
+  <p class="post-date">2019-12-19</p>
+  <div class="arrow-down">
+    <a href="#"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><span id="more"></span>
+<h1>우아한 테크의 밤 - 요약</h1>
+<p><img src="/resources/img/2019-woowahan-tech-night-review/intro.png" alt="alt intro"></p>
+<h3 id="우아한형제들에선-무슨-일을-하나…-김범준-CTO-CEO님">우아한형제들에선 무슨 일을 하나…? - 김범준 CTO/CEO님</h3>
+<h4 id="소개">소개</h4>
+<ul>
+<li>내년부터는 CTO가 아닌 CEO로써 활동을 하게 된다.</li>
+<li>회사 서비스에 대한 소개</li>
+</ul>
+<h4 id="1-배달의민족">1. 배달의민족</h4>
+<ul>
+<li>다른 이커머스와 견주어도 튼튼하고 견고한 서비스</li>
+<li>WHY?
+<ul>
+<li>최대 300만 쓰기 트랜잭션도 버텨냄
+<ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://microservices.io/patterns/data/cqrs.html">CQRS</a>와 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://microservices.io/patterns/data/event-sourcing.html">EventSourcing</a> 도입</li>
+</ul>
+</li>
+<li>오프라인 모드 지원
+<ul>
+<li>AS-IS: 별도의 오류페이지</li>
+<li>TO-BE: 노출되어 있던 로컬 캐싱(번호, 메뉴, 주문 등등…)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-배민라이더스-배민커넥트">2. 배민라이더스, 배민커넥트</h4>
+<ul>
+<li>(풀, 파트) 타임의 배달원</li>
+<li>약 10,000명</li>
+<li>주문이 들어오면 근처 라이더에게 타겟팅
+<ul>
+<li>타다와 같은 방식(<em>타다는 약 1,000대가량 된다고 함</em>)</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-B마트">3. B마트</h4>
+<ul>
+<li>배민라이더스, 배민커넥트분들이 마트 물건을 배달</li>
+<li>편의점 보다 싸고 간편함 (일부 지역 서비스 중)</li>
+</ul>
+<h4 id="4-로봇-딜리버리">4. 로봇 딜리버리</h4>
+<ul>
+<li>로봇으로 배달</li>
+<li>건국에서 베타 테스트
+<ul>
+<li>실제로 로봇 딜리버리로 주문되는 양이 더 많음</li>
+<li>그 외에도 몇 군데 있음(<em>까먹…</em>)</li>
+</ul>
+</li>
+</ul>
+<h4 id="그-외">그 외</h4>
+<ul>
+<li>만화경, 띠잉, 등등등…</li>
+</ul>
+<h4 id="회사-개발-조직">회사 개발 조직</h4>
+<ul>
+<li>다양항 기술 세미나 진행 중
+<ul>
+<li>우아한 테크 코스</li>
+<li>우아한 테크 러닝</li>
+<li>우아한 테크 세미나</li>
+</ul>
+</li>
+<li>개발 조직 비전: <strong>코드 덩어리가 아닌 가치를 만들고 스스로의 가치를 높이며 일한다.</strong></li>
+</ul>
+<h3 id="우아한-아키텍처-김영한님">우아한 아키텍처 - 김영한님</h3>
+<h4 id="소개-2">소개</h4>
+<ul>
+<li>4년간의 마이크로 서비스 전환기</li>
+<li>하게 된 이유? 매년 2배의 주문량 증가로 기존 시스템(모놀리식)으로 감당이 안됨</li>
+<li>(<em>시간이 없어 후다닥 넘어가느라 조금 아쉽…</em>)</li>
+</ul>
+<h4 id="2015">2015</h4>
+<ul>
+<li><strong>하루 주문 5만</strong></li>
+<li>PHP, MS-SQL(수천 개의 프로시저), ASP</li>
+<li>모놀리식</li>
+</ul>
+<h4 id="2016">2016</h4>
+<ul>
+<li><strong>하루 주문 10만</strong></li>
+<li>PHP에서 Java로 전환 시작</li>
+<li>마이크로 서비스 도전
+<ul>
+<li>결제, 주문 중계</li>
+</ul>
+</li>
+</ul>
+<h4 id="2017">2017</h4>
+<ul>
+<li><strong>하루 주문 20만</strong></li>
+<li>대 장애의 시대
+<ul>
+<li>매주 장애</li>
+<li>CEO님이 그만 좀 장애내라고 메일 썻다함 (<em>주르륵…</em>)</li>
+</ul>
+</li>
+</ul>
+<h4 id="2018-상반기">2018 상반기</h4>
+<ul>
+<li>ms-sql 제거</li>
+<li>가게 상세
+<ul>
+<li>다이나모 배치 갱신</li>
+</ul>
+</li>
+</ul>
+<h4 id="2018-하반기">2018 하반기</h4>
+<ul>
+<li>포인트, 쿠폰, 리뷰 MSA 전환
+<ul>
+<li>리뷰 - 이벤트 기반 아키텍처</li>
+<li>광고, 가게/업주 - 프로젝트 먼데이</li>
+</ul>
+</li>
+</ul>
+<h4 id="MSA-고민">MSA 고민</h4>
+<ul>
+<li>
+<p>CQRS =&gt; 성능, 장애 격리, 데이터 동기화</p>
+<ul>
+<li>조회, 명령 분리(<em>master, slave 같은 개념이 아닌 별도의 데이터베이스로 분리 가능한 형태</em>)</li>
+<li>명령으로 데이터 변경되면 조회에 이벤트로 전달</li>
+<li>데이터 싱크 1~3초</li>
+<li>zero-payload
+<ul>
+<li>id만 전달 후, api로 최신 데이터 가져와서 처리</li>
+</ul>
+</li>
+<li>최소 데이터 보관 원칙
+<ul>
+<li>(<em>뭐더라…</em>)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>데이터 싱크 장애 대응</p>
+<ul>
+<li>이벤트 재발행</li>
+<li>(전체, 부분) 임포트 -&gt; 이벤트 서비스(sqs, sns) 장애 대응</li>
+</ul>
+</li>
+<li>
+<p>캐시</p>
+</li>
+<li>
+<p>서킷 브레이커</p>
+</li>
+<li>
+<p>비동기 논블로킹</p>
+<ul>
+<li>Reactor, WebFlux</li>
+</ul>
+</li>
+<li>
+<p>결과적으로, 크게 16개의 서비스로 분리</p>
+</li>
+</ul>
+<h3 id="패널-토크">패널 토크</h3>
+<ul>
+<li>객체지향 도전?
+<ul>
+<li>한번에 하려고 하지말자</li>
+</ul>
+</li>
+<li>학습법?
+<ul>
+<li>책 vs 프로젝트</li>
+<li>나만의 학습법을 찾아라</li>
+<li>기술 공부는 회사에서 쓰는 것, 쓸 것만 공부해도 충분하다</li>
+<li>기술 스킬을 공부하기 보다는 방법론을 공부하자… (TDD 같은)</li>
+</ul>
+</li>
+</ul>
+<h3 id="느낀점">느낀점</h3>
+<ul>
+<li>역시나 마이그레이션은 (겁나) 어려운 것이다.</li>
+<li>MSA를 하려면 굉장히 많은 사이드 이펙트에 대한 고려가 필요하다.</li>
+<li>나만의 학습법을 찾아보자…!</li>
+</ul>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#2019">
+    <span class="tag-code">2019</span>
+  </a>
+
+  <a href="/tags#semina">
+    <span class="tag-code">semina</span>
+  </a>
+
+  <a href="/tags#woowahan-tech">
+    <span class="tag-code">woowahan-tech</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019/11/29/nullaway-overview/">
+        <span class="nav-arrow">← </span>
+        
+          NullAway 알아보기
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2019/12/29/2019-develop-retrospection/">
+        
+          2019년 개발 회고
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+        <!-- Disqus START -->
+        <div id="disqus_thread"></div>
+        <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-text">우아한 테크의 밤 - 요약</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EC%9A%B0%EC%95%84%ED%95%9C%ED%98%95%EC%A0%9C%EB%93%A4%EC%97%90%EC%84%A0-%EB%AC%B4%EC%8A%A8-%EC%9D%BC%EC%9D%84-%ED%95%98%EB%82%98%E2%80%A6-%EA%B9%80%EB%B2%94%EC%A4%80-CTO-CEO%EB%8B%98"><span class="toc-nav-text">우아한형제들에선 무슨 일을 하나…? - 김범준 CTO&#x2F;CEO님</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EC%86%8C%EA%B0%9C"><span class="toc-nav-text">소개</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-%EB%B0%B0%EB%8B%AC%EC%9D%98%EB%AF%BC%EC%A1%B1"><span class="toc-nav-text">1. 배달의민족</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-%EB%B0%B0%EB%AF%BC%EB%9D%BC%EC%9D%B4%EB%8D%94%EC%8A%A4-%EB%B0%B0%EB%AF%BC%EC%BB%A4%EB%84%A5%ED%8A%B8"><span class="toc-nav-text">2. 배민라이더스, 배민커넥트</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-B%EB%A7%88%ED%8A%B8"><span class="toc-nav-text">3. B마트</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-%EB%A1%9C%EB%B4%87-%EB%94%9C%EB%A6%AC%EB%B2%84%EB%A6%AC"><span class="toc-nav-text">4. 로봇 딜리버리</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EA%B7%B8-%EC%99%B8"><span class="toc-nav-text">그 외</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%ED%9A%8C%EC%82%AC-%EA%B0%9C%EB%B0%9C-%EC%A1%B0%EC%A7%81"><span class="toc-nav-text">회사 개발 조직</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EC%9A%B0%EC%95%84%ED%95%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EA%B9%80%EC%98%81%ED%95%9C%EB%8B%98"><span class="toc-nav-text">우아한 아키텍처 - 김영한님</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EC%86%8C%EA%B0%9C-2"><span class="toc-nav-text">소개</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2015"><span class="toc-nav-text">2015</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2016"><span class="toc-nav-text">2016</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2017"><span class="toc-nav-text">2017</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2018-%EC%83%81%EB%B0%98%EA%B8%B0"><span class="toc-nav-text">2018 상반기</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2018-%ED%95%98%EB%B0%98%EA%B8%B0"><span class="toc-nav-text">2018 하반기</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#MSA-%EA%B3%A0%EB%AF%BC"><span class="toc-nav-text">MSA 고민</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%ED%8C%A8%EB%84%90-%ED%86%A0%ED%81%AC"><span class="toc-nav-text">패널 토크</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EB%8A%90%EB%82%80%EC%A0%90"><span class="toc-nav-text">느낀점</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://heowc.dev/2019/12/19/2019-woowahan-tech-night-review/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+<script>
+  var disqus_shortname = 'heowc-ithub-io';
+  
+  var disqus_url = 'https://heowc.dev/2019/12/19/2019-woowahan-tech-night-review/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>
+    <br>
+    Theme by <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js");
+</script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.32.0/algoliasearch.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.35.0/autocomplete.min.js"></script>
+<script>
+  const client = algoliasearch('Z12OUS9993', '87e1c2ec8b3ce58795cdac97dd583138');
+  const index = client.initIndex('heowc.github.io');
+
+  autocomplete('#search-query-nav', {hint: false}, [
+    {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 10}),
+      displayKey: 'name',
+      templates: {
+        suggestion: function (suggestion) {
+          return suggestion.title;
+        }
+      }
+    }
+  ]).on('autocomplete:selected', function (event, suggestion, dataset, context) {
+    location.href = "/" + suggestion.path
+  });
+</script>
+
+
+  <script>
+    (function(b, o, i, l, e, r) {
+      b.GoogleAnalyticsObject = l;
+      b[l] || (b[l] = function() {
+        (b[l].q = b[l].q || []).push(arguments)
+      });
+      b[l].l = +new Date;
+      e = o.createElement(i);
+      r = o.getElementsByTagName(i)[0];
+      e.src = '//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-88462807-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

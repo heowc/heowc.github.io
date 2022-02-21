@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="허원철의 개발 블로그">
+<meta name="keyword" content="허원철,개발,블로그">
+
+<!-- canonical -->
+<link rel="canonical" href="https://heowc.dev/2019/05/13/ios-push-to-java/">
+
+<!-- open graph -->
+<meta property="og:title" content="허원철의 개발 블로그">
+<meta property="og:description" content="Java에서 iOS Push 삽질기">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://heowc.dev/2019/05/13/ios-push-to-java/">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+
+<!-- naver webmaster -->
+<meta name="naver-site-verification" content="c8078357cb88dc72964f9089507aaf7bb0dd1b3b">
+
+  <title>
+    
+      Java에서 iOS Push 삽질기 | 허원철의 개발 블로그
+    
+  </title>
+
+  
+    <link rel="shortcut icon" type="image/ico" href="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/resources/css/gdemo.css">
+<link rel="stylesheet" href="/resources/css/index.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/algolia.searchbox.css">
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-5618198218047336",
+      enable_page_level_ads: true
+    });
+  </script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<div class="wechat-share">
+  
+    <img alt="preview image" src="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>허원철의 개발 블로그</span>
+    </a>
+    <ul class="right-list">
+      <li class="list-item">
+        <label for="search-query-nav"></label>
+        <input type="text" id="search-query-nav" class="search-query">
+      </li>
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="https://heowc.dev/programming-study/repo/" class="item-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="https://heowc.dev/programming-study/repo/" class="menu-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Java에서 iOS Push 삽질기</h2>
+  <p class="post-date">2019-05-13</p>
+  <div class="arrow-down">
+    <a href="#"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><blockquote>
+<p>직접 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1">APNs</a>를 사용하면서 경험한 삽질기이다.</p>
+</blockquote>
+<span id="more"></span>
+<h3 id="시작하기-전에…">시작하기 전에…</h3>
+<p>Push(Android, iOS 등)를 고려한다면 고민말고 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://firebase.google.com/docs/cloud-messaging">FCM(Firebase Cloud Messaging)</a>을 사용하자. Android 뿐만 아니라 다른 플랫폼도 지원한다.</p>
+<h3 id="배경">배경</h3>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.otherlevels.com/">OtherLevels</a>이라는 메시징 플랫폼을 사용 중에 있으며, 여러가지 이유(?)로 이를 사용하지 않고 직접 메시징 시스템을 구축하려고 한다. 인수인계 받은바로는 Android, iOS 각각 플랫폼별로 별도로 처리해야 하는 상황이다.</p>
+<blockquote>
+<p>앞에서 언급했던 것 처럼 <strong>APNs</strong>만 다룰 예정이다.</p>
+</blockquote>
+<h3 id="APNs-이란">APNs 이란?</h3>
+<p>APNs(Apple Push Notification Service)는 Apple Device에 Push를 보내줄 수 있는 서비스이다. 지원하는 방식으로는 다음과 같다.</p>
+<h4 id="Legacy-Push">Legacy Push</h4>
+<ul>
+<li>TLS(SSL) 소켓 통신</li>
+<li>Production(<a target="_blank" rel="external nofollow noopener noreferrer" href="http://gateway.push.apple.com:2195">gateway.push.apple.com:2195</a>) / Development(<a target="_blank" rel="external nofollow noopener noreferrer" href="http://gateway.sandbox.push.apple.com:2195">gateway.sandbox.push.apple.com:2195</a>)</li>
+</ul>
+<h4 id="Push">Push</h4>
+<ul>
+<li>HTTP/2 통신</li>
+<li>Production(<a target="_blank" rel="external nofollow noopener noreferrer" href="http://api.push.apple.com:443">api.push.apple.com:443</a>) / Development(<a target="_blank" rel="external nofollow noopener noreferrer" href="http://api.sandbox.push.apple.com:443">api.sandbox.push.apple.com:443</a>)</li>
+</ul>
+<blockquote>
+<p>HTTP/1.1 통신을 지원하지 않는다.</p>
+</blockquote>
+<h3 id="Legacy-Push-이용하기">Legacy Push 이용하기</h3>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/fernandospr/javapns-jdk16">fernandospr/javapns-jdk16</a> 테스트 진행. 하지만 마지막 커밋이 2017-05-17으로 현재 기준(2019-05-14)으로 만 2년이 넘은 상태이다. 이와 같이 <strong>Legacy Push에 대한 오픈소스 관리는 거의 안되는 상태</strong>이다. 또한, Thread Pool 관리가 안되기 때문에 코드의 복잡성이 늘어나거나 리소스 관리가 안될 수 있으니 조심해서 사용하자.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* fernandospr/javapns-jdk16 샘플 */</span></span><br><span class="line">PushNotificationBigPayload payload = PushNotificationBigPayload.complex();</span><br><span class="line">payload.addAlert(<span class="string">&quot;Message received from Bob&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* ... */</span></span><br><span class="line"></span><br><span class="line">Push.payload(payload, p12File, password, isProduction, deviceTokens);</span><br></pre></td></tr></table></figure>
+<h3 id="Push-이용하기">Push 이용하기</h3>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/CleverTap/apns-http2">CleverTap/apns-http2</a>와 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/relayrides/pushy">relayrides/pushy</a>, RestTemplate 테스트 진행. 하지만 지금 서버가 Java 8이기 때문에 HTTP/2을 지원하지 않아 별도의 작업이 필요하다. (사실 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/relayrides/pushy">relayrides/pushy</a>는 없어도 된다.)</p>
+<br>
+<p>※ 참고) <a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.ibm.com/support/knowledgecenter/ko/SS7K4U_liberty/com.ibm.websphere.wlp.zseries.doc/ae/cwlp_alpnsupport.html">ALPN 지원</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* CleverTap/apns-http2 샘플 */</span></span><br><span class="line">FileInputStream cert = <span class="keyword">new</span> FileInputStream(<span class="string">&quot;/path/to/certificate.p12&quot;</span>);</span><br><span class="line"><span class="keyword">final</span> ApnsClient client = <span class="keyword">new</span> ApnsClientBuilder()</span><br><span class="line">        .withProductionGateway()</span><br><span class="line">        .inSynchronousMode()</span><br><span class="line">        .withCertificate(cert)</span><br><span class="line">        .withPassword(<span class="string">&quot;&lt;password&gt;&quot;</span>)</span><br><span class="line">        .build();</span><br><span class="line"></span><br><span class="line">Notification n = <span class="keyword">new</span> Notification.Builder(<span class="string">&quot;&lt;the device token&gt;&quot;</span>)</span><br><span class="line">        .alertBody(<span class="string">&quot;Hello&quot;</span>).build();</span><br><span class="line"></span><br><span class="line">NotificationResponse result = client.push(n);</span><br></pre></td></tr></table></figure>
+<p>그리고… 방법 중에 하나로 <code>alpn-boot-&#123;version&#125;.jar</code> 다운받고, 실행시에 다음 옵션을 추가해야한다.</p>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@glorious/demo@0.11.4/dist/gdemo.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css">
+<script src="//cdn.jsdelivr.net/npm/@glorious/demo@0.11.4/dist/gdemo.min.js"></script>
+<div id="demo-terminal" style="height: 80px"></div>
+<script>
+new GDemo('#demo-terminal')
+  .openApp('terminal', {minHeight: '80px', windowTitle: 'bash', promptString: '$'})
+  .command(`java <span class="token operator">-</span>Xbootclasspath<span class="token operator">/</span>p<span class="token operator">:</span><span class="token punctuation">{</span>path<span class="token punctuation">}</span><span class="token operator">/</span>alpn<span class="token operator">-</span>boot<span class="token operator">-</span><span class="token punctuation">{</span>version<span class="token punctuation">}</span><span class="token punctuation">.</span>jar <span class="token operator">...</span>`, {onCompleteDelay: 0})
+  .respond(`Running ...`)
+  .end();
+</script>
+<p><br><br><br></p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#java">
+    <span class="tag-code">java</span>
+  </a>
+
+  <a href="/tags#ios-push">
+    <span class="tag-code">ios-push</span>
+  </a>
+
+  <a href="/tags#apns">
+    <span class="tag-code">apns</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019/04/28/spring-camp-2019-review/">
+        <span class="nav-arrow">← </span>
+        
+          Spring Camp 2019 후기
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2019/11/04/2019-contributon-feat-armeria/">
+        
+          2019 컨트리뷰톤 (feat. Armeria)
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+        <!-- Disqus START -->
+        <div id="disqus_thread"></div>
+        <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EC%A0%84%EC%97%90%E2%80%A6"><span class="toc-nav-text">시작하기 전에…</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EB%B0%B0%EA%B2%BD"><span class="toc-nav-text">배경</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#APNs-%EC%9D%B4%EB%9E%80"><span class="toc-nav-text">APNs 이란?</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Legacy-Push"><span class="toc-nav-text">Legacy Push</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Push"><span class="toc-nav-text">Push</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Legacy-Push-%EC%9D%B4%EC%9A%A9%ED%95%98%EA%B8%B0"><span class="toc-nav-text">Legacy Push 이용하기</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Push-%EC%9D%B4%EC%9A%A9%ED%95%98%EA%B8%B0"><span class="toc-nav-text">Push 이용하기</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://heowc.dev/2019/05/13/ios-push-to-java/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+<script>
+  var disqus_shortname = 'heowc-ithub-io';
+  
+  var disqus_url = 'https://heowc.dev/2019/05/13/ios-push-to-java/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>
+    <br>
+    Theme by <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js");
+</script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.32.0/algoliasearch.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.35.0/autocomplete.min.js"></script>
+<script>
+  const client = algoliasearch('Z12OUS9993', '87e1c2ec8b3ce58795cdac97dd583138');
+  const index = client.initIndex('heowc.github.io');
+
+  autocomplete('#search-query-nav', {hint: false}, [
+    {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 10}),
+      displayKey: 'name',
+      templates: {
+        suggestion: function (suggestion) {
+          return suggestion.title;
+        }
+      }
+    }
+  ]).on('autocomplete:selected', function (event, suggestion, dataset, context) {
+    location.href = "/" + suggestion.path
+  });
+</script>
+
+
+  <script>
+    (function(b, o, i, l, e, r) {
+      b.GoogleAnalyticsObject = l;
+      b[l] || (b[l] = function() {
+        (b[l].q = b[l].q || []).push(arguments)
+      });
+      b[l].l = +new Date;
+      e = o.createElement(i);
+      r = o.getElementsByTagName(i)[0];
+      e.src = '//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-88462807-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

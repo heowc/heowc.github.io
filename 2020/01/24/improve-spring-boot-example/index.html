@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="허원철의 개발 블로그">
+<meta name="keyword" content="허원철,개발,블로그">
+
+<!-- canonical -->
+<link rel="canonical" href="https://heowc.dev/2020/01/24/improve-spring-boot-example/">
+
+<!-- open graph -->
+<meta property="og:title" content="허원철의 개발 블로그">
+<meta property="og:description" content="Spring Boot 예제 개선하기">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://heowc.dev/2020/01/24/improve-spring-boot-example/">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+
+<!-- naver webmaster -->
+<meta name="naver-site-verification" content="c8078357cb88dc72964f9089507aaf7bb0dd1b3b">
+
+  <title>
+    
+      Spring Boot 예제 개선하기 | 허원철의 개발 블로그
+    
+  </title>
+
+  
+    <link rel="shortcut icon" type="image/ico" href="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/resources/css/gdemo.css">
+<link rel="stylesheet" href="/resources/css/index.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/algolia.searchbox.css">
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-5618198218047336",
+      enable_page_level_ads: true
+    });
+  </script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<div class="wechat-share">
+  
+    <img alt="preview image" src="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>허원철의 개발 블로그</span>
+    </a>
+    <ul class="right-list">
+      <li class="list-item">
+        <label for="search-query-nav"></label>
+        <input type="text" id="search-query-nav" class="search-query">
+      </li>
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="https://heowc.dev/programming-study/repo/" class="item-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="https://heowc.dev/programming-study/repo/" class="menu-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Spring Boot 예제 개선하기</h2>
+  <p class="post-date">2020-01-24</p>
+  <div class="arrow-down">
+    <a href="#"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><blockquote>
+<p><code>Dependabot</code>를 적용하고 <code>GitHub Action</code>을 활용하여 CI까지 적용해 예제 코드를 개선한 내용을 소개하고자 합니다.</p>
+</blockquote>
+<span id="more"></span>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://spring.io/projects/spring-boot">spring-boot</a>를 처음 접하고 이에 대한 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/heowc/SpringBootSample">간단한 예제</a>를 만든지 꽤 시간이 지났다. 2020년 1월 기준으로는 약 30여개의 예제와 400여개의 커밋으로 이루어진 예제 저장소가 되었는데 처음에는 나만을 위해 나만이 참고하기 위한 공개 저장소 목적으로 만들었다.</p>
+ <br>
+<p>하지만 해를 거듭하면서 다른 개발자분들이 간접적으로 관심을 가져주시는 표현으로 가끔씩 스타도 눌러주시고 포크도 해가신다. 공개 저장소이니 간단한 예제지만 쓰시는 분들에게 제대로된 예제 코드를 노출시키고 싶고 관리가 잘 되고 있다는 느낌을 들게하고 싶었다. (현재로선 안돌아가는 예제도 있다.)</p>
+<p><img src="/resources/img/improve-spring-boot-example/intro.png" alt="alt intro"></p>
+<h4 id="주기적으로-Version-갱신을-하자">주기적으로 Version 갱신을 하자</h4>
+<p>우선적으로 디펜던시를 최신 버전으로 올리고 싶었다. 처음에는 가끔씩 크게 버전업을 하고 이에 맞게 코드도 수정했으나, 하나하나 알기도 어렵고 귀찮았다.</p>
+<br>
+<p><strong>그러다가 <code>Dependabot</code>라는 녀석을 알게되었다.</strong> 지정한 주기로 디펜던시를 찾아 추가 버전 릴리즈가 있는지 찾아 pull request를 날려주는 봇이다.</p>
+<p><img src="/resources/img/improve-spring-boot-example/dependabot-intro.png" alt="alt dependabot-intro"></p>
+<p><img src="/resources/img/improve-spring-boot-example/dependabot-setting.png" alt="alt dependabot-setting"></p>
+<p>해당 방법은 preview 단계의 설정이므로, <a target="_blank" rel="external nofollow noopener noreferrer" href="https://docs.github.com/en/github/administering-a-repository/about-github-dependabot">다음 문서</a>를 참고하여 <code>.github/dependabot.yml</code>를 작성해보도록 하자.</p>
+<br>
+<h4 id="Version-UP에-안정적인-예제코드를-만들자">Version UP에 안정적인 예제코드를 만들자</h4>
+<p>두번째로는 이렇게 머지되는 코드들 혹은 내가 직접 수정하거나 추가 작성한 코드가 정말 문제가 없는지 알고 싶었다. (보통 지속적 통합이라고 하죠.) 최근까지는 <code>Dependabot</code>을 활용해서 손쉽게 많은 디펜던시들을 주기적으로 갱신되거나 (개인적인 판단하에) 굳이 갱신될 필요가 없다고 판단되면 닫고 있었다.</p>
+<p><img src="/resources/img/improve-spring-boot-example/dependabot-pr.png" alt="alt dependabot-pr"></p>
+<p>그런데 이 많은 디펜던시들이 갱신되면서 ‘예제가 정상적으로 빌드가 될까’ 라는 의문이 생겼고…<br>
+<br><br>
+…<br>
+<br><br>
+역시나 예제가 정상적으로 안돌아갔다. 이런 코드는 <strong>Revert를 하거나 예제를 수정하기도 했다.</strong></p>
+<p><img src="/resources/img/improve-spring-boot-example/revert.png" alt="alt revert"></p>
+<p>그리하여 쓸만한 CI 도구를 찾다가 약 1년 전에 작성한 <a href="/2019/02/03/deploy-gh-page-with-github-action/">'GitHub Action을 활용한 GitHub Page 배포’</a>이 생각이나서 <code>github-action</code> 을 적용해보고자 한다. 사실 이를 적용할 생각은 예전부터 있었으나 1년 전에는 베타였고 자료도 많이 없어 꽤나 불편함이 조금 있었다.</p>
+<blockquote>
+<p>다시 찾아보니 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/marketplace?type=actions">마켓플레이스</a>에 편리한 많은 액션들이 추가되었다. (거의 2천개정도 되더란다.)</p>
+</blockquote>
+<p>디테일한 작업은 추후작업으로 미루고 우선 <strong>push와 pull request 이벤트를 트리거하여 test를 실행</strong>하는 것이다. <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/heowc/SpringBootSample/blob/master/.github/workflows/test.yml">코드</a>는 다음과 같다.</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Test</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">  <span class="attr">pull_request:</span></span><br><span class="line">    <span class="attr">types:</span> [<span class="string">opened</span>, <span class="string">reopened</span>]</span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">test:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-18.04</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Set</span> <span class="string">up</span> <span class="string">JDK</span> <span class="number">1.8</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-java@v1</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">java-version:</span> <span class="number">1.8</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Test</span> <span class="string">task</span> <span class="string">with</span> <span class="string">Gradle</span> <span class="string">Wrapper</span></span><br><span class="line">        <span class="comment"># 제일 중요한 부분 </span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          chmod +x gradlew</span></span><br><span class="line"><span class="string">          ./gradlew --version</span></span><br><span class="line"><span class="string">          ./gradlew test</span></span><br></pre></td></tr></table></figure>
+<h4 id="최종-결과">최종 결과</h4>
+<p><code>Dependabot</code>에는 <code>Bump now</code>이라는 버튼 있어, 이를 클릭하면 주기에 상관없이 즉시 디펜던시를 찾아 pull request를 날려준다. 그러면 반영된 디펜던시로 test가 돌아 코드에 문제가 없는지 확인할 수 있다. 이로써 <strong>목표로 했던 안정적인 예제 만들기에 한 걸음 나아갔다.</strong> (아직 개선할게 많다…)</p>
+<blockquote>
+<p><code>Dependabot</code>, <code>github-action</code>은 완전 무료이기 때문에 간단한 저장소에 부담없이 사용하기 굉장히 좋은 기능인 것 같다.</p>
+</blockquote>
+<p><img src="/resources/img/improve-spring-boot-example/github-action.png" alt="alt github-action"></p>
+<h4 id="앞으로-더-개선해야할-부분들">앞으로 더 개선해야할 부분들</h4>
+<h5 id="테스트-코드-작성">테스트 코드 작성</h5>
+<p>여러 프로젝트에는 나름 짜여진 테스트 코드들도 있고 테스트 코드 자체가 없거나 무의미한 테스트 코드가 있다. 정말 안정적인 코드가 되려면 필수적으로 테스트 코드를 작성해야 한다.</p>
+<h5 id="cache-적용">cache 적용</h5>
+<p>트리거될 때마다 grade을 다운로드하는데 <s><a target="_blank" rel="external nofollow noopener noreferrer" href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/about-github-actions#usage-limits">사용량 제한</a>이 있는 github-action,</s> 보다 빠른 피드백을 위해 개선해야 한다. 물론 아직은 넉넉하다. (<code>public repo</code> 는 무료이다.)</p>
+<h5 id="중복-트리거">중복 트리거</h5>
+<p>Dependabot를 적용해보니 push과 pr이 동시에 트리거되어 2배의 소요시간이 걸리고 사용량 또한 2배로 늘어난다. 추후에는 둘 중 하나만 트리거 되게끔 개선해야되지 않을까 싶다.</p>
+<h5 id="기타-등등">기타 등등</h5>
+<p>…</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#github-action">
+    <span class="tag-code">github-action</span>
+  </a>
+
+  <a href="/tags#ci">
+    <span class="tag-code">ci</span>
+  </a>
+
+  <a href="/tags#dependabot">
+    <span class="tag-code">dependabot</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019/12/29/2019-develop-retrospection/">
+        <span class="nav-arrow">← </span>
+        
+          2019년 개발 회고
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2020/02/20/improve-spring-boot-example-2/">
+        
+          Spring Boot 예제 개선하기 (2)
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+        <!-- Disqus START -->
+        <div id="disqus_thread"></div>
+        <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EC%A3%BC%EA%B8%B0%EC%A0%81%EC%9C%BC%EB%A1%9C-Version-%EA%B0%B1%EC%8B%A0%EC%9D%84-%ED%95%98%EC%9E%90"><span class="toc-nav-text">주기적으로 Version 갱신을 하자</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Version-UP%EC%97%90-%EC%95%88%EC%A0%95%EC%A0%81%EC%9D%B8-%EC%98%88%EC%A0%9C%EC%BD%94%EB%93%9C%EB%A5%BC-%EB%A7%8C%EB%93%A4%EC%9E%90"><span class="toc-nav-text">Version UP에 안정적인 예제코드를 만들자</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EC%B5%9C%EC%A2%85-%EA%B2%B0%EA%B3%BC"><span class="toc-nav-text">최종 결과</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EC%95%9E%EC%9C%BC%EB%A1%9C-%EB%8D%94-%EA%B0%9C%EC%84%A0%ED%95%B4%EC%95%BC%ED%95%A0-%EB%B6%80%EB%B6%84%EB%93%A4"><span class="toc-nav-text">앞으로 더 개선해야할 부분들</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%BD%94%EB%93%9C-%EC%9E%91%EC%84%B1"><span class="toc-nav-text">테스트 코드 작성</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#cache-%EC%A0%81%EC%9A%A9"><span class="toc-nav-text">cache 적용</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%EC%A4%91%EB%B3%B5-%ED%8A%B8%EB%A6%AC%EA%B1%B0"><span class="toc-nav-text">중복 트리거</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%EA%B8%B0%ED%83%80-%EB%93%B1%EB%93%B1"><span class="toc-nav-text">기타 등등</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://heowc.dev/2020/01/24/improve-spring-boot-example/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+<script>
+  var disqus_shortname = 'heowc-ithub-io';
+  
+  var disqus_url = 'https://heowc.dev/2020/01/24/improve-spring-boot-example/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>
+    <br>
+    Theme by <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js");
+</script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.32.0/algoliasearch.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.35.0/autocomplete.min.js"></script>
+<script>
+  const client = algoliasearch('Z12OUS9993', '87e1c2ec8b3ce58795cdac97dd583138');
+  const index = client.initIndex('heowc.github.io');
+
+  autocomplete('#search-query-nav', {hint: false}, [
+    {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 10}),
+      displayKey: 'name',
+      templates: {
+        suggestion: function (suggestion) {
+          return suggestion.title;
+        }
+      }
+    }
+  ]).on('autocomplete:selected', function (event, suggestion, dataset, context) {
+    location.href = "/" + suggestion.path
+  });
+</script>
+
+
+  <script>
+    (function(b, o, i, l, e, r) {
+      b.GoogleAnalyticsObject = l;
+      b[l] || (b[l] = function() {
+        (b[l].q = b[l].q || []).push(arguments)
+      });
+      b[l].l = +new Date;
+      e = o.createElement(i);
+      r = o.getElementsByTagName(i)[0];
+      e.src = '//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-88462807-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

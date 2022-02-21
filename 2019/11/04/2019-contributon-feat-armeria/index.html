@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="허원철의 개발 블로그">
+<meta name="keyword" content="허원철,개발,블로그">
+
+<!-- canonical -->
+<link rel="canonical" href="https://heowc.dev/2019/11/04/2019-contributon-feat-armeria/">
+
+<!-- open graph -->
+<meta property="og:title" content="허원철의 개발 블로그">
+<meta property="og:description" content="2019 컨트리뷰톤 (feat. Armeria)">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://heowc.dev/2019/11/04/2019-contributon-feat-armeria/">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+
+<!-- naver webmaster -->
+<meta name="naver-site-verification" content="c8078357cb88dc72964f9089507aaf7bb0dd1b3b">
+
+  <title>
+    
+      2019 컨트리뷰톤 (feat. Armeria) | 허원철의 개발 블로그
+    
+  </title>
+
+  
+    <link rel="shortcut icon" type="image/ico" href="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/resources/css/gdemo.css">
+<link rel="stylesheet" href="/resources/css/index.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/algolia.searchbox.css">
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-5618198218047336",
+      enable_page_level_ads: true
+    });
+  </script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<div class="wechat-share">
+  
+    <img alt="preview image" src="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>허원철의 개발 블로그</span>
+    </a>
+    <ul class="right-list">
+      <li class="list-item">
+        <label for="search-query-nav"></label>
+        <input type="text" id="search-query-nav" class="search-query">
+      </li>
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="https://heowc.dev/programming-study/repo/" class="item-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="https://heowc.dev/programming-study/repo/" class="menu-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>2019 컨트리뷰톤 (feat. Armeria)</h2>
+  <p class="post-date">2019-11-04</p>
+  <div class="arrow-down">
+    <a href="#"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><span id="more"></span>
+<h3 id="서론">서론</h3>
+<p>올해는 끝나가고 뭔가 해논게 없어서 좌절하고 있을 때 쯤 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.oss.kr/contributhon_notice/show/d5f920a1-648b-4869-8a1a-d042fc263ab1">공개SW컨트리뷰톤</a>을 접했다.<br>
+<br><br>
+여러 프로젝트 중에 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/line/armeria">아르메리아</a>가 눈에 들어왔다. <strong>아르메리아는 라인에서 만들고 있는 마이크로서비스 프레임워크</strong>로, 최근 자바 진영에서 마이크로서비스 프레임워크가 나와서 서치 중에 보던 프레임워크 중에 하나였던 것으로 기억한다. 그 외에도 여러 프로젝트가 있었지만 내가 할 수 있는 것은 별로없었다. <em>자바스크립트, 파이썬, 딥러닝…</em></p>
+<p><img src="/resources/img/2019-contributon-feat-armeria/armeria-logo.png" alt="alt armeria_logo"></p>
+<h3 id="초기-셋팅-첫-이슈-고르기">초기 셋팅 &amp; 첫 이슈 고르기</h3>
+<p>그렇게 아르메리아를 로컬PC에 Clone을 받으며 README를 읽어가며 Project 셋팅을 맞추었다. 이제와서 생각하는거지만 조금 더 꼼꼼히 보았으면 좋았을 것 같다는 후회를 해본다. (PR에 엄청 많은 코멘트가…) 이슈를 해결하기 위해 제안해주신 이슈들을 포함해 총 200 여개의 이슈들을 하나씩 살펴보고, 그 중에서 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/line/armeria/issues?q=is%3Aissue+is%3Aopen+label%3Agood-first-issue"><code>good-first-issue</code></a>를 최우선적으로 보았다.</p>
+<blockquote>
+<p>오픈소스에 기여를 해보고 싶다면, 등록된 이슈 중에 <code>good-first-issue</code> 라벨을 찾아보세요. 쉬운 진입점이 될 수 있습니다.</p>
+</blockquote>
+<h4 id="Provide-a-way-to-set-an-example-request-for-Annot…-1855">Provide a way to set an example request for Annot… (<a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/line/armeria/issues/1855">#1855</a>)</h4>
+<p>컨트리뷰톤 기간에 진행했던 첫 이슈이다. 간략히 설명하자면, 아르메리아에서는 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://swagger.io/">Swagger</a>같은 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://line.github.io/armeria/server-docservice.html">DocService</a>를 제공한다. 하지만 스프링 부트를 연동하게 되면 특정 기능에서는 예제 요청과 헤더값를 추가하는 기능을 제공하지 않아 이를 추가해야 한다는 이슈였다.</p>
+<h4 id="↳-해결-2026">↳ 해결(<a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/line/armeria/pull/2026">#2026</a>)</h4>
+<p>거의 3주라는 기간이 걸렸고 약 51개의 코멘트를 주고 받았다. 중간에 회사 워크샵과 추석이랑 껴있어서 진행이 더딘감이 있기도 했지만 간단한 기능임에도 많은 시간이 걸렸다. 그 만큼 놓친 부분도 많았고 미숙한 영어로 인한 딜레이도 있었다.</p>
+<h3 id="두-번째-세-번째…">두 번째, 세 번째…</h3>
+<p>그 이후로도 컨튜리뷰톤이 진행되면서 여러가지를 진행했다.</p>
+<p>총 4개의 PR를 마무리하였고,</p>
+<ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/line/armeria/pull/2100">https://github.com/line/armeria/pull/2100</a></li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/line/armeria/pull/2142">https://github.com/line/armeria/pull/2142</a></li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/line/armeria/pull/2187">https://github.com/line/armeria/pull/2187</a></li>
+</ul>
+<p>1개의 기능 제안을 했으며</p>
+<ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/line/armeria/issues/2031">https://github.com/line/armeria/issues/2031</a></li>
+</ul>
+<p>다른 개발자의 코드리뷰도 해보았다.</p>
+<ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/line/armeria/pull/2128">https://github.com/line/armeria/pull/2128</a></li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/line/armeria/pull/2180">https://github.com/line/armeria/pull/2180</a></li>
+</ul>
+<blockquote>
+<p>컨트리뷰톤기간 이외에도 지속적인 관심을 가지며 이슈 제기, 코드 기여를 하고 있다.</p>
+</blockquote>
+<h3 id="Hacktoberfest-2019">Hacktoberfest 2019</h3>
+<p>Hacktoberfest이라는 국제 개발자 행사(?)도 알게되어 참여했다. 10월 동안 PR 4개가 완료되면 한정판 티셔츠를 준다. <strong>(완료~!)</strong></p>
+<p><img src="/resources/img/2019-contributon-feat-armeria/hacktoberfest-2019.png" alt="alt hacktoberfest_2019"></p>
+<h3 id="느낀점">느낀점</h3>
+<ol>
+<li>영어가 취약하다.</li>
+</ol>
+<ul>
+<li>오픈소스를 하기 위해선 기본적으로 영어가 많이 필요하다는 것을 알게되었다. 이번에는 슬랙을 통해 질의응답을 할 수 있는 상황이였지만, 앞으로 나아가기 위해선 꼭 필요하지 않을까 싶다.</li>
+</ul>
+<ol start="2">
+<li>앞으로도 힘이 닿는데까지 오픈소스에 기여해보아야겠다.</li>
+</ol>
+<ul>
+<li>이번 컨트리뷰톤을 통해 많은 인사이트를 경험할 수 있었다.
+<ul>
+<li>평소에 보지 않았던 영역을 보게 된다거나…</li>
+<li>잊고있던 개념을 다시 되돌아 보게 된다거나…</li>
+<li>프레임워크 내부를 들여다 보면서 동작원리를 이해해보거나…</li>
+<li>타 프레임워크랑 비교해보기도 하고…</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>여러분 컨트리뷰톤 하세요!</li>
+</ol>
+<ul>
+<li>2번이 어렵다면 컨트리뷰톤행사에 참가해보면 좋은 경험이 될 수 있을 것 같다. 엎서 말했듯이 좋은 경험을 할 수 있을 뿐만 아니라 좋은 자극제가 될 수 있다고 생각한다.</li>
+</ul>
+<ol start="4">
+<li>발표</li>
+</ol>
+<ul>
+<li>Armeria 멘티 중 MVP가 되어 생애 첫 발표를 해보았다. 200명 앞에서 발표를 하는데 잘할리가… 요즘 바쁜 업무로 마무리가 미흡했고 발표에 신경을 못 써서 아쉬움이 많이 남는다. (사실 원래도 발표를 잘 못 하는…)</li>
+</ul>
+<h3 id="결과">결과</h3>
+<p>그리하여 최종적으로 전체 20팀 중 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.oss.kr/contributhon_notice/show/97fbde9f-3854-428d-b6ec-294002463148?page=1">우수상</a>을 차지 했다. 개인적으로 아쉬운 성적인데 내가 발표를 좀 더 잘했더라면… 이라는 아쉬운 마음이…ㅠ</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#contributon">
+    <span class="tag-code">contributon</span>
+  </a>
+
+  <a href="/tags#line">
+    <span class="tag-code">line</span>
+  </a>
+
+  <a href="/tags#armeria">
+    <span class="tag-code">armeria</span>
+  </a>
+
+  <a href="/tags#2019">
+    <span class="tag-code">2019</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019/05/13/ios-push-to-java/">
+        <span class="nav-arrow">← </span>
+        
+          Java에서 iOS Push 삽질기
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2019/11/29/nullaway-overview/">
+        
+          NullAway 알아보기
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+        <!-- Disqus START -->
+        <div id="disqus_thread"></div>
+        <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EC%84%9C%EB%A1%A0"><span class="toc-nav-text">서론</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EC%B4%88%EA%B8%B0-%EC%85%8B%ED%8C%85-%EC%B2%AB-%EC%9D%B4%EC%8A%88-%EA%B3%A0%EB%A5%B4%EA%B8%B0"><span class="toc-nav-text">초기 셋팅 &amp; 첫 이슈 고르기</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Provide-a-way-to-set-an-example-request-for-Annot%E2%80%A6-1855"><span class="toc-nav-text">Provide a way to set an example request for Annot… (#1855)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%86%B3-%ED%95%B4%EA%B2%B0-2026"><span class="toc-nav-text">↳ 해결(#2026)</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EB%91%90-%EB%B2%88%EC%A7%B8-%EC%84%B8-%EB%B2%88%EC%A7%B8%E2%80%A6"><span class="toc-nav-text">두 번째, 세 번째…</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Hacktoberfest-2019"><span class="toc-nav-text">Hacktoberfest 2019</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EB%8A%90%EB%82%80%EC%A0%90"><span class="toc-nav-text">느낀점</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EA%B2%B0%EA%B3%BC"><span class="toc-nav-text">결과</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://heowc.dev/2019/11/04/2019-contributon-feat-armeria/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+<script>
+  var disqus_shortname = 'heowc-ithub-io';
+  
+  var disqus_url = 'https://heowc.dev/2019/11/04/2019-contributon-feat-armeria/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>
+    <br>
+    Theme by <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js");
+</script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.32.0/algoliasearch.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.35.0/autocomplete.min.js"></script>
+<script>
+  const client = algoliasearch('Z12OUS9993', '87e1c2ec8b3ce58795cdac97dd583138');
+  const index = client.initIndex('heowc.github.io');
+
+  autocomplete('#search-query-nav', {hint: false}, [
+    {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 10}),
+      displayKey: 'name',
+      templates: {
+        suggestion: function (suggestion) {
+          return suggestion.title;
+        }
+      }
+    }
+  ]).on('autocomplete:selected', function (event, suggestion, dataset, context) {
+    location.href = "/" + suggestion.path
+  });
+</script>
+
+
+  <script>
+    (function(b, o, i, l, e, r) {
+      b.GoogleAnalyticsObject = l;
+      b[l] || (b[l] = function() {
+        (b[l].q = b[l].q || []).push(arguments)
+      });
+      b[l].l = +new Date;
+      e = o.createElement(i);
+      r = o.getElementsByTagName(i)[0];
+      e.src = '//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-88462807-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

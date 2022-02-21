@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="허원철의 개발 블로그">
+<meta name="keyword" content="허원철,개발,블로그">
+
+<!-- canonical -->
+<link rel="canonical" href="https://heowc.dev/2019/02/12/using-mysql-jdbc-to-handle-large-table-2/">
+
+<!-- open graph -->
+<meta property="og:title" content="허원철의 개발 블로그">
+<meta property="og:description" content="MySQL - 큰 테이블을 다루는 jdbc 활용법 ②">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://heowc.dev/2019/02/12/using-mysql-jdbc-to-handle-large-table-2/">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+
+<!-- naver webmaster -->
+<meta name="naver-site-verification" content="c8078357cb88dc72964f9089507aaf7bb0dd1b3b">
+
+  <title>
+    
+      MySQL - 큰 테이블을 다루는 jdbc 활용법 ② | 허원철의 개발 블로그
+    
+  </title>
+
+  
+    <link rel="shortcut icon" type="image/ico" href="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/resources/css/gdemo.css">
+<link rel="stylesheet" href="/resources/css/index.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/algolia.searchbox.css">
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-5618198218047336",
+      enable_page_level_ads: true
+    });
+  </script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<div class="wechat-share">
+  
+    <img alt="preview image" src="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>허원철의 개발 블로그</span>
+    </a>
+    <ul class="right-list">
+      <li class="list-item">
+        <label for="search-query-nav"></label>
+        <input type="text" id="search-query-nav" class="search-query">
+      </li>
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="https://heowc.dev/programming-study/repo/" class="item-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="https://heowc.dev/programming-study/repo/" class="menu-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>MySQL - 큰 테이블을 다루는 jdbc 활용법 ②</h2>
+  <p class="post-date">2019-02-12</p>
+  <div class="arrow-down">
+    <a href="#"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><blockquote>
+<p>데이터베이스에 한 번에 많은 데이터 써야 한다면 어떻게 해야할까?</p>
+</blockquote>
+<span id="more"></span>
+<h3 id="왜-이런-작업이-필요로-하는가">왜 이런 작업이 필요로 하는가?</h3>
+<p>아마 주변에서 제일 간단하게 찾을 수 있는 상황은 <strong>엑셀 파일 업로드</strong>가 있을 수 있다. 많게는 수 만건, 수 십만건까지 데이터베이스에 삽입(<code>insert</code>)를 하는 것인데 열당 삽입하게 된다면 굉장히 오랜 작업이 될 수 있다.</p>
+<h3 id="BatchInsert">BatchInsert</h3>
+<p>이를 보통 <code>BatchInsert</code> 또는 <code>BulkInsert</code> 라고 말하는데, 여러 Insert 구문을 하나로 하나의 Insert 구문으로 작업하도록 하는 것을 의미한다. 그와 더불어 속도도 빠르다.</p>
+<br>
+<p>예를 들면, 다음 쿼리들이</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> message (`content`, `status`, `created_by`, `created_at`,`last_modified_at`)</span><br><span class="line"><span class="keyword">VALUES</span> (:content, :status, :created_by, :created_at, :last_modified_at);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> message (`content`, `status`, `created_by`, `created_at`,`last_modified_at`)</span><br><span class="line"><span class="keyword">VALUES</span> (:content, :status, :created_by, :created_at, :last_modified_at);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> message (`content`, `status`, `created_by`, `created_at`,`last_modified_at`)</span><br><span class="line"><span class="keyword">VALUES</span> (:content, :status, :created_by, :created_at, :last_modified_at);</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> ...</span><br></pre></td></tr></table></figure>
+<p>아래의 쿼리로 대체될 수 있다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> message (`content`, `status`, `created_by`, `created_at`,`last_modified_at`) </span><br><span class="line"><span class="keyword">VALUES</span> (:content, :status, :created_by, :created_at, :last_modified_at)</span><br><span class="line">, (:content, :status, :created_by, :created_at, :last_modified_at)</span><br><span class="line">, (:content, :status, :created_by, :created_at, :last_modified_at)</span><br><span class="line">, ...;</span><br></pre></td></tr></table></figure>
+<h3 id="예제">예제</h3>
+<p>이전에 <a href="/2019/02/09/using-mysql-jdbc-to-handle-large-table-1/">MySQL - 큰 테이블을 다루는 jdbc 활용법 ①</a>를 분석하면서 작성했던 간단한 예제이다. 내용은 <strong>10만건의 데이터를 100개씩 <code>batchInsert</code> 하는 코드</strong> 이다.</p>
+<h4 id="spring-properties">spring.properties</h4>
+<p>MySQL Driver의 경우, <code>rewriteBatchedStatements=true</code> 옵션을 추가해야 한다.</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.datasource.url</span>=<span class="string">jdbc:mysql://localhost:3306/test?rewriteBatchedStatements=true</span></span><br><span class="line"><span class="comment"># ...</span></span><br></pre></td></tr></table></figure>
+<h4 id="Application-java">Application.java</h4>
+<p><code>ApplicationRunner</code>는 애플리케이션 로딩 시에 최초 작업을 정의하는 인터페이스이다. 중점적으로 봐야한 곳은 <code>jdbcTemplate.batchUpdate(...)</code> 부분이다. 내부적으로 <code>batchList</code>를 <code>batchSize</code>만큼 처리해주고 있다. (<a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/spring-projects/spring-framework/blob/5.1.x/spring-jdbc/src/main/java/org/springframework/jdbc/core/JdbcTemplate.java#L1023">참고</a>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String INSERT_SQL = <span class="string">&quot;INSERT INTO push_message (`content`, `status`, `created_by`, `created_at`, `last_modified_at`) VALUES (?, ?, ?, ?, ?)&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> JdbcTemplate jdbcTemplate;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ApplicationRunner <span class="title">runner</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> args -&gt; &#123;</span><br><span class="line">        <span class="keyword">int</span> insertCount = <span class="number">100_000</span>;</span><br><span class="line">        <span class="keyword">int</span> batchSize = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">        List&lt;PushMessage&gt; batchList = IntStream.range(<span class="number">0</span>, insertCount)</span><br><span class="line">                .mapToObj(i -&gt; <span class="keyword">new</span> PushMessage(<span class="string">&quot;content&quot;</span> + i, <span class="string">&quot;wait&quot;</span>, <span class="string">&quot;heowc&quot;</span>, LocalDateTime.now(), LocalDateTime.now()))</span><br><span class="line">                .collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line">        StopWatch stopWatch = <span class="keyword">new</span> StopWatch();</span><br><span class="line">        stopWatch.start();</span><br><span class="line">        jdbcTemplate.batchUpdate(INSERT_SQL, batchList, batchSize, (ps, arg) -&gt; &#123;</span><br><span class="line">            ps.setString(<span class="number">1</span>, arg.getContent());</span><br><span class="line">            ps.setString(<span class="number">2</span>, arg.getStatus());</span><br><span class="line">            ps.setString(<span class="number">3</span>, arg.getCreatedBy());</span><br><span class="line">            ps.setTimestamp(<span class="number">4</span>, Timestamp.valueOf(arg.getCreatedAt()));</span><br><span class="line">            ps.setTimestamp(<span class="number">5</span>, Timestamp.valueOf(arg.getLastModifiedAt()));</span><br><span class="line">        &#125;);</span><br><span class="line">        stopWatch.stop();</span><br><span class="line">        System.out.println(stopWatch.prettyPrint());</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="소요시간-측정">소요시간 측정</h3>
+<table>
+<thead>
+<tr>
+<th>rewriteBatchedStatements</th>
+<th>batch size</th>
+<th>time(ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O</td>
+<td>200</td>
+<td>2500ms</td>
+</tr>
+<tr>
+<td>O</td>
+<td>100</td>
+<td>5000ms</td>
+</tr>
+<tr>
+<td>X</td>
+<td>x</td>
+<td>200000ms</td>
+</tr>
+</tbody>
+</table>
+<br>
+<p>역시나 하드웨어 사양, 환경마다 다르겠지만 <code>rewriteBatchedStatements</code> 여부에 따라 <code>batch size</code>에 따라 속도 차이가 많이 났다.</p>
+<blockquote>
+<p>이것도 역시 패킷을 분석해보면, Length가 16388인 패킷을 볼 수 있는데 <code>net_buffer_length</code>의 기본값(16384)과 관련이 있다. 이를 적절히 늘리는 것도 속도 향상에 도움이 될 수 있다(?)</p>
+</blockquote>
+<h3 id="참고">참고</h3>
+<ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/heowc/mysql-fetch-test">https://github.com/heowc/mysql-fetch-test</a></li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-configuration-properties.html">https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-configuration-properties.html</a></li>
+</ul>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#mysql">
+    <span class="tag-code">mysql</span>
+  </a>
+
+  <a href="/tags#jdbc">
+    <span class="tag-code">jdbc</span>
+  </a>
+
+  <a href="/tags#batch-insert">
+    <span class="tag-code">batch-insert</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019/02/09/using-mysql-jdbc-to-handle-large-table-1/">
+        <span class="nav-arrow">← </span>
+        
+          MySQL - 큰 테이블을 다루는 jdbc 활용법 ①
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2019/04/28/spring-camp-2019-review/">
+        
+          Spring Camp 2019 후기
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+        <!-- Disqus START -->
+        <div id="disqus_thread"></div>
+        <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EC%99%9C-%EC%9D%B4%EB%9F%B0-%EC%9E%91%EC%97%85%EC%9D%B4-%ED%95%84%EC%9A%94%EB%A1%9C-%ED%95%98%EB%8A%94%EA%B0%80"><span class="toc-nav-text">왜 이런 작업이 필요로 하는가?</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#BatchInsert"><span class="toc-nav-text">BatchInsert</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EC%98%88%EC%A0%9C"><span class="toc-nav-text">예제</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#spring-properties"><span class="toc-nav-text">spring.properties</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Application-java"><span class="toc-nav-text">Application.java</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EC%86%8C%EC%9A%94%EC%8B%9C%EA%B0%84-%EC%B8%A1%EC%A0%95"><span class="toc-nav-text">소요시간 측정</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EC%B0%B8%EA%B3%A0"><span class="toc-nav-text">참고</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://heowc.dev/2019/02/12/using-mysql-jdbc-to-handle-large-table-2/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+<script>
+  var disqus_shortname = 'heowc-ithub-io';
+  
+  var disqus_url = 'https://heowc.dev/2019/02/12/using-mysql-jdbc-to-handle-large-table-2/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>
+    <br>
+    Theme by <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js");
+</script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.32.0/algoliasearch.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.35.0/autocomplete.min.js"></script>
+<script>
+  const client = algoliasearch('Z12OUS9993', '87e1c2ec8b3ce58795cdac97dd583138');
+  const index = client.initIndex('heowc.github.io');
+
+  autocomplete('#search-query-nav', {hint: false}, [
+    {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 10}),
+      displayKey: 'name',
+      templates: {
+        suggestion: function (suggestion) {
+          return suggestion.title;
+        }
+      }
+    }
+  ]).on('autocomplete:selected', function (event, suggestion, dataset, context) {
+    location.href = "/" + suggestion.path
+  });
+</script>
+
+
+  <script>
+    (function(b, o, i, l, e, r) {
+      b.GoogleAnalyticsObject = l;
+      b[l] || (b[l] = function() {
+        (b[l].q = b[l].q || []).push(arguments)
+      });
+      b[l].l = +new Date;
+      e = o.createElement(i);
+      r = o.getElementsByTagName(i)[0];
+      e.src = '//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-88462807-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

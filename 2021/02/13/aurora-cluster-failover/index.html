@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="허원철의 개발 블로그">
+<meta name="keyword" content="허원철,개발,블로그">
+
+<!-- canonical -->
+<link rel="canonical" href="https://heowc.dev/2021/02/13/aurora-cluster-failover/">
+
+<!-- open graph -->
+<meta property="og:title" content="허원철의 개발 블로그">
+<meta property="og:description" content="AWS Aurora DB Cluster - FailOver 대응하기">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://heowc.dev/2021/02/13/aurora-cluster-failover/">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+
+<!-- naver webmaster -->
+<meta name="naver-site-verification" content="c8078357cb88dc72964f9089507aaf7bb0dd1b3b">
+
+  <title>
+    
+      AWS Aurora DB Cluster - FailOver 대응하기 | 허원철의 개발 블로그
+    
+  </title>
+
+  
+    <link rel="shortcut icon" type="image/ico" href="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/resources/css/gdemo.css">
+<link rel="stylesheet" href="/resources/css/index.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/algolia.searchbox.css">
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-5618198218047336",
+      enable_page_level_ads: true
+    });
+  </script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<div class="wechat-share">
+  
+    <img alt="preview image" src="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>허원철의 개발 블로그</span>
+    </a>
+    <ul class="right-list">
+      <li class="list-item">
+        <label for="search-query-nav"></label>
+        <input type="text" id="search-query-nav" class="search-query">
+      </li>
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="https://heowc.dev/programming-study/repo/" class="item-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="https://heowc.dev/programming-study/repo/" class="menu-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>AWS Aurora DB Cluster - FailOver 대응하기</h2>
+  <p class="post-date">2021-02-13</p>
+  <div class="arrow-down">
+    <a href="#"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>최근 회사에서 오로라디비를 스케일 업하기 위해서 failover 테스트를 하다가 있었던 이슈를 공유합니다.</p>
+<span id="more"></span>
+<h4 id="진행-플로우">진행 플로우</h4>
+<p>진행했던 플로우는 다음과 같습니다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">slave 스케일 업</span><br><span class="line">slave를 master로 승격(failover)</span><br><span class="line">slave 스케일 업</span><br></pre></td></tr></table></figure>
+<h4 id="에러-발생">에러 발생</h4>
+<p><strong>1번의 경우,</strong> 인스턴스가 내려갔다 올라오기 때문에 잠시 동안 slave를 사용할 수 없게 됩니다. 하지만, cluster end-point를 사용하게 되면 자동적으로 slave로 가던 트래픽이 master를 바라보게 됩니다.<br>
+<strong>2번의 경우,</strong> master와 slave가 바뀌니 아주 잠깐의 순단이 있겠지만 이는 내부적으로 커넥션이 다시 맺어 정상 동작할것이라고 생각했습니다.</p>
+<p>하지만… 2번을 진행함과 동시에 서버에서는 다음과 같은 예외가 출력되고 있었습니다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The MySQL server is running with the --read-only option so it cannot execute this statement</span><br></pre></td></tr></table></figure>
+<p>자동으로 커낵션을 다시 맺어줄꺼란 생각이 틀렸고, 구글링을 통해 다음과 같은 게시물을 찾을 수 있었습니다.<br>
+(참고: <a target="_blank" rel="external nofollow noopener noreferrer" href="https://aws.amazon.com/ko/premiumsupport/knowledge-center/aurora-mysql-db-cluser-read-only-error/">https://aws.amazon.com/ko/premiumsupport/knowledge-center/aurora-mysql-db-cluser-read-only-error/</a>)</p>
+<h4 id="해결방법">해결방법</h4>
+<h5 id="1-클러스터-라이터-엔드포인트-활용">1. 클러스터 라이터 엔드포인트 활용</h5>
+<p>우리 서비스에서는 이미 cluster endpoint를 사용하고 있기 때문에 해당이 안되는 내용이였습니다. 혹시 instance endpoint를 사용하고 있다면 cluster endpoint를 사용하길 권장드립니다.</p>
+<h5 id="2-DNS를-과도하게-캐시하지-않음">2. DNS를 과도하게 캐시하지 않음</h5>
+<p>이번에 알게된 사실이지만 JVM 애플리케이션이 실행된 이우에 DNS 캐시하게 됩니다. 이는 jdk 구현체 마다 옵션이 다르다고 알고 있지만 오라클 jdk를 사용하는 경우는 이를 무기한으로 가지게 됩니다. 변경이 되지 않는다는 얘기죠. 그래서 우리는 <code>networkaddress.cache.ttl</code>를 추가하여 테스트 해보기로 했습니다만… 동일한 예외가 발생했습니다.</p>
+<h5 id="3-스마트-드라이버-사용">3. 스마트 드라이버 사용</h5>
+<p>마지막 방법으로 커넥터를 변경하는 것입니다. 현재 사용 중인 커넥터는 <code>mysql-connector</code>였고, 이를 <code>mariadb-connector</code>로 변경하는 것이였습니다. 조금 더 찾아보니 <code>mariadb-connector</code>에는 <code>mysql-connector</code>와 달리 failover에 대한 대응이 가능한 옵션을 제공해주고 있었습니다.<br>
+(참고: <a target="_blank" rel="external nofollow noopener noreferrer" href="https://mariadb.com/kb/en/failover-and-high-availability-with-mariadb-connector-j/#specifics-for-amazon-aurora">https://mariadb.com/kb/en/failover-and-high-availability-with-mariadb-connector-j/#specifics-for-amazon-aurora</a>)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdbc:mysql:aurora:.....</span><br></pre></td></tr></table></figure>
+<p>AWS 커뮤니티에도 질문을 남겼지만 대다수의 분들이 <code>mariadb-connector</code>로 변경해서 해결했다는 것을 알 수 있었습니다.</p>
+<p>그리고 이제는 마지막일거라고 생각하고 테스트를 했고 성공했습니다…! 조금 더 코드를 살펴보니 실패 시에 내부적으로 커낵션을 다시 맺는 과정이 포함되어 있는 것을 알 수 있었습니다.</p>
+<h4 id="또-다른-이슈">또 다른 이슈</h4>
+<p>커낵션에 대한 부분은 해결했지만… 다른 예외가 발생합니다. connector를 변경함으로써 발생한 문제인데요. 이런 문제가 발생할 수 있구나 했습니다.</p>
+<p>안타까운 현실이지만 서비스에서 <strong>SQL Mapper인 <code>Mybatis</code>를 사용</strong>하며, <strong>datetime의 컬럼 값을 String으로 받는 케이스</strong>가 있었습니다. 기존 <code>mysql-connector</code>에서는 이 값이 <code>2021-02-07 17:19:00</code>으로 할당 됐었다면, <code>mariadb-connector</code>를 사용하면 <code>2021-02-07 17:19:00.0</code>으로 할당 됩니다.</p>
+<blockquote>
+<p>AS-IS:</p>
+<ul>
+<li>mysql-connector</li>
+<li>2021-02-07 17:19:00</li>
+</ul>
+<p>TO-BE</p>
+<ul>
+<li>mariadb-connector</li>
+<li>2021-02-07 17:19:00.0</li>
+</ul>
+</blockquote>
+<p>어떻게 된 일까요? 잠깐 코드를 디버깅해보니 이는 커넥터 구현체의 차이에서 서로 다른 응답을 주는 것을 알 수 있었습니다.</p>
+<h5 id="mysql-connector">mysql-connector</h5>
+<ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/mysql/mysql-connector-j/blob/18bbd5e68195d0da083cbd5bd0d05d76320df7cd/src/main/core-impl/java/com/mysql/cj/result/StringValueFactory.java#L95...L98">https://github.com/mysql/mysql-connector-j/blob/18bbd5e68195d0da083cbd5bd0d05d76320df7cd/src/main/core-impl/java/com/mysql/cj/result/StringValueFactory.java#L95...L98</a></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">createFromTimestamp</span><span class="params">(InternalTimestamp its)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> String.format(<span class="string">&quot;%s %s&quot;</span>, createFromDate(its), <span class="comment">// 2021-02-07 17:19:00</span></span><br><span class="line">    createFromTime(<span class="keyword">new</span> InternalTime(its.getHours(), its.getMinutes(), its.getSeconds(), its.getNanos(), its.getScale())));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="mariadb-connector">mariadb-connector</h5>
+<ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/mariadb-corporation/mariadb-connector-j/blob/2.7.1/src/main/java/org/mariadb/jdbc/internal/com/read/resultset/rowprotocol/TextRowProtocol.java#L216...L225">https://github.com/mariadb-corporation/mariadb-connector-j/blob/2.7.1/src/main/java/org/mariadb/jdbc/internal/com/read/resultset/rowprotocol/TextRowProtocol.java#L216...L225</a></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> DATETIME:</span><br><span class="line">    Timestamp timestamp = getInternalTimestamp(columnInfo, cal, timeZone);</span><br><span class="line">    <span class="keyword">if</span> (timestamp == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> ((lastValueNull &amp; BIT_LAST_ZERO_DATE) != <span class="number">0</span>) &#123;</span><br><span class="line">        lastValueNull ^= BIT_LAST_ZERO_DATE;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> String(buf, pos, length, StandardCharsets.UTF_8);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> timestamp.toString(); <span class="comment">// 2021-02-07 17:19:00.0</span></span><br></pre></td></tr></table></figure>
+<p>대략적으로 정리하자면, <code>mysql-connector</code>는 내부적으로 String.format을 사용하여 <code>YYYY-MM-dd HH:mm:ss</code> 형태를 만들어주는 듯 보입니다. 반면, <code>mariadb-connector</code>는 <code>Timestamp.toString()</code>을 사용합니다.</p>
+<h5 id="mybatis-typeHandler">mybatis - typeHandler</h5>
+<p>우리는 이것 때문에 비즈니스 로직을 건드는 것은 크리티컬한 이슈가 발생할 수 있다고 판단하여 고민 끝에 Mybatis의 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://mybatis.org/mybatis-3/ko/configuration.html#typeHandlers">TypeHandler</a>를 이용하기로 했습니다. (JPA를 사용하는 경우, <a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.baeldung.com/jpa-attribute-converters"><code>AttributeConverter</code></a>를 사용할 수 있습니다.)</p>
+<p>이미 기본적인 typeHandler로 구현되어 있는 것을 어느정도 커스텀하면 비즈니스 로직을 수정하지 않고도 간단히 커넥터 변경 이슈를 수정할 수 있었고, 성공적으로 테스트를 완료할 수 있었습니다.</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#aws">
+    <span class="tag-code">aws</span>
+  </a>
+
+  <a href="/tags#aurora">
+    <span class="tag-code">aurora</span>
+  </a>
+
+  <a href="/tags#failover">
+    <span class="tag-code">failover</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2020/12/27/2020-develop-retrospection/">
+        <span class="nav-arrow">← </span>
+        
+          2020년 개발 회고
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2021/05/23/amazone-linux-log-issue/">
+        
+          Amazon Linux에서 /var/log가 꽉차는 이슈
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+        <!-- Disqus START -->
+        <div id="disqus_thread"></div>
+        <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EC%A7%84%ED%96%89-%ED%94%8C%EB%A1%9C%EC%9A%B0"><span class="toc-nav-text">진행 플로우</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EC%97%90%EB%9F%AC-%EB%B0%9C%EC%83%9D"><span class="toc-nav-text">에러 발생</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%ED%95%B4%EA%B2%B0%EB%B0%A9%EB%B2%95"><span class="toc-nav-text">해결방법</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0-%EB%9D%BC%EC%9D%B4%ED%84%B0-%EC%97%94%EB%93%9C%ED%8F%AC%EC%9D%B8%ED%8A%B8-%ED%99%9C%EC%9A%A9"><span class="toc-nav-text">1. 클러스터 라이터 엔드포인트 활용</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#2-DNS%EB%A5%BC-%EA%B3%BC%EB%8F%84%ED%95%98%EA%B2%8C-%EC%BA%90%EC%8B%9C%ED%95%98%EC%A7%80-%EC%95%8A%EC%9D%8C"><span class="toc-nav-text">2. DNS를 과도하게 캐시하지 않음</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#3-%EC%8A%A4%EB%A7%88%ED%8A%B8-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84-%EC%82%AC%EC%9A%A9"><span class="toc-nav-text">3. 스마트 드라이버 사용</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EB%98%90-%EB%8B%A4%EB%A5%B8-%EC%9D%B4%EC%8A%88"><span class="toc-nav-text">또 다른 이슈</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#mysql-connector"><span class="toc-nav-text">mysql-connector</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#mariadb-connector"><span class="toc-nav-text">mariadb-connector</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#mybatis-typeHandler"><span class="toc-nav-text">mybatis - typeHandler</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://heowc.dev/2021/02/13/aurora-cluster-failover/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+<script>
+  var disqus_shortname = 'heowc-ithub-io';
+  
+  var disqus_url = 'https://heowc.dev/2021/02/13/aurora-cluster-failover/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>
+    <br>
+    Theme by <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js");
+</script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.32.0/algoliasearch.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.35.0/autocomplete.min.js"></script>
+<script>
+  const client = algoliasearch('Z12OUS9993', '87e1c2ec8b3ce58795cdac97dd583138');
+  const index = client.initIndex('heowc.github.io');
+
+  autocomplete('#search-query-nav', {hint: false}, [
+    {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 10}),
+      displayKey: 'name',
+      templates: {
+        suggestion: function (suggestion) {
+          return suggestion.title;
+        }
+      }
+    }
+  ]).on('autocomplete:selected', function (event, suggestion, dataset, context) {
+    location.href = "/" + suggestion.path
+  });
+</script>
+
+
+  <script>
+    (function(b, o, i, l, e, r) {
+      b.GoogleAnalyticsObject = l;
+      b[l] || (b[l] = function() {
+        (b[l].q = b[l].q || []).push(arguments)
+      });
+      b[l].l = +new Date;
+      e = o.createElement(i);
+      r = o.getElementsByTagName(i)[0];
+      e.src = '//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-88462807-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

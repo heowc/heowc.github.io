@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="허원철의 개발 블로그">
+<meta name="keyword" content="허원철,개발,블로그">
+
+<!-- canonical -->
+<link rel="canonical" href="https://heowc.dev/2019/02/09/using-mysql-jdbc-to-handle-large-table-1/">
+
+<!-- open graph -->
+<meta property="og:title" content="허원철의 개발 블로그">
+<meta property="og:description" content="MySQL - 큰 테이블을 다루는 jdbc 활용법 ①">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://heowc.dev/2019/02/09/using-mysql-jdbc-to-handle-large-table-1/">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+
+<!-- naver webmaster -->
+<meta name="naver-site-verification" content="c8078357cb88dc72964f9089507aaf7bb0dd1b3b">
+
+  <title>
+    
+      MySQL - 큰 테이블을 다루는 jdbc 활용법 ① | 허원철의 개발 블로그
+    
+  </title>
+
+  
+    <link rel="shortcut icon" type="image/ico" href="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/resources/css/gdemo.css">
+<link rel="stylesheet" href="/resources/css/index.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/algolia.searchbox.css">
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-5618198218047336",
+      enable_page_level_ads: true
+    });
+  </script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<div class="wechat-share">
+  
+    <img alt="preview image" src="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>허원철의 개발 블로그</span>
+    </a>
+    <ul class="right-list">
+      <li class="list-item">
+        <label for="search-query-nav"></label>
+        <input type="text" id="search-query-nav" class="search-query">
+      </li>
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="https://heowc.dev/programming-study/repo/" class="item-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="https://heowc.dev/programming-study/repo/" class="menu-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>MySQL - 큰 테이블을 다루는 jdbc 활용법 ①</h2>
+  <p class="post-date">2019-02-09</p>
+  <div class="arrow-down">
+    <a href="#"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><blockquote>
+<p>데이터베이스에서 한 번에 많은 데이터 읽어야 한다면 어떻게 해야할까?</p>
+</blockquote>
+<span id="more"></span>
+<h3 id="왜-이런-작업이-필요로-하는가">왜 이런 작업이 필요로 하는가?</h3>
+<p><em>간단한 통계 자료를 생각해보자.</em></p>
+<br>
+<p>우선, 통계 자료를 만들기 위해서는 축적된 데이터가 필요하다. 축적된 데이터는 10만 row가 될 수 도 있고, 1000만 row가 될 수 있고, 1억 row가 될 수 있다. 그리고 데이터를 기반으로 여러가지 결과를 도출해낼 것 이다. 그런데 사용자가 요청할 때마다 매번 결과를 도출해낼 것인가? 아니다. 하루에 한번이던, 한 주에 한번이던 지정한 시간에 맞춰 주기적으로 작업을 수행할 것 이다. 물론 요즘에는 이를 해결하기 위한 다양한 메커니즘과 오픈소스를 제공하기 때문에 굳이 MySQL 같은 RDB를 활용하지 않고도 가능하다. 하지만, 오히려 배보다 배꼽이 더 커질 수 있기 때문에 RDB로 이와 같은 작업을 해결해 보고자 한다. <strong>보통 이를 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://ko.wikipedia.org/wiki/%EC%9D%BC%EA%B4%84_%EC%B2%98%EB%A6%AC">batch-processing</a>이라 한다.</strong></p>
+<h3 id="벤치마킹-Spring-Batch">벤치마킹 : Spring Batch</h3>
+<p><em>그나마 아는 Spring Framework를 참고해보자.</em></p>
+<br>
+<p>Spring Framework은 많은 노하우와 모범 사례가 녹아있는 자바 프레임워크 중 하나로, 그 중, <a target="_blank" rel="external nofollow noopener noreferrer" href="https://spring.io/projects/spring-batch">Spring Batch</a>를 훑어보면 RDB를 활용하는 몇 가지 방법이 있다. 크게는 총 2가지를 지원하는데 **<a target="_blank" rel="external nofollow noopener noreferrer" href="https://docs.spring.io/spring-batch/4.1.x/reference/html/readersAndWriters.html#cursorBasedItemReaders">Cursor를 활용하는 방법</a>**과 **<a target="_blank" rel="external nofollow noopener noreferrer" href="https://docs.spring.io/spring-batch/4.1.x/reference/html/readersAndWriters.html#pagingItemReaders">Paging 처리하는 방법</a>**이다.</p>
+<blockquote>
+<p>글의 주제가 Spring이 아니기 때문에 'Cursor나 Paging을 활용하면 된다’정도 힌트만 가지고 다음 단계로 넘어가자. 또한 이 글에서는 Cursor만 활용해볼 것 이다.</p>
+</blockquote>
+<h3 id="Cursor-활용하기">Cursor 활용하기</h3>
+<p>데이터베이스 커서(Cursor)는 일련의 데이터에 순차적으로 액세스할 때 검색 및 &quot;현재 위치&quot;를 포함하는 데이터 요소이다.  (<a target="_blank" rel="external nofollow noopener noreferrer" href="https://ko.wikipedia.org/wiki/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4_%EC%BB%A4%EC%84%9C">참고: 데이터베이스 커서 - 위키백과</a>)</p>
+<br>
+<p>여기서 고려해야할 점은 적절한 갯수만큼 row(데이터 요소)를 가져오는 것이다. 한번에 그 많은 row를 가져온다고 생각해보자. 아마도 메모리 사용량이 초과하여 OOM(Out Of Memory)가 발생할 것이다. 반대로 적은 갯수 가져온다고 생각해보자. 아마도 굉장히 오래 걸릴 것이다. 이를 설정할 수 있는 방법은 <code>fetchSize</code>를 지정하는 것이다.</p>
+<h3 id="fetchSize-지정하기">fetchSize 지정하기</h3>
+<p>순수 JDBC를 사용하면 다음과 같이 지정할 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Statement stmt = connection.createStatement(<span class="string">&quot;select ... from ...&quot;</span>);</span><br><span class="line">stmt.setFetchSize(fetchSize);</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+<p>그럼 이제 설정이 끝난걸까? 간단하게 테스트를 해보자. 여러 값을 적용하여 소요시간을 측정해보면 될 것 이다.</p>
+<h4 id="소요시간-측정">소요시간 측정</h4>
+<p>10만 row가 들어있는 간단한 테이블을 준비 해놓고 Integer.MIN_VALUE, 5, 10, 50, 100, 500, 1000, 2500, 5000 순으로 측정해 보았다. 결과는 이상하게도 <strong><code>fetchSize</code>와 무관하게 서로 비슷한 소요시간이 측정되었다. (약 320 ~ 400ms)</strong></p>
+<h3 id="useCursorFetch">useCursorFetch</h3>
+<p>여러 삽질을 하고 결국 문서를 통해 해답을 얻을 수 있었는데, 이는 바로 <code>useCursorFetch=true</code>를 지정하는 것이다. (<a target="_blank" rel="external nofollow noopener noreferrer" href="https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-implementation-notes.html">참고</a>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Connection connection = </span><br><span class="line">    DriverManager.getConnection(<span class="string">&quot;jdbc:mysql://localhost/?useCursorFetch=true&quot;</span>, <span class="string">&quot;...&quot;</span>, <span class="string">&quot;...&quot;</span>);</span><br><span class="line">Statement stmt = connection.createStatement(<span class="string">&quot;select ... from ...&quot;</span>);</span><br><span class="line">stmt.setFetchSize(fetchSize);</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/mysql/mysql-connector-j/blob/release/8.0/src/main/protocol-impl/java/com/mysql/cj/protocol/a/result/ResultsetRowsCursor.java#L200">mysql-connector-java@8.0 - ResultsetRowsCursor.fetchMoreRows()</a>를 보면 fetch가 어떻게 동작하는지 이해할 수 있다.</p>
+</blockquote>
+<h4 id="다시-시간-측정">다시 시간 측정</h4>
+<table>
+<thead>
+<tr>
+<th>fetch size</th>
+<th>time(ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Integer.MIN_VALUE</td>
+<td>682</td>
+</tr>
+<tr>
+<td>5</td>
+<td>12367</td>
+</tr>
+<tr>
+<td>10</td>
+<td>6401</td>
+</tr>
+<tr>
+<td>50</td>
+<td>1632</td>
+</tr>
+<tr>
+<td>100</td>
+<td>1115</td>
+</tr>
+<tr>
+<td>500</td>
+<td>606</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>527</td>
+</tr>
+<tr>
+<td>2500</td>
+<td>508</td>
+</tr>
+<tr>
+<td>5000</td>
+<td>464</td>
+</tr>
+</tbody>
+</table>
+<br>
+<p>물론 하드웨어 사양, 환경마다 다르겠지만 <code>fetchSize</code>에 따라 서로 다른 소요시간이 나온 것을 볼 수 있다. 앞서 예상했던 것 같이 너무 작으면 굉장히 오랜 시간이 소요되므로 적절한 값을 지정해야 한다.</p>
+<h3 id="보다-디테일하게-분석하기">보다 디테일하게 분석하기</h3>
+<p>앞에서 같이 삽질을 하지 않기 위해 소요시간 이외에 보다 디테일한 분석을 해보자. 메모리 사용량은? 패킷은?</p>
+<h4 id="메모리-사용량-feat-VisualVM">메모리 사용량 (feat. VisualVM)</h4>
+<p>Java Profiling Tool 중 하나인 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://visualvm.github.io/">VisualVM</a>으로 대략적인 메모리 사용량을 측정해본 결과이다.</p>
+<br>
+<p><code>useCursorFetch=false</code> 경우<br>
+<img src="/resources/img/using-mysql-jdbc-to-handle-large-table-1/no-fetch-by-visualvm.png" alt="alt no-fetch-by-visualvm"></p>
+<p><code>useCursorFetch=true</code> 경우<br>
+<img src="/resources/img/using-mysql-jdbc-to-handle-large-table-1/fetch-by-visualvm.png" alt="alt fetch-by-visualvm"></p>
+<blockquote>
+<p><strong><code>useCursorFetch=true</code> 경우, 메모리 사용량이 더 적을 것을 볼 수 있다.</strong></p>
+</blockquote>
+<h4 id="패킷-분석-feat-WireShark">패킷 분석 (feat. WireShark)</h4>
+<p>jdbc 프로토콜 패킷을 분석하기 위해 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.wireshark.org/">WireShark</a>를 활용해본 결과이다.</p>
+<br>
+<p><code>useCursorFetch=false</code> 경우<br>
+<img src="/resources/img/using-mysql-jdbc-to-handle-large-table-1/no-fetch-by-wireshark.png" alt="alt no-fetch-by-wireshark"></p>
+<p><code>useCursorFetch=true</code>와 <code>fetchSize=5</code> 경우<br>
+<img src="/resources/img/using-mysql-jdbc-to-handle-large-table-1/fetch-5-by-wireshark.png" alt="alt fetch-by-visualvm"></p>
+<blockquote>
+<p><strong><code>useCursorFetch=true</code>와 <code>fetchSize=5</code> 경우, <code>fetchSize</code> 만큼 데이터를 전달하기 때문에 네트워크 통신이 보다 많은 것을 볼 수 있다.</strong></p>
+</blockquote>
+<h3 id="추가로-알게된-점">추가로 알게된 점</h3>
+<ul>
+<li>초반에 MariaDB를 사용했었는데 해당 JDBC 드라이버에는 <code>useCursorFetch</code> 옵션이 없다. (다른 데이터베이스에도 없다.) 물론 fetchSize 적용 여부에 따라 메모리 사용량은 약간 다른 것을 볼 수 있는데, 이는 MariaDB JDBC 드라이버 자체에서 최적화 해주는 것이 아닐까 싶다.</li>
+<li>패킷 분석을 하는데 기본적으로 Secure Layer가 존재하여 제대로 분석하기 어려웠고, <code>sslMode=DISABLED</code> 추가하여 해당 Layer를 제거할 수 있었다.</li>
+<li><code>useCursorFetch=false</code> 경우의 WireShark 스크린샷을 보면 length가 16388인 패킷을 볼 수 있는데, 이는 <code>net_buffer_length</code>의 default(= 16384)와 유사한 것을 알 수 있다. 고로, 많은 데이터를 read하더라도 네트워크 통신 자체는 <code>net_buffer_length</code> 만큼 나눠서 하는 것을 알 수 있다.</li>
+<li>이외에도 JDBC 드라이버 옵션으로 성능 튜닝할 부분이 상당히 많다.</li>
+</ul>
+<h3 id="참고">참고</h3>
+<ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/heowc/mysql-fetch-test">https://github.com/heowc/mysql-fetch-test</a></li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://mariadb.com/kb/en/library/about-mariadb-connector-j/#streaming-result-sets">https://mariadb.com/kb/en/library/about-mariadb-connector-j/#streaming-result-sets</a></li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-implementation-notes.html">https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-implementation-notes.html</a></li>
+</ul>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#mysql">
+    <span class="tag-code">mysql</span>
+  </a>
+
+  <a href="/tags#jdbc">
+    <span class="tag-code">jdbc</span>
+  </a>
+
+  <a href="/tags#batch-processing">
+    <span class="tag-code">batch-processing</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019/02/03/deploy-gh-page-with-github-action/">
+        <span class="nav-arrow">← </span>
+        
+          GitHub Action을 활용한 GitHub Page 배포
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2019/02/12/using-mysql-jdbc-to-handle-large-table-2/">
+        
+          MySQL - 큰 테이블을 다루는 jdbc 활용법 ②
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+        <!-- Disqus START -->
+        <div id="disqus_thread"></div>
+        <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EC%99%9C-%EC%9D%B4%EB%9F%B0-%EC%9E%91%EC%97%85%EC%9D%B4-%ED%95%84%EC%9A%94%EB%A1%9C-%ED%95%98%EB%8A%94%EA%B0%80"><span class="toc-nav-text">왜 이런 작업이 필요로 하는가?</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EB%B2%A4%EC%B9%98%EB%A7%88%ED%82%B9-Spring-Batch"><span class="toc-nav-text">벤치마킹 : Spring Batch</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Cursor-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0"><span class="toc-nav-text">Cursor 활용하기</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#fetchSize-%EC%A7%80%EC%A0%95%ED%95%98%EA%B8%B0"><span class="toc-nav-text">fetchSize 지정하기</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EC%86%8C%EC%9A%94%EC%8B%9C%EA%B0%84-%EC%B8%A1%EC%A0%95"><span class="toc-nav-text">소요시간 측정</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#useCursorFetch"><span class="toc-nav-text">useCursorFetch</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EB%8B%A4%EC%8B%9C-%EC%8B%9C%EA%B0%84-%EC%B8%A1%EC%A0%95"><span class="toc-nav-text">다시 시간 측정</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EB%B3%B4%EB%8B%A4-%EB%94%94%ED%85%8C%EC%9D%BC%ED%95%98%EA%B2%8C-%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0"><span class="toc-nav-text">보다 디테일하게 분석하기</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EB%A9%94%EB%AA%A8%EB%A6%AC-%EC%82%AC%EC%9A%A9%EB%9F%89-feat-VisualVM"><span class="toc-nav-text">메모리 사용량 (feat. VisualVM)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%ED%8C%A8%ED%82%B7-%EB%B6%84%EC%84%9D-feat-WireShark"><span class="toc-nav-text">패킷 분석 (feat. WireShark)</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EC%B6%94%EA%B0%80%EB%A1%9C-%EC%95%8C%EA%B2%8C%EB%90%9C-%EC%A0%90"><span class="toc-nav-text">추가로 알게된 점</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EC%B0%B8%EA%B3%A0"><span class="toc-nav-text">참고</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://heowc.dev/2019/02/09/using-mysql-jdbc-to-handle-large-table-1/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+<script>
+  var disqus_shortname = 'heowc-ithub-io';
+  
+  var disqus_url = 'https://heowc.dev/2019/02/09/using-mysql-jdbc-to-handle-large-table-1/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>
+    <br>
+    Theme by <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js");
+</script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.32.0/algoliasearch.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.35.0/autocomplete.min.js"></script>
+<script>
+  const client = algoliasearch('Z12OUS9993', '87e1c2ec8b3ce58795cdac97dd583138');
+  const index = client.initIndex('heowc.github.io');
+
+  autocomplete('#search-query-nav', {hint: false}, [
+    {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 10}),
+      displayKey: 'name',
+      templates: {
+        suggestion: function (suggestion) {
+          return suggestion.title;
+        }
+      }
+    }
+  ]).on('autocomplete:selected', function (event, suggestion, dataset, context) {
+    location.href = "/" + suggestion.path
+  });
+</script>
+
+
+  <script>
+    (function(b, o, i, l, e, r) {
+      b.GoogleAnalyticsObject = l;
+      b[l] || (b[l] = function() {
+        (b[l].q = b[l].q || []).push(arguments)
+      });
+      b[l].l = +new Date;
+      e = o.createElement(i);
+      r = o.getElementsByTagName(i)[0];
+      e.src = '//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-88462807-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

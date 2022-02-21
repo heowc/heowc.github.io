@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="허원철의 개발 블로그">
+<meta name="keyword" content="허원철,개발,블로그">
+
+<!-- canonical -->
+<link rel="canonical" href="https://heowc.dev/2019/01/16/spring-boot-dynamodb-using-testcontainer/">
+
+<!-- open graph -->
+<meta property="og:title" content="허원철의 개발 블로그">
+<meta property="og:description" content="Spring Boot - testContainer를 활용한 AWS DynamoDB 테스트">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://heowc.dev/2019/01/16/spring-boot-dynamodb-using-testcontainer/">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+
+<!-- naver webmaster -->
+<meta name="naver-site-verification" content="c8078357cb88dc72964f9089507aaf7bb0dd1b3b">
+
+  <title>
+    
+      Spring Boot - testContainer를 활용한 AWS DynamoDB 테스트 | 허원철의 개발 블로그
+    
+  </title>
+
+  
+    <link rel="shortcut icon" type="image/ico" href="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/resources/css/gdemo.css">
+<link rel="stylesheet" href="/resources/css/index.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/algolia.searchbox.css">
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-5618198218047336",
+      enable_page_level_ads: true
+    });
+  </script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<div class="wechat-share">
+  
+    <img alt="preview image" src="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>허원철의 개발 블로그</span>
+    </a>
+    <ul class="right-list">
+      <li class="list-item">
+        <label for="search-query-nav"></label>
+        <input type="text" id="search-query-nav" class="search-query">
+      </li>
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="https://heowc.dev/programming-study/repo/" class="item-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="https://heowc.dev/programming-study/repo/" class="menu-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Spring Boot - testContainer를 활용한 AWS DynamoDB 테스트</h2>
+  <p class="post-date">2019-01-16</p>
+  <div class="arrow-down">
+    <a href="#"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><blockquote>
+<p><strong>Amazon DynamoDB</strong>를 비용 지불없이 쉽게 테스트하는 방법을 소개하려고 한다.</p>
+</blockquote>
+<span id="more"></span>
+<h3 id="Amazon-DynamoDB란-무엇입니까">Amazon DynamoDB란 무엇입니까?</h3>
+<p>우선, <code>Amazon DynamoDB</code>가 무엇인지 찾아보자. 공식문서에는 다음과 같이 적혀있다.</p>
+<blockquote><p>Amazon DynamoDB는 <strong>종합 관리형 NoSQL 데이터베이스 서비스</strong>로서 원활한 확장성과 함께 빠르고 예측 가능한 성능을 제공합니다. DynamoDB를 사용하면 분산 데이터베이스를 운영하고 조정하는 데 따른 관리 부담을 줄일 수 있으므로 하드웨어 프로비저닝, 설정 및 구성, 복제, 소프트웨어 패치 또는 클러스터 조정…</p>
+<footer><strong>AWS 공식문서 - Amazon DynamoDB란 무엇입니까?︎</strong></footer></blockquote>
+<h3 id="환경-구성하기">환경 구성하기</h3>
+<p>개발 프로세스상 <code>dev</code>, <code>qa</code>, <code>stage</code>, <code>test</code>, <code>prod</code> 같이 영역을 나누어 구성하는 것이 보통이다. 그러다보니 각 영역마다 별도의 인스턴스가 필요하게 되고 불가피하게 클라우드 비용이 늘어나게 상황에 직면하게 된다. 하지만, Amazon DynamoDB는 인스턴스를 만들지 않고도 테스트 가능하도록 제공한다. <strong>즉, 비용이 발생하지 않는다.</strong></p>
+<ul>
+<li>jar 파일을 제공하여 java가 있는 환경에서 실행 [<a target="_blank" rel="external nofollow noopener noreferrer" href="https://docs.aws.amazon.com/ko_kr/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html">link</a>]</li>
+<li><strong>docker container 실행</strong> [<a target="_blank" rel="external nofollow noopener noreferrer" href="https://hub.docker.com/r/amazon/dynamodb-local/">link</a>]</li>
+</ul>
+<blockquote>
+<p>여기서 <code>test</code> 정도는 데이터가 휘발성으로 있어도 되는 부분이라 생각한다.</p>
+</blockquote>
+<h4 id="Docker-Container-실행">Docker Container 실행</h4>
+<p>DockerHub에 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://hub.docker.com/r/amazon/dynamodb-local/"><code>amazon/dynamodb-local</code></a> 퍼블릭 이미지로 제공되고 있다.</p>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@glorious/demo@0.11.4/dist/gdemo.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css">
+<script src="//cdn.jsdelivr.net/npm/@glorious/demo@0.11.4/dist/gdemo.min.js"></script>
+<div id="demo-docker-run" style="height: 240px"></div>
+<script>
+new GDemo('#demo-docker-run')
+  .openApp('terminal', {minHeight: '240px', windowTitle: 'bash', promptString: '$'})
+  .command(`docker run <span class="token operator">-</span>p <span class="token number">8000</span><span class="token operator">:</span><span class="token number">8000</span> amazon<span class="token operator">/</span>dynamodb<span class="token operator">-</span>local`, {onCompleteDelay: 100})
+  .respond(`Initializing DynamoDB Local with the following configuration:
+Port:	8000
+InMemory:	true
+DbPath:	null
+SharedDb:	false
+shouldDelayTransientStatuses:	false
+CorsParams:	*`)
+  .end();
+</script>
+<br>
+<h3 id="Spring-Boot-설정">Spring Boot 설정</h3>
+<h4 id="디펜던시-추가">디펜던시 추가</h4>
+<p>DynamoDB를 포함한 다른 서비스(ex. Amazon S3, Amazon RedShift, …)를 쉽게 사용할 수 있도록 라이브러리를 제공한다. 이를 디펜던시로 추가한다.</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">compile(<span class="string">&#x27;com.amazonaws:aws-java-sdk-dynamodb:1.11.466&#x27;</span>)</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+<h4 id="AmazonDynamoDB-빈-등록"><code>AmazonDynamoDB</code> 빈 등록</h4>
+<p>DynamoDB에 액세스할 클래스인 <code>AmazonDynamoDB</code>를 빈으로 등록해준다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DynamoDBConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> AmazonDynamoDB <span class="title">amazonDynamoDB</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">            <span class="meta">@Value(&quot;$&#123;aws.region&#125;&quot;)</span> String region,</span></span></span><br><span class="line"><span class="params"><span class="function">            <span class="meta">@Value(&quot;$&#123;aws.dynamo.endpoint&#125;&quot;)</span> String dynamoEndpoint,</span></span></span><br><span class="line"><span class="params"><span class="function">            <span class="meta">@Value(&quot;$&#123;aws.access-key&#125;&quot;)</span> String accessKey,</span></span></span><br><span class="line"><span class="params"><span class="function">            <span class="meta">@Value(&quot;$&#123;aws.secret-key&#125;&quot;)</span> String secretKey)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> AmazonDynamoDBClientBuilder.standard()</span><br><span class="line">                .withEndpointConfiguration(<span class="keyword">new</span> AwsClientBuilder.EndpointConfiguration(dynamoEndpoint, region))</span><br><span class="line">                .withCredentials(<span class="keyword">new</span> AWSStaticCredentialsProvider(<span class="keyword">new</span> BasicAWSCredentials(accessKey, secretKey)))</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="테스트-작성하기">테스트 작성하기</h4>
+<p>당연한 얘기지만 <code>AmazonDynamoDB</code>를 빈으로 등록해두었기 때문에 <code>@Autowired</code>를 활용하여 인스턴스를 주입받을 수 있다. 그리고 테스트를 작성하면 된다. 코드는 도커를 활용하든, 실제 AWS 인스턴스를 활용하든 동일하므로 AWS 공식문서의 예제를 참고하거나, <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/heowc/SpringBootSample/blob/master/SpringBootDynamo/src/test/java/com/example/SpringBootDynamoApplicationTests.java">간단한 CRUD 예제</a>가 있으니 참고하자.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith(SpringRunner.class)</span></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringBootDynamoApplicationTests</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> AmazonDynamoDB dynamoDB;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>하지만, 테스트를 위해 매번 <code>docker run -p 8000:8000 amazon/dynamodb-local</code>를 치는 것은 귀찮기도 하고 약간(?) 수동적이다. <code>testcontainers</code>를 사용하면 이를 해결할 수 있다.</p>
+<h3 id="testcontainers-적용">testcontainers 적용</h3>
+<p><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.testcontainers.org/"><code>testcontainers</code></a>는 자바코드에서 docker container를 실행시켜주는 라이브러리이다. 직접 <code>run</code>을 실행시킬 수 도 있고, <code>Dockerfile</code>이나 <code>docker-compose.yml</code>을 활용할 수도 있다. 물론, docker가 설치되어 있어야 한다.</p>
+<h4 id="디펜던시-추가-2">디펜던시 추가</h4>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">testCompile(<span class="string">&#x27;org.testcontainers:testcontainers:1.10.2&#x27;</span>)</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+<h4 id="AbstractIntegrationTest-작성"><code>AbstractIntegrationTest</code> 작성</h4>
+<p>다행히 Spring Boot에서 활용 가능한 예제 샘플을 제공한다. 아래 샘플을 참고하여 다음과 같이 작성해볼 수 있다.<br>
+<a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/testcontainers/testcontainers-java-examples/blob/master/spring-boot/src/test/java/com/example/AbstractIntegrationTest.java">testcontainers/testcontainers-java-examples - AbstractIntegrationTest</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractIntegrationTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DOCKER_IMAGE = <span class="string">&quot;amazon/dynamodb-local&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DOCKER_TAG = <span class="string">&quot;latest&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> EXPOSED_PORT = <span class="number">8000</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ClassRule</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> GenericContainer dynamodb =</span><br><span class="line">            <span class="keyword">new</span> GenericContainer(String.format(<span class="string">&quot;%s:%s&quot;</span>, DOCKER_IMAGE, DOCKER_TAG)).withExposedPorts(EXPOSED_PORT);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Initializer</span> <span class="keyword">implements</span> <span class="title">ApplicationContextInitializer</span>&lt;<span class="title">ConfigurableApplicationContext</span>&gt; </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initialize</span><span class="params">(ConfigurableApplicationContext configurableApplicationContext)</span> </span>&#123;</span><br><span class="line">            String endpoint = String.format(<span class="string">&quot;aws.dynamo.endpoint=http://%s:%s&quot;</span>,</span><br><span class="line">                    dynamodb.getContainerIpAddress(),</span><br><span class="line">                    dynamodb.getMappedPort(EXPOSED_PORT));</span><br><span class="line">         </span><br><span class="line">        <span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>예제에도 나와있듯이, 다른 docker container도 활용 가능하다.</p>
+</blockquote>
+<h4 id="테스트-작성하기-수정">테스트 작성하기 (수정)</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringBootDynamoApplicationTests</span> <span class="keyword">extends</span> <span class="title">AbstractIntegrationTest</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="참고">참고</h3>
+<ul>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://hub.docker.com/r/amazon/dynamodb-local/">https://hub.docker.com/r/amazon/dynamodb-local/</a></li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.testcontainers.org/">https://www.testcontainers.org/</a></li>
+<li><a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/heowc/SpringBootSample/tree/master/SpringBootDynamo">https://github.com/heowc/SpringBootSample/tree/master/SpringBootDynamo</a></li>
+</ul>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#aws">
+    <span class="tag-code">aws</span>
+  </a>
+
+  <a href="/tags#spring-boot">
+    <span class="tag-code">spring-boot</span>
+  </a>
+
+  <a href="/tags#test-container">
+    <span class="tag-code">test-container</span>
+  </a>
+
+  <a href="/tags#integration-test">
+    <span class="tag-code">integration-test</span>
+  </a>
+
+  <a href="/tags#dynamodb">
+    <span class="tag-code">dynamodb</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/12/27/spring-boot-graceful-shutdown/">
+        <span class="nav-arrow">← </span>
+        
+          Spring Boot - 안전하게 종료시키기
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2019/02/03/deploy-gh-page-with-github-action/">
+        
+          GitHub Action을 활용한 GitHub Page 배포
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+        <!-- Disqus START -->
+        <div id="disqus_thread"></div>
+        <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Amazon-DynamoDB%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9E%85%EB%8B%88%EA%B9%8C"><span class="toc-nav-text">Amazon DynamoDB란 무엇입니까?</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%84%B1%ED%95%98%EA%B8%B0"><span class="toc-nav-text">환경 구성하기</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Docker-Container-%EC%8B%A4%ED%96%89"><span class="toc-nav-text">Docker Container 실행</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Spring-Boot-%EC%84%A4%EC%A0%95"><span class="toc-nav-text">Spring Boot 설정</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EB%94%94%ED%8E%9C%EB%8D%98%EC%8B%9C-%EC%B6%94%EA%B0%80"><span class="toc-nav-text">디펜던시 추가</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#AmazonDynamoDB-%EB%B9%88-%EB%93%B1%EB%A1%9D"><span class="toc-nav-text">AmazonDynamoDB 빈 등록</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0"><span class="toc-nav-text">테스트 작성하기</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#testcontainers-%EC%A0%81%EC%9A%A9"><span class="toc-nav-text">testcontainers 적용</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EB%94%94%ED%8E%9C%EB%8D%98%EC%8B%9C-%EC%B6%94%EA%B0%80-2"><span class="toc-nav-text">디펜던시 추가</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#AbstractIntegrationTest-%EC%9E%91%EC%84%B1"><span class="toc-nav-text">AbstractIntegrationTest 작성</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0-%EC%88%98%EC%A0%95"><span class="toc-nav-text">테스트 작성하기 (수정)</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%EC%B0%B8%EA%B3%A0"><span class="toc-nav-text">참고</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://heowc.dev/2019/01/16/spring-boot-dynamodb-using-testcontainer/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+<script>
+  var disqus_shortname = 'heowc-ithub-io';
+  
+  var disqus_url = 'https://heowc.dev/2019/01/16/spring-boot-dynamodb-using-testcontainer/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>
+    <br>
+    Theme by <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js");
+</script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.32.0/algoliasearch.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.35.0/autocomplete.min.js"></script>
+<script>
+  const client = algoliasearch('Z12OUS9993', '87e1c2ec8b3ce58795cdac97dd583138');
+  const index = client.initIndex('heowc.github.io');
+
+  autocomplete('#search-query-nav', {hint: false}, [
+    {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 10}),
+      displayKey: 'name',
+      templates: {
+        suggestion: function (suggestion) {
+          return suggestion.title;
+        }
+      }
+    }
+  ]).on('autocomplete:selected', function (event, suggestion, dataset, context) {
+    location.href = "/" + suggestion.path
+  });
+</script>
+
+
+  <script>
+    (function(b, o, i, l, e, r) {
+      b.GoogleAnalyticsObject = l;
+      b[l] || (b[l] = function() {
+        (b[l].q = b[l].q || []).push(arguments)
+      });
+      b[l].l = +new Date;
+      e = o.createElement(i);
+      r = o.getElementsByTagName(i)[0];
+      e.src = '//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-88462807-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

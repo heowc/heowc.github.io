@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  <meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="허원철의 개발 블로그">
+<meta name="keyword" content="허원철,개발,블로그">
+
+<!-- canonical -->
+<link rel="canonical" href="https://heowc.dev/2019/12/29/2019-develop-retrospection/">
+
+<!-- open graph -->
+<meta property="og:title" content="허원철의 개발 블로그">
+<meta property="og:description" content="2019년 개발 회고">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://heowc.dev/2019/12/29/2019-develop-retrospection/">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+
+<!-- naver webmaster -->
+<meta name="naver-site-verification" content="c8078357cb88dc72964f9089507aaf7bb0dd1b3b">
+
+  <title>
+    
+      2019년 개발 회고 | 허원철의 개발 블로그
+    
+  </title>
+
+  
+    <link rel="shortcut icon" type="image/ico" href="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/resources/css/gdemo.css">
+<link rel="stylesheet" href="/resources/css/index.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/algolia.searchbox.css">
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-5618198218047336",
+      enable_page_level_ads: true
+    });
+  </script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<div class="wechat-share">
+  
+    <img alt="preview image" src="https://avatars.githubusercontent.com/u/22594101?s=60&amp;v=4">
+  
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>허원철의 개발 블로그</span>
+    </a>
+    <ul class="right-list">
+      <li class="list-item">
+        <label for="search-query-nav"></label>
+        <input type="text" id="search-query-nav" class="search-query">
+      </li>
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="https://heowc.dev/programming-study/repo/" class="item-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="https://heowc.dev/programming-study/repo/" class="menu-link">Programming Study <img src="/resources/img/github-icon.png" alt="github-icon" class="icon small-icon"></a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>2019년 개발 회고</h2>
+  <p class="post-date">2019-12-29</p>
+  <div class="arrow-down">
+    <a href="#"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>2018년 회고에 이어 2019년에 대한 회고를 하려고 한다.</p>
+<span id="more"></span>
+<br>
+<p><em>2018년에 세웠 계획과 2019년 일을 되돌아 보며…</em></p>
+<h4 id="컨트리뷰터-되기">컨트리뷰터 되기</h4>
+<blockquote>
+<p><a href="/2019/11/04/2019-contributon-feat-armeria">'2019 컨트리뷰톤 (feat. Armeria)'</a>라는 글을 통해 언급했지만, 이 행사를 통해 Line에서 개발하는 오픈소스인 <code>Armeria</code>에 기여를 해봄으로써, 2018년에 목표로 했던 <strong>'컨트리뷰터 되기’를 달성</strong>했다.</p>
+</blockquote>
+<p>단순히 오타나 문서 수정이 아닌 나를 포함한 다른 개발자들이 직접적으로/간접적으로 사용하는 코드를 수정해 보았다. 전체적인/부분적인 맥락을 이해하고, 복잡하지 않고 읽기 쉬운 코드를 만들어내는데 직접 고민해보고 의견을 나누어 볼 수 있었다. (그 만큼 PR에 많은 코멘트가 달렸다는 의미입니다…ㅎ)</p>
+<br>
+<p>이 글을 쓰는 시점에도 여전히 기여하고 있는데, 최근에는 일코딩 이외에 개발 시간을 여기에 투자하는 편이다. 최근에는 코틀린으로 작성한 스프링부트 + 아르메리아 예제를 만들어 컨트리뷰션하기도 했다.(<a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/line/armeria/pull/2335">#2335</a>) 왜 하느냐? 흠… 재밌다. 오픈소스에 기여하는 것은 아직 낯설고 새롭지만, 말로 글로 표현 못할 흥미진진함과 즐거움이 있다. 그 외에도 그 만큼 도전해볼 주제도 많고, 소프트웨어에 변화에 어느정도 따라가기 위한 하나의 수단이 되는 것 같기도 하다는 생각이 든다.</p>
+<br>
+<p>또, 다른 개발자의 의견이나 코드도 보면서 배우는 점도 많아 많은 인사이트를 얻어갈 수 있다. 그래서인지 요즘 주변 개발자 지인을 만나면 오픈소스하라고 적극! 추천하는 편이다.</p>
+<br>
+<p>최근에는 Armeria 공식 슬랙 채널에 한국어 채널이 개설되어 언어의 장벽도 많이 낮춰진 셈이다.</p>
+<p><img src="/resources/img/2019-develop-retrospection/korean_channel_in_armeria_slack.png" alt="img korean channel in armeria slack"></p>
+<h4 id="일주일에-하나씩-영어-기술-블로그-정독하기">일주일에 하나씩 영어 기술 블로그 정독하기</h4>
+<p>정독이란걸… 아예 못 했다. 이런저런 핑계도 많고 귀차니즘으로 인해 안 했다. (역시 안했다라는 표현이 더 적절한…) 물론 아예 안읽는 것은 아니지만, 대강 읽어 읽는둥 마는둥 했다.</p>
+<br>
+<blockquote>
+<p>이를 반성하며 나에게 어려운 계획이라 판단하고 내년에는 보다 쉽고 계획다운 계획을 만들어 봐야겠다는 생각이 든다.</p>
+</blockquote>
+<h4 id="기술-서적-6권-이상-읽기">기술 서적 6권 이상 읽기</h4>
+<ul>
+<li>함수형 코틀린</li>
+<li>오브젝트</li>
+<li>자바 최적화</li>
+</ul>
+<p>스터디를 하며 주기적으로 책을 읽고 있는데, 올해는 중간에 잠깐 쉬어서 그런지 몇권 읽지 못 했다. 일이 바쁘기도 해서 그랬나…</p>
+<br>
+<blockquote>
+<p>결과적으로, 많이 읽는 것보다 한권을 읽더라도 제대로 읽어야 했다. 내년에는 많이 읽어야 하는 것에 집착하지 말고 하나를 읽더라도 제대로 읽어야 겠다.</p>
+</blockquote>
+<h4 id="꾸준히-공부하기">꾸준히 공부하기</h4>
+<p>15분방의 존재 의미는 사실 사라진지 오래됐기도 했고… 깃헙 잔디밭(?)을 보면 커밋량도 거의 절반가량으로 뚝 떨어졌다. <strong>2018년 910 커밋</strong>을 했고, <strong>2019년 503 커밋</strong>을 했다.</p>
+<p><img src="/resources/img/2019-develop-retrospection/2018_github_commit.png" alt="img GitHub commit(910) in 2018 years"></p>
+<p>[<a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/heowc?from=2018-01-01&amp;to-2018-12-31">https://github.com/heowc?from=2018-01-01&amp;to-2018-12-31</a>]</p>
+<p><img src="/resources/img/2019-develop-retrospection/2019_github_commit.png" alt="img GitHub commit(503) in 2019 years"></p>
+<p>[<a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/heowc?from=2019-01-01&amp;to-2019-12-31">https://github.com/heowc?from=2019-01-01&amp;to-2019-12-31</a>]</p>
+<br>
+<p>그래도 블로깅 수는 좀 늘었다. <strong>2018년 2개, 2019년 10개…</strong> 그래도 <a target="_blank" rel="external nofollow noopener noreferrer" href="http://heowc.tistory.com/">티스토리</a>에서 했던 거에 비하면 적긴도 하고, 구글 애널리틱스만 보더라도 엄청 심하게 차이가 나기도 한다.</p>
+<h4 id="소소한-자랑거리">소소한 자랑거리</h4>
+<ul>
+<li>내가 쓰려고 만든 첫 오픈소스인 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://www.npmjs.com/package/@heowc/hexo-tag-gdemo">hexo-tag-gdemo</a>에 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://babeljs.io/">바벨</a>을 적용했다 :)</li>
+<li>오픈소스라고 해야할진 모르겠지만 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/features/actions">GitHub Actions</a>으로 깃헙 페이지 배포를 위해 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/heowc/action-hexo">GitHub Action for Hexo</a>를 만들었다.</li>
+<li>Digital Ocean와 DEV에서 주최한 오픈소스 커뮤니티 축제인 <a target="_blank" rel="external nofollow noopener noreferrer" href="https://hacktoberfest.digitalocean.com/">HacktoberFEST</a>에 참여하여 잠옷 두벌을 득 했다 :)</li>
+</ul>
+<h4 id="그-외-활동">그 외 활동</h4>
+<p>다양한 세미나 참여하거나 스탭(?)으로 참여했다.</p>
+<ul>
+<li><a href="/2019/04/28/spring-camp-2019-review/">2019 스프링 캠프 (일꾼단 참여)</a></li>
+<li><a href="/2019/12/19/2019-woowahan-tech-night-review/">우아한 테크의 밤</a></li>
+<li>IT인프라 엔지니어 그룹 밋업</li>
+<li>GDG DevFest Seoul</li>
+<li>Kotlin Night 2019 서울</li>
+<li>… 등등 (자잘한건 기억이 안나는…)</li>
+</ul>
+<p>또한, 여전히 스터디도 하고 있다. 방법론/언어 등등 관심있는 분야의 프로그래밍 서적을 읽고 토론(?)하는 스터디도 있고, 중간에 오픈소스 관련 스터디도 있긴 했으나 점차 취지에 맞는 방향으로 가고있어 스터디장이 파했다. (빠른 결단력 리스펙!)</p>
+<h4 id="2020년-계획">2020년 계획</h4>
+<ul>
+<li>별다른 일이 없다면, 꾸준히 <strong>Armeria에 컨트리뷰션</strong> 해볼 생각이다. 아직은 부족한게 많으니 부족한 점을 하나씩 채우면서 보다 딥한 이슈를 처리해보는 것이 첫번째 목표 중 하나이다.</li>
+<li>둘째, 현 회사에서 내년에 전체적인 아키텍처 개선을 할 것이라고 하여 <strong>업무에 집중</strong>할 생각이다. 물론, 개선 과정에서 트러블 슈팅이 있다면 이를 명확히 알고 블로깅 해보는 것도 생각하고 있다.</li>
+<li>셋째, 읽기로한 개발 도서 읽는 것에 소홀히 하지 않아야 겠다. <strong>다독이 아닌 정독!</strong> 2020년 첫 도서로는 Netty 관련 내용이 될 것 같은데… Armeria 컨트리뷰션에 조금 보탬이 되지 않을까싶다.</li>
+<li>넷째, 프로그래밍 관련은 아니지만 그 동안 몸에 너무 소홀히 한 것 같아 <strong>운동</strong>을 할 생각이다. 헬스 정기권 같은 것만 하면 금방 안할게 뻔하니 P.T나 다른 대안책을 찾아보는 중 이다.</li>
+</ul>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#develop">
+    <span class="tag-code">develop</span>
+  </a>
+
+  <a href="/tags#retrospection">
+    <span class="tag-code">retrospection</span>
+  </a>
+
+  <a href="/tags#2019">
+    <span class="tag-code">2019</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019/12/19/2019-woowahan-tech-night-review/">
+        <span class="nav-arrow">← </span>
+        
+          2019 우아한 테크의 밤 - 요약
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2020/01/24/improve-spring-boot-example/">
+        
+          Spring Boot 예제 개선하기
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+        <!-- Disqus START -->
+        <div id="disqus_thread"></div>
+        <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EC%BB%A8%ED%8A%B8%EB%A6%AC%EB%B7%B0%ED%84%B0-%EB%90%98%EA%B8%B0"><span class="toc-nav-text">컨트리뷰터 되기</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EC%9D%BC%EC%A3%BC%EC%9D%BC%EC%97%90-%ED%95%98%EB%82%98%EC%94%A9-%EC%98%81%EC%96%B4-%EA%B8%B0%EC%88%A0-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%A0%95%EB%8F%85%ED%95%98%EA%B8%B0"><span class="toc-nav-text">일주일에 하나씩 영어 기술 블로그 정독하기</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EA%B8%B0%EC%88%A0-%EC%84%9C%EC%A0%81-6%EA%B6%8C-%EC%9D%B4%EC%83%81-%EC%9D%BD%EA%B8%B0"><span class="toc-nav-text">기술 서적 6권 이상 읽기</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EA%BE%B8%EC%A4%80%ED%9E%88-%EA%B3%B5%EB%B6%80%ED%95%98%EA%B8%B0"><span class="toc-nav-text">꾸준히 공부하기</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EC%86%8C%EC%86%8C%ED%95%9C-%EC%9E%90%EB%9E%91%EA%B1%B0%EB%A6%AC"><span class="toc-nav-text">소소한 자랑거리</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%EA%B7%B8-%EC%99%B8-%ED%99%9C%EB%8F%99"><span class="toc-nav-text">그 외 활동</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2020%EB%85%84-%EA%B3%84%ED%9A%8D"><span class="toc-nav-text">2020년 계획</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://heowc.dev/2019/12/29/2019-develop-retrospection/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+<script>
+  var disqus_shortname = 'heowc-ithub-io';
+  
+  var disqus_url = 'https://heowc.dev/2019/12/29/2019-develop-retrospection/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>
+    <br>
+    Theme by <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js");
+</script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.32.0/algoliasearch.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.35.0/autocomplete.min.js"></script>
+<script>
+  const client = algoliasearch('Z12OUS9993', '87e1c2ec8b3ce58795cdac97dd583138');
+  const index = client.initIndex('heowc.github.io');
+
+  autocomplete('#search-query-nav', {hint: false}, [
+    {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 10}),
+      displayKey: 'name',
+      templates: {
+        suggestion: function (suggestion) {
+          return suggestion.title;
+        }
+      }
+    }
+  ]).on('autocomplete:selected', function (event, suggestion, dataset, context) {
+    location.href = "/" + suggestion.path
+  });
+</script>
+
+
+  <script>
+    (function(b, o, i, l, e, r) {
+      b.GoogleAnalyticsObject = l;
+      b[l] || (b[l] = function() {
+        (b[l].q = b[l].q || []).push(arguments)
+      });
+      b[l].l = +new Date;
+      e = o.createElement(i);
+      r = o.getElementsByTagName(i)[0];
+      e.src = '//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-88462807-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>
