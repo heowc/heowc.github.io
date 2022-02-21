@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[4089],{81972:function(s){s.exports=JSON.parse('{"allTagsPath":"/en/tags","slug":"bean-post-processor","name":"beanpostprocessor","count":1,"permalink":"/en/tags/bean-post-processor"}')}}]);

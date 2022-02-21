@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[3063],{58993:function(s){s.exports=JSON.parse('{"allTagsPath":"/tags","slug":"systemd","name":"systemd","count":1,"permalink":"/tags/systemd"}')}}]);

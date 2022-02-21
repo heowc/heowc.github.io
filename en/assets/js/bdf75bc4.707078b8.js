@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[592],{89351:function(s){s.exports=JSON.parse('{"allTagsPath":"/en/tags","slug":"/en/tags/postgres","name":"postgres","count":1,"permalink":"/en/tags/postgres"}')}}]);

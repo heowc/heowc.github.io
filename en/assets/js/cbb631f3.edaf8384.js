@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[3975],{45748:function(s){s.exports=JSON.parse('{"allTagsPath":"/en/tags","slug":"/en/tags/async","name":"async","count":2,"permalink":"/en/tags/async"}')}}]);

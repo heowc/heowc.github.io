@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[7944],{88952:function(s){s.exports=JSON.parse('{"allTagsPath":"/en/tags","slug":"spring-camp","name":"spring-camp","count":2,"permalink":"/en/tags/spring-camp"}')}}]);

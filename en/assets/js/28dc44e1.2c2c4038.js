@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[4042],{30396:function(s){s.exports=JSON.parse('{"allTagsPath":"/en/tags","slug":"index-statistics","name":"index-statistics","count":1,"permalink":"/en/tags/index-statistics"}')}}]);

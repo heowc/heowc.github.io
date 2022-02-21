@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[5060],{96967:function(s){s.exports=JSON.parse('{"allTagsPath":"/en/tags","slug":"systemd-journald","name":"systemd-journald","count":1,"permalink":"/en/tags/systemd-journald"}')}}]);
