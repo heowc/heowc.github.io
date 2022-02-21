@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[5918],{32833:function(e){e.exports=JSON.parse('{"allTagsPath":"/en/tags","slug":"native-query","name":"native-query","count":1,"permalink":"/en/tags/native-query"}')}}]);

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"
+                       xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+  <ShortName>허원철의 개발 블로그</ShortName>
+  <Description>Search 허원철의 개발 블로그</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image width="16" height="16" type="image/x-icon">https://heowc.dev/en/img/favicon.ico</Image>
+  <Url type="text/html" method="get" template="https://heowc.dev/en/search?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://heowc.dev/en/opensearch.xml" />
+  <moz:SearchForm>https://heowc.dev/en/</moz:SearchForm>
+</OpenSearchDescription>

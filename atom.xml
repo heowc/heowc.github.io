@@ -1,1099 +1,283 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>허원철의 개발 블로그</title>
-  
-  
-  <link href="/atom.xml" rel="self"/>
-  
-  <link href="https://heowc.dev/"/>
-  <updated>2022-02-21T03:42:36.787Z</updated>
-  <id>https://heowc.dev/</id>
-  
-  <author>
-    <name>WonChul Heo</name>
-    
-  </author>
-  
-  <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>2021년 개발 회고</title>
-    <link href="https://heowc.dev/2021/12/28/2021-develop-retrospection/"/>
-    <id>https://heowc.dev/2021/12/28/2021-develop-retrospection/</id>
-    <published>2021-12-28T16:00:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;2020년 회고에 이어 2021년에 대한 회고를 하려고 한다.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="retrospection" scheme="https://heowc.dev/categories/retrospection/"/>
-    
-    
-      <category term="develop" scheme="https://heowc.dev/tags/develop/"/>
-    
-      <category term="retrospection" scheme="https://heowc.dev/tags/retrospection/"/>
-    
-      <category term="2021" scheme="https://heowc.dev/tags/2021/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hibernate NativeQuery HHH-14778 issue (with Postgres)</title>
-    <link href="https://heowc.dev/2021/11/27/hibernate-nativequery-bug-with-postgres/"/>
-    <id>https://heowc.dev/2021/11/27/hibernate-nativequery-bug-with-postgres/</id>
-    <published>2021-11-27T13:00:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Postgres 환경에서 Hibernate NativeQuery를 사용할 때 생기는 버그를 디버깅해본 나름의 결과(?)를 공유해봅니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="hibernate" scheme="https://heowc.dev/categories/hibernate/"/>
-    
-    
-      <category term="hibernate" scheme="https://heowc.dev/tags/hibernate/"/>
-    
-      <category term="native-query" scheme="https://heowc.dev/tags/native-query/"/>
-    
-      <category term="postgres" scheme="https://heowc.dev/tags/postgres/"/>
-    
-      <category term="orm" scheme="https://heowc.dev/tags/orm/"/>
-    
-      <category term="bug" scheme="https://heowc.dev/tags/bug/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ElastiCache Maintenance</title>
-    <link href="https://heowc.dev/2021/07/22/elasticache-maintenance/"/>
-    <id>https://heowc.dev/2021/07/22/elasticache-maintenance/</id>
-    <published>2021-07-22T09:00:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;최근 AWS의 Redis Service인 ElastiCache를 사용하면서 겪었던 유지관리 기간(Maintenance)에 대한 이슈 해결과정을 적어보고자 합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3
-        
-      
-    
-    </summary>
-    
-      <category term="elasticache" scheme="https://heowc.dev/categories/elasticache/"/>
-    
-    
-      <category term="aws" scheme="https://heowc.dev/tags/aws/"/>
-    
-      <category term="elasticache" scheme="https://heowc.dev/tags/elasticache/"/>
-    
-      <category term="redis" scheme="https://heowc.dev/tags/redis/"/>
-    
-      <category term="maintenance" scheme="https://heowc.dev/tags/maintenance/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring WebSocket (with STOMP)</title>
-    <link href="https://heowc.dev/2021/07/15/spring-websocket-with-stomp/"/>
-    <id>https://heowc.dev/2021/07/15/spring-websocket-with-stomp/</id>
-    <published>2021-07-15T09:00:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;최근 웹소켓을 활용한 서비스를 개발하면서 알게된 내용을 간략하게나마 적어봅니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;WebSocket-이란&quot;&gt;WebSocket 이란?&lt;/h3&gt;
-&lt;p&gt;웹소켓은 보통 http,
-        
-      
-    
-    </summary>
-    
-      <category term="weboscket" scheme="https://heowc.dev/categories/weboscket/"/>
-    
-    
-      <category term="spring" scheme="https://heowc.dev/tags/spring/"/>
-    
-      <category term="websocket" scheme="https://heowc.dev/tags/websocket/"/>
-    
-      <category term="stomp" scheme="https://heowc.dev/tags/stomp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL 인덱스 통계</title>
-    <link href="https://heowc.dev/2021/06/17/mysql-index-statistics/"/>
-    <id>https://heowc.dev/2021/06/17/mysql-index-statistics/</id>
-    <published>2021-06-17T04:00:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;쿼리를 실행시에 예상했던 인덱스를 타지 않는 현상을 알아보고자 합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="mysql" scheme="https://heowc.dev/categories/mysql/"/>
-    
-    
-      <category term="mysql" scheme="https://heowc.dev/tags/mysql/"/>
-    
-      <category term="index" scheme="https://heowc.dev/tags/index/"/>
-    
-      <category term="index-statistics" scheme="https://heowc.dev/tags/index-statistics/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Amazon Linux에서 /var/log가 꽉차는 이슈</title>
-    <link href="https://heowc.dev/2021/05/23/amazone-linux-log-issue/"/>
-    <id>https://heowc.dev/2021/05/23/amazone-linux-log-issue/</id>
-    <published>2021-05-23T09:00:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;개발 초기, 개발서버에서 &lt;code&gt;/var/log&lt;/code&gt;에 상당히 많은 데이터가 쌓이면서 골치가 아픈 적이 있다. 리눅스에 대해 많은 지식이 없는 상황에서 다행히 팀원의 도움으로 빨리 해결 방법을 알게 되었지만, 모르는 내용이 있어 이를 블로깅하여 기록해두려 한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="linux" scheme="https://heowc.dev/categories/linux/"/>
-    
-    
-      <category term="linux" scheme="https://heowc.dev/tags/linux/"/>
-    
-      <category term="amazonelinux" scheme="https://heowc.dev/tags/amazonelinux/"/>
-    
-      <category term="systemd" scheme="https://heowc.dev/tags/systemd/"/>
-    
-      <category term="systemd-journald" scheme="https://heowc.dev/tags/systemd-journald/"/>
-    
-      <category term="rsyslog" scheme="https://heowc.dev/tags/rsyslog/"/>
-    
-      <category term="log" scheme="https://heowc.dev/tags/log/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AWS Aurora DB Cluster - FailOver 대응하기</title>
-    <link href="https://heowc.dev/2021/02/13/aurora-cluster-failover/"/>
-    <id>https://heowc.dev/2021/02/13/aurora-cluster-failover/</id>
-    <published>2021-02-13T08:19:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;최근 회사에서 오로라디비를 스케일 업하기 위해서 failover 테스트를 하다가 있었던 이슈를 공유합니다.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="aurora" scheme="https://heowc.dev/categories/aurora/"/>
-    
-    
-      <category term="aws" scheme="https://heowc.dev/tags/aws/"/>
-    
-      <category term="aurora" scheme="https://heowc.dev/tags/aurora/"/>
-    
-      <category term="failover" scheme="https://heowc.dev/tags/failover/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2020년 개발 회고</title>
-    <link href="https://heowc.dev/2020/12/27/2020-develop-retrospection/"/>
-    <id>https://heowc.dev/2020/12/27/2020-develop-retrospection/</id>
-    <published>2020-12-27T08:19:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;2019년 회고에 이어 2020년에 대한 회고를 하려고 한다.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="retrospection" scheme="https://heowc.dev/categories/retrospection/"/>
-    
-    
-      <category term="develop" scheme="https://heowc.dev/tags/develop/"/>
-    
-      <category term="retrospection" scheme="https://heowc.dev/tags/retrospection/"/>
-    
-      <category term="2020" scheme="https://heowc.dev/tags/2020/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Network JSON Filter 소개 (Chrome Extension)</title>
-    <link href="https://heowc.dev/2020/10/21/introduction-network-json-filter-as-chrome-extension/"/>
-    <id>https://heowc.dev/2020/10/21/introduction-network-json-filter-as-chrome-extension/</id>
-    <published>2020-10-21T10:00:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
-&lt;h3 id=&quot;소개&quot;&gt;소개&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;network-json-filter&lt;/code&gt;는 주고받는 네트워크 JSON 응답을 필터링하여 보고자 개발한 크롬 익스텐션으로, 다음과 같은 경우에 유용할
-        
-      
-    
-    </summary>
-    
-      <category term="chrome-extension" scheme="https://heowc.dev/categories/chrome-extension/"/>
-    
-    
-      <category term="chrome-extension" scheme="https://heowc.dev/tags/chrome-extension/"/>
-    
-      <category term="json" scheme="https://heowc.dev/tags/json/"/>
-    
-      <category term="network-tool" scheme="https://heowc.dev/tags/network-tool/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring - @Autowired는 어떻게 동작하는 걸까?</title>
-    <link href="https://heowc.dev/2020/07/04/how-does-autowired-work/"/>
-    <id>https://heowc.dev/2020/07/04/how-does-autowired-work/</id>
-    <published>2020-07-04T09:00:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;@Autowired&lt;/code&gt;의 동작 원리를 간단하게 이해해보자.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;스프링에서 Bean으로 등록된 객체에 특정 Bean에 대한 의존성을 주입할 때, 스프링에서
-        
-      
-    
-    </summary>
-    
-      <category term="spring" scheme="https://heowc.dev/categories/spring/"/>
-    
-    
-      <category term="spring" scheme="https://heowc.dev/tags/spring/"/>
-    
-      <category term="BeanPostProcessor" scheme="https://heowc.dev/tags/BeanPostProcessor/"/>
-    
-      <category term="autowired" scheme="https://heowc.dev/tags/autowired/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AWS - SES 사용 후기</title>
-    <link href="https://heowc.dev/2020/04/11/aws-ses-review/"/>
-    <id>https://heowc.dev/2020/04/11/aws-ses-review/</id>
-    <published>2020-04-11T08:30:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;AWS SES 사용 후기이다.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="aws" scheme="https://heowc.dev/categories/aws/"/>
-    
-    
-      <category term="aws" scheme="https://heowc.dev/tags/aws/"/>
-    
-      <category term="ses" scheme="https://heowc.dev/tags/ses/"/>
-    
-      <category term="mail" scheme="https://heowc.dev/tags/mail/"/>
-    
-      <category term="review" scheme="https://heowc.dev/tags/review/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Boot 예제 개선하기 (2)</title>
-    <link href="https://heowc.dev/2020/02/20/improve-spring-boot-example-2/"/>
-    <id>https://heowc.dev/2020/02/20/improve-spring-boot-example-2/</id>
-    <published>2020-02-20T14:30:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;GitHub Action&lt;/code&gt;을 통해 실행된 테스트가 실패시, &lt;code&gt;test reports&lt;/code&gt;를 업로드하는 기능을 소개하고자 합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="github-action" scheme="https://heowc.dev/categories/github-action/"/>
-    
-    
-      <category term="github-action" scheme="https://heowc.dev/tags/github-action/"/>
-    
-      <category term="ci" scheme="https://heowc.dev/tags/ci/"/>
-    
-      <category term="test-reports" scheme="https://heowc.dev/tags/test-reports/"/>
-    
-      <category term="file.io" scheme="https://heowc.dev/tags/file-io/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Boot 예제 개선하기</title>
-    <link href="https://heowc.dev/2020/01/24/improve-spring-boot-example/"/>
-    <id>https://heowc.dev/2020/01/24/improve-spring-boot-example/</id>
-    <published>2020-01-24T14:30:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;Dependabot&lt;/code&gt;를 적용하고 &lt;code&gt;GitHub Action&lt;/code&gt;을 활용하여 CI까지 적용해 예제 코드를 개선한 내용을 소개하고자 합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="github-action" scheme="https://heowc.dev/categories/github-action/"/>
-    
-    
-      <category term="github-action" scheme="https://heowc.dev/tags/github-action/"/>
-    
-      <category term="ci" scheme="https://heowc.dev/tags/ci/"/>
-    
-      <category term="dependabot" scheme="https://heowc.dev/tags/dependabot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2019년 개발 회고</title>
-    <link href="https://heowc.dev/2019/12/29/2019-develop-retrospection/"/>
-    <id>https://heowc.dev/2019/12/29/2019-develop-retrospection/</id>
-    <published>2019-12-29T14:19:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;2018년 회고에 이어 2019년에 대한 회고를 하려고 한다.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="retrospection" scheme="https://heowc.dev/categories/retrospection/"/>
-    
-    
-      <category term="develop" scheme="https://heowc.dev/tags/develop/"/>
-    
-      <category term="retrospection" scheme="https://heowc.dev/tags/retrospection/"/>
-    
-      <category term="2019" scheme="https://heowc.dev/tags/2019/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2019 우아한 테크의 밤 - 요약</title>
-    <link href="https://heowc.dev/2019/12/19/2019-woowahan-tech-night-review/"/>
-    <id>https://heowc.dev/2019/12/19/2019-woowahan-tech-night-review/</id>
-    <published>2019-12-19T02:30:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
-&lt;h1&gt;우아한 테크의 밤 - 요약&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&quot;/resources/img/2019-woowahan-tech-night-review/intro.png&quot; alt=&quot;alt
-        
-      
-    
-    </summary>
-    
-      <category term="semina" scheme="https://heowc.dev/categories/semina/"/>
-    
-    
-      <category term="2019" scheme="https://heowc.dev/tags/2019/"/>
-    
-      <category term="semina" scheme="https://heowc.dev/tags/semina/"/>
-    
-      <category term="woowahan-tech" scheme="https://heowc.dev/tags/woowahan-tech/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NullAway 알아보기</title>
-    <link href="https://heowc.dev/2019/11/29/nullaway-overview/"/>
-    <id>https://heowc.dev/2019/11/29/nullaway-overview/</id>
-    <published>2019-11-29T13:00:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;프로그래밍을 하다보면 대부분의 언어마다 &lt;code&gt;null&lt;/code&gt; 이라는 값이 존재한다. 때로는 이 존재가 문제를 야기시키기도 하는데 자바에서는 &lt;code&gt;null&lt;/code&gt;인 객체를 참조하게 되면
-        
-      
-    
-    </summary>
-    
-      <category term="java" scheme="https://heowc.dev/categories/java/"/>
-    
-    
-      <category term="js305" scheme="https://heowc.dev/tags/js305/"/>
-    
-      <category term="uber" scheme="https://heowc.dev/tags/uber/"/>
-    
-      <category term="nullaway" scheme="https://heowc.dev/tags/nullaway/"/>
-    
-      <category term="null-reference" scheme="https://heowc.dev/tags/null-reference/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2019 컨트리뷰톤 (feat. Armeria)</title>
-    <link href="https://heowc.dev/2019/11/04/2019-contributon-feat-armeria/"/>
-    <id>https://heowc.dev/2019/11/04/2019-contributon-feat-armeria/</id>
-    <published>2019-11-04T09:00:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
-&lt;h3 id=&quot;서론&quot;&gt;서론&lt;/h3&gt;
-&lt;p&gt;올해는 끝나가고 뭔가 해논게 없어서 좌절하고 있을 때 쯤 &lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="contributon" scheme="https://heowc.dev/categories/contributon/"/>
-    
-    
-      <category term="contributon" scheme="https://heowc.dev/tags/contributon/"/>
-    
-      <category term="line" scheme="https://heowc.dev/tags/line/"/>
-    
-      <category term="armeria" scheme="https://heowc.dev/tags/armeria/"/>
-    
-      <category term="2019" scheme="https://heowc.dev/tags/2019/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java에서 iOS Push 삽질기</title>
-    <link href="https://heowc.dev/2019/05/13/ios-push-to-java/"/>
-    <id>https://heowc.dev/2019/05/13/ios-push-to-java/</id>
-    <published>2019-05-13T10:55:41.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;직접 &lt;a href=&quot;https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1&quot;&gt;APNs&lt;/a&gt;를 사용하면서 경험한 삽질기이다.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="java" scheme="https://heowc.dev/categories/java/"/>
-    
-    
-      <category term="java" scheme="https://heowc.dev/tags/java/"/>
-    
-      <category term="ios-push" scheme="https://heowc.dev/tags/ios-push/"/>
-    
-      <category term="apns" scheme="https://heowc.dev/tags/apns/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Camp 2019 후기</title>
-    <link href="https://heowc.dev/2019/04/28/spring-camp-2019-review/"/>
-    <id>https://heowc.dev/2019/04/28/spring-camp-2019-review/</id>
-    <published>2019-04-28T11:00:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;2017년을 시작으로 2018년, 2019년, … &lt;strong&gt;세번째로 참석하게 되는 Spring Camp 후기&lt;/strong&gt; 이다.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="review" scheme="https://heowc.dev/categories/review/"/>
-    
-    
-      <category term="review" scheme="https://heowc.dev/tags/review/"/>
-    
-      <category term="spring-camp" scheme="https://heowc.dev/tags/spring-camp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL - 큰 테이블을 다루는 jdbc 활용법 ②</title>
-    <link href="https://heowc.dev/2019/02/12/using-mysql-jdbc-to-handle-large-table-2/"/>
-    <id>https://heowc.dev/2019/02/12/using-mysql-jdbc-to-handle-large-table-2/</id>
-    <published>2019-02-12T14:30:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;데이터베이스에 한 번에 많은 데이터 써야 한다면 어떻게 해야할까?&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="mysql" scheme="https://heowc.dev/categories/mysql/"/>
-    
-    
-      <category term="mysql" scheme="https://heowc.dev/tags/mysql/"/>
-    
-      <category term="jdbc" scheme="https://heowc.dev/tags/jdbc/"/>
-    
-      <category term="batch-insert" scheme="https://heowc.dev/tags/batch-insert/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL - 큰 테이블을 다루는 jdbc 활용법 ①</title>
-    <link href="https://heowc.dev/2019/02/09/using-mysql-jdbc-to-handle-large-table-1/"/>
-    <id>https://heowc.dev/2019/02/09/using-mysql-jdbc-to-handle-large-table-1/</id>
-    <published>2019-02-09T14:30:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;데이터베이스에서 한 번에 많은 데이터 읽어야 한다면 어떻게 해야할까?&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="mysql" scheme="https://heowc.dev/categories/mysql/"/>
-    
-    
-      <category term="mysql" scheme="https://heowc.dev/tags/mysql/"/>
-    
-      <category term="jdbc" scheme="https://heowc.dev/tags/jdbc/"/>
-    
-      <category term="batch-processing" scheme="https://heowc.dev/tags/batch-processing/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GitHub Action을 활용한 GitHub Page 배포</title>
-    <link href="https://heowc.dev/2019/02/03/deploy-gh-page-with-github-action/"/>
-    <id>https://heowc.dev/2019/02/03/deploy-gh-page-with-github-action/</id>
-    <published>2019-02-03T14:30:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;GitHub Action&lt;/code&gt;에 대한 간단한 소개와 이를 활용한 GitHub Page 배포 방법를 얘기해보려 한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="github-action" scheme="https://heowc.dev/categories/github-action/"/>
-    
-    
-      <category term="hexo" scheme="https://heowc.dev/tags/hexo/"/>
-    
-      <category term="github-action" scheme="https://heowc.dev/tags/github-action/"/>
-    
-      <category term="continuous-deployment" scheme="https://heowc.dev/tags/continuous-deployment/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Boot - testContainer를 활용한 AWS DynamoDB 테스트</title>
-    <link href="https://heowc.dev/2019/01/16/spring-boot-dynamodb-using-testcontainer/"/>
-    <id>https://heowc.dev/2019/01/16/spring-boot-dynamodb-using-testcontainer/</id>
-    <published>2019-01-16T12:30:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Amazon DynamoDB&lt;/strong&gt;를 비용 지불없이 쉽게 테스트하는 방법을 소개하려고 한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="spring-boot" scheme="https://heowc.dev/categories/spring-boot/"/>
-    
-    
-      <category term="aws" scheme="https://heowc.dev/tags/aws/"/>
-    
-      <category term="spring-boot" scheme="https://heowc.dev/tags/spring-boot/"/>
-    
-      <category term="test-container" scheme="https://heowc.dev/tags/test-container/"/>
-    
-      <category term="integration-test" scheme="https://heowc.dev/tags/integration-test/"/>
-    
-      <category term="dynamodb" scheme="https://heowc.dev/tags/dynamodb/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Boot - 안전하게 종료시키기</title>
-    <link href="https://heowc.dev/2018/12/27/spring-boot-graceful-shutdown/"/>
-    <id>https://heowc.dev/2018/12/27/spring-boot-graceful-shutdown/</id>
-    <published>2018-12-27T15:51:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Spring Boot를 안전하게 종료시키는 방법에 대한 소개이다.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="spring-boot" scheme="https://heowc.dev/categories/spring-boot/"/>
-    
-    
-      <category term="spring-boot" scheme="https://heowc.dev/tags/spring-boot/"/>
-    
-      <category term="graceful-shutdown" scheme="https://heowc.dev/tags/graceful-shutdown/"/>
-    
-      <category term="shutdown" scheme="https://heowc.dev/tags/shutdown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2018년 개발 회고</title>
-    <link href="https://heowc.dev/2018/12/24/2018-develop-retrospection/"/>
-    <id>https://heowc.dev/2018/12/24/2018-develop-retrospection/</id>
-    <published>2018-12-24T14:19:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;2018년 개발 회고를 적어보려고 한다.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="retrospection" scheme="https://heowc.dev/categories/retrospection/"/>
-    
-    
-      <category term="2018" scheme="https://heowc.dev/tags/2018/"/>
-    
-      <category term="develop" scheme="https://heowc.dev/tags/develop/"/>
-    
-      <category term="retrospection" scheme="https://heowc.dev/tags/retrospection/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo-tag-gdemo 소개</title>
-    <link href="https://heowc.dev/2018/11/14/introduction-hexo-tag-gdemo/"/>
-    <id>https://heowc.dev/2018/11/14/introduction-hexo-tag-gdemo/</id>
-    <published>2018-11-14T09:00:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
-&lt;h3 id=&quot;소개&quot;&gt;소개&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.npmjs.com/package/@heowc/hexo-tag-gdemo&quot;&gt;hexo-tag-gdemo&lt;/a&gt;는
-        
-      
-    
-    </summary>
-    
-      <category term="hexo" scheme="https://heowc.dev/categories/hexo/"/>
-    
-    
-      <category term="hexo" scheme="https://heowc.dev/tags/hexo/"/>
-    
-      <category term="tag" scheme="https://heowc.dev/tags/tag/"/>
-    
-      <category term="demo" scheme="https://heowc.dev/tags/demo/"/>
-    
-      <category term="glorious-demo" scheme="https://heowc.dev/tags/glorious-demo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Camp 2018 후기</title>
-    <link href="https://heowc.dev/2018/04/25/spring-camp-2018-review/"/>
-    <id>https://heowc.dev/2018/04/25/spring-camp-2018-review/</id>
-    <published>2018-04-25T11:00:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Spring Camp 2018 후기이다.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="review" scheme="https://heowc.dev/categories/review/"/>
-    
-    
-      <category term="review" scheme="https://heowc.dev/tags/review/"/>
-    
-      <category term="spring-camp" scheme="https://heowc.dev/tags/spring-camp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java 8 - Time API</title>
-    <link href="https://heowc.dev/2018/03/18/java8-time-package/"/>
-    <id>https://heowc.dev/2018/03/18/java8-time-package/</id>
-    <published>2018-03-18T10:55:41.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Java 8에서는 새로운 날짜 API가 추가되었다.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="java" scheme="https://heowc.dev/categories/java/"/>
-    
-    
-      <category term="java8" scheme="https://heowc.dev/tags/java8/"/>
-    
-      <category term="time" scheme="https://heowc.dev/tags/time/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Boot - CORS</title>
-    <link href="https://heowc.dev/2018/03/13/spring-boot-cors/"/>
-    <id>https://heowc.dev/2018/03/13/spring-boot-cors/</id>
-    <published>2018-03-13T11:02:00.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;브라우저 초기에 보안상의 이유로 스크립트 내에서 시작된 교착 출처 HTTP 요청을 제한하는데, 이를 **SOP(Same-Origin Policy, 동일 출처 정책)**라 한다.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="spring" scheme="https://heowc.dev/categories/spring/"/>
-    
-    
-      <category term="spring" scheme="https://heowc.dev/tags/spring/"/>
-    
-      <category term="spring-boot" scheme="https://heowc.dev/tags/spring-boot/"/>
-    
-      <category term="cors" scheme="https://heowc.dev/tags/cors/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>개발 속도를 높여주는 소소한 팁 (Chrome)</title>
-    <link href="https://heowc.dev/2018/02/13/tip-chrome-extension/"/>
-    <id>https://heowc.dev/2018/02/13/tip-chrome-extension/</id>
-    <published>2018-02-13T12:17:48.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;개발을 하다보면 사소한 불편한이 존재하기도 한다. 가령, URL을 저장해두기 애매하여 수 많은 TAB이 방치해두는 것이 대표적인 예가 될 수 있다. 이외에도 더 많은 예가 있지만, 아래에 그 상황에 따라 충족할 만한 &lt;strong&gt;Chrome
-        
-      
-    
-    </summary>
-    
-      <category term="tip" scheme="https://heowc.dev/categories/tip/"/>
-    
-    
-      <category term="chrome-extension" scheme="https://heowc.dev/tags/chrome-extension/"/>
-    
-      <category term="chrome" scheme="https://heowc.dev/tags/chrome/"/>
-    
-      <category term="tip" scheme="https://heowc.dev/tags/tip/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Boot - Async 심화</title>
-    <link href="https://heowc.dev/2018/02/13/spring-boot-async-advanced/"/>
-    <id>https://heowc.dev/2018/02/13/spring-boot-async-advanced/</id>
-    <published>2018-02-13T11:14:33.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;SimpleAsyncTaskExecutor&lt;/code&gt;는 Thread Pool이 아니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="spring" scheme="https://heowc.dev/categories/spring/"/>
-    
-    
-      <category term="spring" scheme="https://heowc.dev/tags/spring/"/>
-    
-      <category term="spring-boot" scheme="https://heowc.dev/tags/spring-boot/"/>
-    
-      <category term="async" scheme="https://heowc.dev/tags/async/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Boot - Async</title>
-    <link href="https://heowc.dev/2018/02/10/spring-boot-async/"/>
-    <id>https://heowc.dev/2018/02/10/spring-boot-async/</id>
-    <published>2018-02-10T06:35:41.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;비동기 통신&lt;/strong&gt;: 자료를 일정한 크기로 정하여 순서대로 전송하는 자료의 전송방식(참고 : &lt;a href=&quot;https://ko.wikipedia.org/wiki/%EB%B9%84%EB%8F%99%EA%B8%B0_%EC%A0%84%EC%86%A1_%EB%B0%A9%EC%8B%9D&quot;&gt;비동기 전송방식&lt;/a&gt;)&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="spring" scheme="https://heowc.dev/categories/spring/"/>
-    
-    
-      <category term="spring" scheme="https://heowc.dev/tags/spring/"/>
-    
-      <category term="spring-boot" scheme="https://heowc.dev/tags/spring-boot/"/>
-    
-      <category term="async" scheme="https://heowc.dev/tags/async/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Thread Pool 이해하기</title>
-    <link href="https://heowc.dev/2018/02/08/thread-pool/"/>
-    <id>https://heowc.dev/2018/02/08/thread-pool/</id>
-    <published>2018-02-08T12:57:49.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Process&lt;/strong&gt;: 운영체제에서 하나의 어플리케이션&lt;br&gt;
-&lt;strong&gt;Thread&lt;/strong&gt;: Process에서 하나의 작업&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;여러 Thread를
-        
-      
-    
-    </summary>
-    
-      <category term="thread-pool" scheme="https://heowc.dev/categories/thread-pool/"/>
-    
-    
-      <category term="thread-pool" scheme="https://heowc.dev/tags/thread-pool/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Boot - AOP</title>
-    <link href="https://heowc.dev/2018/02/07/spring-boot-aop/"/>
-    <id>https://heowc.dev/2018/02/07/spring-boot-aop/</id>
-    <published>2018-02-07T14:48:38.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;AOP&lt;/strong&gt;는 Aspect Orient Programming 관점 지향 프로그래밍으로, 기능을 비지니스 로직과 공통 모듈로 구분한 후에 필요한 시점에 비지니스 로직에 삽입하여 실행되게끔 도와준다.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="spring" scheme="https://heowc.dev/categories/spring/"/>
-    
-    
-      <category term="spring" scheme="https://heowc.dev/tags/spring/"/>
-    
-      <category term="spring-boot" scheme="https://heowc.dev/tags/spring-boot/"/>
-    
-      <category term="aop" scheme="https://heowc.dev/tags/aop/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Boot - Interceptor</title>
-    <link href="https://heowc.dev/2018/02/06/spring-boot-interceptor/"/>
-    <id>https://heowc.dev/2018/02/06/spring-boot-interceptor/</id>
-    <published>2018-02-06T12:04:21.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Interceptor&lt;/strong&gt;는 가로채는 것, 요격기 라는 뜻이다.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="spring" scheme="https://heowc.dev/categories/spring/"/>
-    
-    
-      <category term="spring" scheme="https://heowc.dev/tags/spring/"/>
-    
-      <category term="spring-boot" scheme="https://heowc.dev/tags/spring-boot/"/>
-    
-      <category term="interceptor" scheme="https://heowc.dev/tags/interceptor/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Boot - Cache</title>
-    <link href="https://heowc.dev/2018/02/05/spring-boot-cache/"/>
-    <id>https://heowc.dev/2018/02/05/spring-boot-cache/</id>
-    <published>2018-02-05T11:04:01.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;**캐시(cache, 문화어: 캐쉬, 고속완충기, 고속완충기억기)**는 컴퓨터 과학에서 데이터나 값을 미리 복사해 놓는 임시 장소를 가리킨다.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="spring" scheme="https://heowc.dev/categories/spring/"/>
-    
-    
-      <category term="spring" scheme="https://heowc.dev/tags/spring/"/>
-    
-      <category term="spring-boot" scheme="https://heowc.dev/tags/spring-boot/"/>
-    
-      <category term="cache" scheme="https://heowc.dev/tags/cache/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Boot - Validation</title>
-    <link href="https://heowc.dev/2018/01/14/spring-boot-hibernate-validation/"/>
-    <id>https://heowc.dev/2018/01/14/spring-boot-hibernate-validation/</id>
-    <published>2018-01-14T13:26:30.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;데이터에 대한 유효성 검증을 효과적으로 도와줄 수 있다.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="spring-boot" scheme="https://heowc.dev/categories/spring-boot/"/>
-    
-    
-      <category term="spring" scheme="https://heowc.dev/tags/spring/"/>
-    
-      <category term="spring-boot" scheme="https://heowc.dev/tags/spring-boot/"/>
-    
-      <category term="hibernate-validation" scheme="https://heowc.dev/tags/hibernate-validation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Boot - Data JPA</title>
-    <link href="https://heowc.dev/2018/01/09/spring-boot-data-jpa/"/>
-    <id>https://heowc.dev/2018/01/09/spring-boot-data-jpa/</id>
-    <published>2018-01-09T14:52:42.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Spring Boot에서 간단한 설정으로 Hibernate를 사용할 수 있다.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="spring" scheme="https://heowc.dev/categories/spring/"/>
-    
-    
-      <category term="spring" scheme="https://heowc.dev/tags/spring/"/>
-    
-      <category term="spring-boot" scheme="https://heowc.dev/tags/spring-boot/"/>
-    
-      <category term="data-jpa" scheme="https://heowc.dev/tags/data-jpa/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Boot - 시작하기</title>
-    <link href="https://heowc.dev/2018/01/08/spring-boot-start/"/>
-    <id>https://heowc.dev/2018/01/08/spring-boot-start/</id>
-    <published>2018-01-08T12:51:59.000Z</published>
-    <updated>2022-02-21T03:42:36.787Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Spring Boot는 적은 설정만으로 독립 실행형 Spring 애플리케이션을 쉽게 만들 수 있다.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="spring" scheme="https://heowc.dev/categories/spring/"/>
-    
-    
-      <category term="spring" scheme="https://heowc.dev/tags/spring/"/>
-    
-      <category term="spring-boot" scheme="https://heowc.dev/tags/spring-boot/"/>
-    
-  </entry>
-  
+    <id>https://heowc.dev/</id>
+    <title>허원철의 개발 블로그 Blog</title>
+    <updated>2021-12-29T01:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://heowc.dev/"/>
+    <subtitle>허원철의 개발 블로그 Blog</subtitle>
+    <icon>https://heowc.dev/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[2021년 개발 회고]]></title>
+        <id>2021/12/29/2021-develop-retrospection</id>
+        <link href="https://heowc.dev/2021/12/29/2021-develop-retrospection"/>
+        <updated>2021-12-29T01:00:00.000Z</updated>
+        <summary type="html"><![CDATA[2020년 회고에 이어 2021년에 대한 회고를 하려고 한다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hibernate NativeQuery HHH-14778 issue (with Postgres)]]></title>
+        <id>2021/11/27/hibernate-nativequery-bug-with-postgres</id>
+        <link href="https://heowc.dev/2021/11/27/hibernate-nativequery-bug-with-postgres"/>
+        <updated>2021-11-27T22:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Postgres 환경에서 Hibernate NativeQuery를 사용할 때 생기는 버그를 디버깅해본 나름의 결과(?)를 공유해봅니다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ElastiCache Maintenance]]></title>
+        <id>2021/07/22/elasticache-maintenance</id>
+        <link href="https://heowc.dev/2021/07/22/elasticache-maintenance"/>
+        <updated>2021-07-22T18:00:00.000Z</updated>
+        <summary type="html"><![CDATA[최근 AWS의 Redis Service인 ElastiCache를 사용하면서 겪었던 유지관리 기간(Maintenance)에 대한 이슈 해결과정을 적어보고자 합니다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Spring WebSocket (with STOMP)]]></title>
+        <id>2021/07/15/spring-websocket-with-stomp</id>
+        <link href="https://heowc.dev/2021/07/15/spring-websocket-with-stomp"/>
+        <updated>2021-07-15T18:00:00.000Z</updated>
+        <summary type="html"><![CDATA[최근 웹소켓을 활용한 서비스를 개발하면서 알게된 내용을 간략하게나마 적어봅니다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MySQL 인덱스 통계]]></title>
+        <id>2021/06/17/mysql-index-statistics</id>
+        <link href="https://heowc.dev/2021/06/17/mysql-index-statistics"/>
+        <updated>2021-06-17T13:00:00.000Z</updated>
+        <summary type="html"><![CDATA[쿼리를 실행시에 예상했던 인덱스를 타지 않는 현상을 알아보고자 합니다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Amazon Linux에서 /var/log가 꽉차는 이슈]]></title>
+        <id>2021/05/23/amazone-linux-log-issue</id>
+        <link href="https://heowc.dev/2021/05/23/amazone-linux-log-issue"/>
+        <updated>2021-05-23T18:00:00.000Z</updated>
+        <summary type="html"><![CDATA[개발 초기, 개발서버에서 /var/log에 상당히 많은 데이터가 쌓이면서 골치가 아픈 적이 있다. 리눅스에 대해 많은 지식이 없는 상황에서 다행히 팀원의 도움으로 빨리 해결 방법을 알게 되었지만, 모르는 내용이 있어 이를 블로깅하여 기록해두려 한다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[AWS Aurora DB Cluster - FailOver 대응하기]]></title>
+        <id>2021/02/13/aurora-cluster-failover</id>
+        <link href="https://heowc.dev/2021/02/13/aurora-cluster-failover"/>
+        <updated>2021-02-13T17:19:00.000Z</updated>
+        <summary type="html"><![CDATA[최근 회사에서 오로라디비를 스케일 업하기 위해서 failover 테스트를 하다가 있었던 이슈를 공유합니다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2020년 개발 회고]]></title>
+        <id>2020/12/27/2020-develop-retrospection</id>
+        <link href="https://heowc.dev/2020/12/27/2020-develop-retrospection"/>
+        <updated>2020-12-27T17:19:00.000Z</updated>
+        <summary type="html"><![CDATA[2019년 회고에 이어 2020년에 대한 회고를 하려고 한다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Network JSON Filter 소개 (Chrome Extension)]]></title>
+        <id>2020/10/21/introduction-network-json-filter-as-chrome-extension</id>
+        <link href="https://heowc.dev/2020/10/21/introduction-network-json-filter-as-chrome-extension"/>
+        <updated>2020-10-21T19:00:00.000Z</updated>
+        <summary type="html"><![CDATA[소개]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Spring - @Autowired는 어떻게 동작하는 걸까?]]></title>
+        <id>2020/07/04/how-does-autowired-work</id>
+        <link href="https://heowc.dev/2020/07/04/how-does-autowired-work"/>
+        <updated>2020-07-04T18:00:00.000Z</updated>
+        <summary type="html"><![CDATA[@Autowired의 동작 원리를 간단하게 이해해보자.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[AWS - SES 사용 후기]]></title>
+        <id>2020/04/11/aws-ses-review</id>
+        <link href="https://heowc.dev/2020/04/11/aws-ses-review"/>
+        <updated>2020-04-11T17:30:00.000Z</updated>
+        <summary type="html"><![CDATA[AWS SES 사용 후기이다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Spring Boot 예제 개선하기 (2)]]></title>
+        <id>2020/02/20/improve-spring-boot-example-2</id>
+        <link href="https://heowc.dev/2020/02/20/improve-spring-boot-example-2"/>
+        <updated>2020-02-20T23:30:00.000Z</updated>
+        <summary type="html"><![CDATA[GitHub Action을 통해 실행된 테스트가 실패시, test reports를 업로드하는 기능을 소개하고자 합니다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Spring Boot 예제 개선하기]]></title>
+        <id>2020/01/24/improve-spring-boot-example</id>
+        <link href="https://heowc.dev/2020/01/24/improve-spring-boot-example"/>
+        <updated>2020-01-24T23:30:00.000Z</updated>
+        <summary type="html"><![CDATA[Dependabot를 적용하고 GitHub Action을 활용하여 CI까지 적용해 예제 코드를 개선한 내용을 소개하고자 합니다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2019년 개발 회고]]></title>
+        <id>2019/12/29/2019-develop-retrospection</id>
+        <link href="https://heowc.dev/2019/12/29/2019-develop-retrospection"/>
+        <updated>2019-12-29T23:19:00.000Z</updated>
+        <summary type="html"><![CDATA[2018년 회고에 이어 2019년에 대한 회고를 하려고 한다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2019 우아한 테크의 밤 - 요약]]></title>
+        <id>2019/12/19/2019-woowahan-tech-night-review</id>
+        <link href="https://heowc.dev/2019/12/19/2019-woowahan-tech-night-review"/>
+        <updated>2019-12-19T11:30:00.000Z</updated>
+        <summary type="html"><![CDATA[alt intro]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[NullAway 알아보기]]></title>
+        <id>2019/11/29/nullaway-overview</id>
+        <link href="https://heowc.dev/2019/11/29/nullaway-overview"/>
+        <updated>2019-11-29T22:00:00.000Z</updated>
+        <summary type="html"><![CDATA[프로그래밍을 하다보면 대부분의 언어마다 null 이라는 값이 존재한다. 때로는 이 존재가 문제를 야기시키기도 하는데 자바에서는 null인 객체를 참조하게 되면 NullPointException 이라는 런타임 에러를 던지게 된다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2019 컨트리뷰톤 (feat. Armeria)]]></title>
+        <id>2019/11/04/2019-contributon-feat-armeria</id>
+        <link href="https://heowc.dev/2019/11/04/2019-contributon-feat-armeria"/>
+        <updated>2019-11-04T18:00:00.000Z</updated>
+        <summary type="html"><![CDATA[서론]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Java에서 iOS Push 삽질기]]></title>
+        <id>2019/05/13/ios-push-to-java</id>
+        <link href="https://heowc.dev/2019/05/13/ios-push-to-java"/>
+        <updated>2019-05-13T19:55:41.000Z</updated>
+        <summary type="html"><![CDATA[직접 APNs를 사용하면서 경험한 삽질기이다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Spring Camp 2019 후기]]></title>
+        <id>2019/04/28/spring-camp-2019-review</id>
+        <link href="https://heowc.dev/2019/04/28/spring-camp-2019-review"/>
+        <updated>2019-04-28T20:00:00.000Z</updated>
+        <summary type="html"><![CDATA[2017년을 시작으로 2018년, 2019년, ... 세번째로 참석하게 되는 Spring Camp 후기 이다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MySQL - 큰 테이블을 다루는 jdbc 활용법 ②]]></title>
+        <id>2019/02/12/using-mysql-jdbc-to-handle-large-table-2</id>
+        <link href="https://heowc.dev/2019/02/12/using-mysql-jdbc-to-handle-large-table-2"/>
+        <updated>2019-02-12T23:30:00.000Z</updated>
+        <summary type="html"><![CDATA[데이터베이스에 한 번에 많은 데이터 써야 한다면 어떻게 해야할까?]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MySQL - 큰 테이블을 다루는 jdbc 활용법 ①]]></title>
+        <id>2019/02/09/using-mysql-jdbc-to-handle-large-table-1</id>
+        <link href="https://heowc.dev/2019/02/09/using-mysql-jdbc-to-handle-large-table-1"/>
+        <updated>2019-02-09T23:30:00.000Z</updated>
+        <summary type="html"><![CDATA[데이터베이스에서 한 번에 많은 데이터 읽어야 한다면 어떻게 해야할까?]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[GitHub Action을 활용한 GitHub Page 배포]]></title>
+        <id>2019/02/03/deploy-gh-page-with-github-action</id>
+        <link href="https://heowc.dev/2019/02/03/deploy-gh-page-with-github-action"/>
+        <updated>2019-02-03T23:30:00.000Z</updated>
+        <summary type="html"><![CDATA[GitHub Action에 대한 간단한 소개와 이를 활용한 GitHub Page 배포 방법를 얘기해보려 한다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Spring Boot - testContainer를 활용한 AWS DynamoDB 테스트]]></title>
+        <id>2019/01/16/spring-boot-dynamodb-using-testcontainer</id>
+        <link href="https://heowc.dev/2019/01/16/spring-boot-dynamodb-using-testcontainer"/>
+        <updated>2019-01-16T21:30:00.000Z</updated>
+        <summary type="html"><![CDATA[Amazon DynamoDB를 비용 지불없이 쉽게 테스트하는 방법을 소개하려고 한다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Spring Boot - 안전하게 종료시키기]]></title>
+        <id>2018/12/28/spring-boot-graceful-shutdown</id>
+        <link href="https://heowc.dev/2018/12/28/spring-boot-graceful-shutdown"/>
+        <updated>2018-12-28T00:51:00.000Z</updated>
+        <summary type="html"><![CDATA[Spring Boot를 안전하게 종료시키는 방법에 대한 소개이다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2018년 개발 회고]]></title>
+        <id>2018/12/24/2018-develop-retrospection</id>
+        <link href="https://heowc.dev/2018/12/24/2018-develop-retrospection"/>
+        <updated>2018-12-24T23:19:00.000Z</updated>
+        <summary type="html"><![CDATA[2018년 개발 회고를 적어보려고 한다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[hexo-tag-gdemo 소개]]></title>
+        <id>2018/11/14/demo-hexo-tag-gdemo</id>
+        <link href="https://heowc.dev/2018/11/14/demo-hexo-tag-gdemo"/>
+        <updated>2018-11-14T18:00:00.000Z</updated>
+        <summary type="html"><![CDATA[소개]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Spring Camp 2018 후기]]></title>
+        <id>2018/04/25/spring-camp-2018-review</id>
+        <link href="https://heowc.dev/2018/04/25/spring-camp-2018-review"/>
+        <updated>2018-04-25T20:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Spring Camp 2018 후기이다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Java 8 - Time API]]></title>
+        <id>2018/03/18/java8-time-api</id>
+        <link href="https://heowc.dev/2018/03/18/java8-time-api"/>
+        <updated>2018-03-18T19:55:41.000Z</updated>
+        <summary type="html"><![CDATA[Java 8에서는 새로운 날짜 API가 추가되었다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Spring Boot - CORS]]></title>
+        <id>2018/03/13/spring-boot-cors</id>
+        <link href="https://heowc.dev/2018/03/13/spring-boot-cors"/>
+        <updated>2018-03-13T20:02:00.000Z</updated>
+        <summary type="html"><![CDATA[브라우저 초기에 보안상의 이유로 스크립트 내에서 시작된 교착 출처 HTTP 요청을 제한하는데, 이를 SOP(Same-Origin Policy, 동일 출처 정책)라 한다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[개발 속도를 높여주는 소소한 팁 (Chrome)]]></title>
+        <id>2018/02/13/tip-chrome-extension</id>
+        <link href="https://heowc.dev/2018/02/13/tip-chrome-extension"/>
+        <updated>2018-02-13T21:17:48.000Z</updated>
+        <summary type="html"><![CDATA[개발을 하다보면 사소한 불편한이 존재하기도 한다. 가령, URL을 저장해두기 애매하여 수 많은 TAB이 방치해두는 것이 대표적인 예가 될 수 있다. 이외에도 더 많은 예가 있지만, 아래에 그 상황에 따라 충족할 만한 Chrome Extension을 나열해 보았다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Spring Boot - Async 심화]]></title>
+        <id>2018/02/13/spring-boot-async-advanced</id>
+        <link href="https://heowc.dev/2018/02/13/spring-boot-async-advanced"/>
+        <updated>2018-02-13T20:14:33.000Z</updated>
+        <summary type="html"><![CDATA[SimpleAsyncTaskExecutor는 Thread Pool이 아니다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Spring Boot - Async]]></title>
+        <id>2018/02/10/spring-boot-async</id>
+        <link href="https://heowc.dev/2018/02/10/spring-boot-async"/>
+        <updated>2018-02-10T15:35:41.000Z</updated>
+        <summary type="html"><![CDATA[비동기 통신 비동기 전송방식)]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Thread Pool 이해하기]]></title>
+        <id>2018/02/08/thread-pool</id>
+        <link href="https://heowc.dev/2018/02/08/thread-pool"/>
+        <updated>2018-02-08T21:57:49.000Z</updated>
+        <summary type="html"><![CDATA[Process: 운영체제에서 하나의 어플리케이션]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Spring Boot - AOP]]></title>
+        <id>2018/02/07/spring-boot-aop</id>
+        <link href="https://heowc.dev/2018/02/07/spring-boot-aop"/>
+        <updated>2018-02-07T23:48:38.000Z</updated>
+        <summary type="html"><![CDATA[AOP는 Aspect Orient Programming 관점 지향 프로그래밍으로, 기능을 비지니스 로직과 공통 모듈로 구분한 후에 필요한 시점에 비지니스 로직에 삽입하여 실행되게끔 도와준다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Spring Boot - Interceptor]]></title>
+        <id>2018/02/06/spring-boot-interceptor</id>
+        <link href="https://heowc.dev/2018/02/06/spring-boot-interceptor"/>
+        <updated>2018-02-06T21:04:21.000Z</updated>
+        <summary type="html"><![CDATA[Interceptor는 가로채는 것, 요격기 라는 뜻이다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Spring Boot - Cache]]></title>
+        <id>2018/02/05/spring-boot-cache</id>
+        <link href="https://heowc.dev/2018/02/05/spring-boot-cache"/>
+        <updated>2018-02-05T20:04:01.000Z</updated>
+        <summary type="html"><![CDATA[캐시(cache, 문화어: 캐쉬, 고속완충기, 고속완충기억기)는 컴퓨터 과학에서 데이터나 값을 미리 복사해 놓는 임시 장소를 가리킨다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Spring Boot - Validation]]></title>
+        <id>2018/01/14/spring-boot-hibernate-validation</id>
+        <link href="https://heowc.dev/2018/01/14/spring-boot-hibernate-validation"/>
+        <updated>2018-01-14T22:26:30.000Z</updated>
+        <summary type="html"><![CDATA[데이터에 대한 유효성 검증을 효과적으로 도와줄 수 있다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Spring Boot - Data JPA]]></title>
+        <id>2018/01/09/spring-boot-data-jpa</id>
+        <link href="https://heowc.dev/2018/01/09/spring-boot-data-jpa"/>
+        <updated>2018-01-09T23:52:42.000Z</updated>
+        <summary type="html"><![CDATA[Spring Boot에서 간단한 설정으로 Hibernate를 사용할 수 있다.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Spring Boot - 시작하기]]></title>
+        <id>2018/01/08/spring-boot-start</id>
+        <link href="https://heowc.dev/2018/01/08/spring-boot-start"/>
+        <updated>2018-01-08T21:51:59.000Z</updated>
+        <summary type="html"><![CDATA[Spring Boot는 적은 설정만으로 독립 실행형 Spring 애플리케이션을 쉽게 만들 수 있다.]]></summary>
+    </entry>
 </feed>

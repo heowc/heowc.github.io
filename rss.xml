@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>허원철의 개발 블로그 Blog</title>
+        <link>https://heowc.dev/</link>
+        <description>허원철의 개발 블로그 Blog</description>
+        <lastBuildDate>Wed, 29 Dec 2021 01:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[2021년 개발 회고]]></title>
+            <link>https://heowc.dev/2021/12/29/2021-develop-retrospection</link>
+            <guid>2021/12/29/2021-develop-retrospection</guid>
+            <pubDate>Wed, 29 Dec 2021 01:00:00 GMT</pubDate>
+            <description><![CDATA[2020년 회고에 이어 2021년에 대한 회고를 하려고 한다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Hibernate NativeQuery HHH-14778 issue (with Postgres)]]></title>
+            <link>https://heowc.dev/2021/11/27/hibernate-nativequery-bug-with-postgres</link>
+            <guid>2021/11/27/hibernate-nativequery-bug-with-postgres</guid>
+            <pubDate>Sat, 27 Nov 2021 22:00:00 GMT</pubDate>
+            <description><![CDATA[Postgres 환경에서 Hibernate NativeQuery를 사용할 때 생기는 버그를 디버깅해본 나름의 결과(?)를 공유해봅니다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[ElastiCache Maintenance]]></title>
+            <link>https://heowc.dev/2021/07/22/elasticache-maintenance</link>
+            <guid>2021/07/22/elasticache-maintenance</guid>
+            <pubDate>Thu, 22 Jul 2021 18:00:00 GMT</pubDate>
+            <description><![CDATA[최근 AWS의 Redis Service인 ElastiCache를 사용하면서 겪었던 유지관리 기간(Maintenance)에 대한 이슈 해결과정을 적어보고자 합니다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Spring WebSocket (with STOMP)]]></title>
+            <link>https://heowc.dev/2021/07/15/spring-websocket-with-stomp</link>
+            <guid>2021/07/15/spring-websocket-with-stomp</guid>
+            <pubDate>Thu, 15 Jul 2021 18:00:00 GMT</pubDate>
+            <description><![CDATA[최근 웹소켓을 활용한 서비스를 개발하면서 알게된 내용을 간략하게나마 적어봅니다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[MySQL 인덱스 통계]]></title>
+            <link>https://heowc.dev/2021/06/17/mysql-index-statistics</link>
+            <guid>2021/06/17/mysql-index-statistics</guid>
+            <pubDate>Thu, 17 Jun 2021 13:00:00 GMT</pubDate>
+            <description><![CDATA[쿼리를 실행시에 예상했던 인덱스를 타지 않는 현상을 알아보고자 합니다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Amazon Linux에서 /var/log가 꽉차는 이슈]]></title>
+            <link>https://heowc.dev/2021/05/23/amazone-linux-log-issue</link>
+            <guid>2021/05/23/amazone-linux-log-issue</guid>
+            <pubDate>Sun, 23 May 2021 18:00:00 GMT</pubDate>
+            <description><![CDATA[개발 초기, 개발서버에서 /var/log에 상당히 많은 데이터가 쌓이면서 골치가 아픈 적이 있다. 리눅스에 대해 많은 지식이 없는 상황에서 다행히 팀원의 도움으로 빨리 해결 방법을 알게 되었지만, 모르는 내용이 있어 이를 블로깅하여 기록해두려 한다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[AWS Aurora DB Cluster - FailOver 대응하기]]></title>
+            <link>https://heowc.dev/2021/02/13/aurora-cluster-failover</link>
+            <guid>2021/02/13/aurora-cluster-failover</guid>
+            <pubDate>Sat, 13 Feb 2021 17:19:00 GMT</pubDate>
+            <description><![CDATA[최근 회사에서 오로라디비를 스케일 업하기 위해서 failover 테스트를 하다가 있었던 이슈를 공유합니다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[2020년 개발 회고]]></title>
+            <link>https://heowc.dev/2020/12/27/2020-develop-retrospection</link>
+            <guid>2020/12/27/2020-develop-retrospection</guid>
+            <pubDate>Sun, 27 Dec 2020 17:19:00 GMT</pubDate>
+            <description><![CDATA[2019년 회고에 이어 2020년에 대한 회고를 하려고 한다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Network JSON Filter 소개 (Chrome Extension)]]></title>
+            <link>https://heowc.dev/2020/10/21/introduction-network-json-filter-as-chrome-extension</link>
+            <guid>2020/10/21/introduction-network-json-filter-as-chrome-extension</guid>
+            <pubDate>Wed, 21 Oct 2020 19:00:00 GMT</pubDate>
+            <description><![CDATA[소개]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Spring - @Autowired는 어떻게 동작하는 걸까?]]></title>
+            <link>https://heowc.dev/2020/07/04/how-does-autowired-work</link>
+            <guid>2020/07/04/how-does-autowired-work</guid>
+            <pubDate>Sat, 04 Jul 2020 18:00:00 GMT</pubDate>
+            <description><![CDATA[@Autowired의 동작 원리를 간단하게 이해해보자.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[AWS - SES 사용 후기]]></title>
+            <link>https://heowc.dev/2020/04/11/aws-ses-review</link>
+            <guid>2020/04/11/aws-ses-review</guid>
+            <pubDate>Sat, 11 Apr 2020 17:30:00 GMT</pubDate>
+            <description><![CDATA[AWS SES 사용 후기이다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Spring Boot 예제 개선하기 (2)]]></title>
+            <link>https://heowc.dev/2020/02/20/improve-spring-boot-example-2</link>
+            <guid>2020/02/20/improve-spring-boot-example-2</guid>
+            <pubDate>Thu, 20 Feb 2020 23:30:00 GMT</pubDate>
+            <description><![CDATA[GitHub Action을 통해 실행된 테스트가 실패시, test reports를 업로드하는 기능을 소개하고자 합니다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Spring Boot 예제 개선하기]]></title>
+            <link>https://heowc.dev/2020/01/24/improve-spring-boot-example</link>
+            <guid>2020/01/24/improve-spring-boot-example</guid>
+            <pubDate>Fri, 24 Jan 2020 23:30:00 GMT</pubDate>
+            <description><![CDATA[Dependabot를 적용하고 GitHub Action을 활용하여 CI까지 적용해 예제 코드를 개선한 내용을 소개하고자 합니다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[2019년 개발 회고]]></title>
+            <link>https://heowc.dev/2019/12/29/2019-develop-retrospection</link>
+            <guid>2019/12/29/2019-develop-retrospection</guid>
+            <pubDate>Sun, 29 Dec 2019 23:19:00 GMT</pubDate>
+            <description><![CDATA[2018년 회고에 이어 2019년에 대한 회고를 하려고 한다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[2019 우아한 테크의 밤 - 요약]]></title>
+            <link>https://heowc.dev/2019/12/19/2019-woowahan-tech-night-review</link>
+            <guid>2019/12/19/2019-woowahan-tech-night-review</guid>
+            <pubDate>Thu, 19 Dec 2019 11:30:00 GMT</pubDate>
+            <description><![CDATA[alt intro]]></description>
+        </item>
+        <item>
+            <title><![CDATA[NullAway 알아보기]]></title>
+            <link>https://heowc.dev/2019/11/29/nullaway-overview</link>
+            <guid>2019/11/29/nullaway-overview</guid>
+            <pubDate>Fri, 29 Nov 2019 22:00:00 GMT</pubDate>
+            <description><![CDATA[프로그래밍을 하다보면 대부분의 언어마다 null 이라는 값이 존재한다. 때로는 이 존재가 문제를 야기시키기도 하는데 자바에서는 null인 객체를 참조하게 되면 NullPointException 이라는 런타임 에러를 던지게 된다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[2019 컨트리뷰톤 (feat. Armeria)]]></title>
+            <link>https://heowc.dev/2019/11/04/2019-contributon-feat-armeria</link>
+            <guid>2019/11/04/2019-contributon-feat-armeria</guid>
+            <pubDate>Mon, 04 Nov 2019 18:00:00 GMT</pubDate>
+            <description><![CDATA[서론]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Java에서 iOS Push 삽질기]]></title>
+            <link>https://heowc.dev/2019/05/13/ios-push-to-java</link>
+            <guid>2019/05/13/ios-push-to-java</guid>
+            <pubDate>Mon, 13 May 2019 19:55:41 GMT</pubDate>
+            <description><![CDATA[직접 APNs를 사용하면서 경험한 삽질기이다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Spring Camp 2019 후기]]></title>
+            <link>https://heowc.dev/2019/04/28/spring-camp-2019-review</link>
+            <guid>2019/04/28/spring-camp-2019-review</guid>
+            <pubDate>Sun, 28 Apr 2019 20:00:00 GMT</pubDate>
+            <description><![CDATA[2017년을 시작으로 2018년, 2019년, ... 세번째로 참석하게 되는 Spring Camp 후기 이다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[MySQL - 큰 테이블을 다루는 jdbc 활용법 ②]]></title>
+            <link>https://heowc.dev/2019/02/12/using-mysql-jdbc-to-handle-large-table-2</link>
+            <guid>2019/02/12/using-mysql-jdbc-to-handle-large-table-2</guid>
+            <pubDate>Tue, 12 Feb 2019 23:30:00 GMT</pubDate>
+            <description><![CDATA[데이터베이스에 한 번에 많은 데이터 써야 한다면 어떻게 해야할까?]]></description>
+        </item>
+        <item>
+            <title><![CDATA[MySQL - 큰 테이블을 다루는 jdbc 활용법 ①]]></title>
+            <link>https://heowc.dev/2019/02/09/using-mysql-jdbc-to-handle-large-table-1</link>
+            <guid>2019/02/09/using-mysql-jdbc-to-handle-large-table-1</guid>
+            <pubDate>Sat, 09 Feb 2019 23:30:00 GMT</pubDate>
+            <description><![CDATA[데이터베이스에서 한 번에 많은 데이터 읽어야 한다면 어떻게 해야할까?]]></description>
+        </item>
+        <item>
+            <title><![CDATA[GitHub Action을 활용한 GitHub Page 배포]]></title>
+            <link>https://heowc.dev/2019/02/03/deploy-gh-page-with-github-action</link>
+            <guid>2019/02/03/deploy-gh-page-with-github-action</guid>
+            <pubDate>Sun, 03 Feb 2019 23:30:00 GMT</pubDate>
+            <description><![CDATA[GitHub Action에 대한 간단한 소개와 이를 활용한 GitHub Page 배포 방법를 얘기해보려 한다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Spring Boot - testContainer를 활용한 AWS DynamoDB 테스트]]></title>
+            <link>https://heowc.dev/2019/01/16/spring-boot-dynamodb-using-testcontainer</link>
+            <guid>2019/01/16/spring-boot-dynamodb-using-testcontainer</guid>
+            <pubDate>Wed, 16 Jan 2019 21:30:00 GMT</pubDate>
+            <description><![CDATA[Amazon DynamoDB를 비용 지불없이 쉽게 테스트하는 방법을 소개하려고 한다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Spring Boot - 안전하게 종료시키기]]></title>
+            <link>https://heowc.dev/2018/12/28/spring-boot-graceful-shutdown</link>
+            <guid>2018/12/28/spring-boot-graceful-shutdown</guid>
+            <pubDate>Fri, 28 Dec 2018 00:51:00 GMT</pubDate>
+            <description><![CDATA[Spring Boot를 안전하게 종료시키는 방법에 대한 소개이다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[2018년 개발 회고]]></title>
+            <link>https://heowc.dev/2018/12/24/2018-develop-retrospection</link>
+            <guid>2018/12/24/2018-develop-retrospection</guid>
+            <pubDate>Mon, 24 Dec 2018 23:19:00 GMT</pubDate>
+            <description><![CDATA[2018년 개발 회고를 적어보려고 한다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[hexo-tag-gdemo 소개]]></title>
+            <link>https://heowc.dev/2018/11/14/demo-hexo-tag-gdemo</link>
+            <guid>2018/11/14/demo-hexo-tag-gdemo</guid>
+            <pubDate>Wed, 14 Nov 2018 18:00:00 GMT</pubDate>
+            <description><![CDATA[소개]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Spring Camp 2018 후기]]></title>
+            <link>https://heowc.dev/2018/04/25/spring-camp-2018-review</link>
+            <guid>2018/04/25/spring-camp-2018-review</guid>
+            <pubDate>Wed, 25 Apr 2018 20:00:00 GMT</pubDate>
+            <description><![CDATA[Spring Camp 2018 후기이다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Java 8 - Time API]]></title>
+            <link>https://heowc.dev/2018/03/18/java8-time-api</link>
+            <guid>2018/03/18/java8-time-api</guid>
+            <pubDate>Sun, 18 Mar 2018 19:55:41 GMT</pubDate>
+            <description><![CDATA[Java 8에서는 새로운 날짜 API가 추가되었다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Spring Boot - CORS]]></title>
+            <link>https://heowc.dev/2018/03/13/spring-boot-cors</link>
+            <guid>2018/03/13/spring-boot-cors</guid>
+            <pubDate>Tue, 13 Mar 2018 20:02:00 GMT</pubDate>
+            <description><![CDATA[브라우저 초기에 보안상의 이유로 스크립트 내에서 시작된 교착 출처 HTTP 요청을 제한하는데, 이를 SOP(Same-Origin Policy, 동일 출처 정책)라 한다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[개발 속도를 높여주는 소소한 팁 (Chrome)]]></title>
+            <link>https://heowc.dev/2018/02/13/tip-chrome-extension</link>
+            <guid>2018/02/13/tip-chrome-extension</guid>
+            <pubDate>Tue, 13 Feb 2018 21:17:48 GMT</pubDate>
+            <description><![CDATA[개발을 하다보면 사소한 불편한이 존재하기도 한다. 가령, URL을 저장해두기 애매하여 수 많은 TAB이 방치해두는 것이 대표적인 예가 될 수 있다. 이외에도 더 많은 예가 있지만, 아래에 그 상황에 따라 충족할 만한 Chrome Extension을 나열해 보았다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Spring Boot - Async 심화]]></title>
+            <link>https://heowc.dev/2018/02/13/spring-boot-async-advanced</link>
+            <guid>2018/02/13/spring-boot-async-advanced</guid>
+            <pubDate>Tue, 13 Feb 2018 20:14:33 GMT</pubDate>
+            <description><![CDATA[SimpleAsyncTaskExecutor는 Thread Pool이 아니다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Spring Boot - Async]]></title>
+            <link>https://heowc.dev/2018/02/10/spring-boot-async</link>
+            <guid>2018/02/10/spring-boot-async</guid>
+            <pubDate>Sat, 10 Feb 2018 15:35:41 GMT</pubDate>
+            <description><![CDATA[비동기 통신 비동기 전송방식)]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Thread Pool 이해하기]]></title>
+            <link>https://heowc.dev/2018/02/08/thread-pool</link>
+            <guid>2018/02/08/thread-pool</guid>
+            <pubDate>Thu, 08 Feb 2018 21:57:49 GMT</pubDate>
+            <description><![CDATA[Process: 운영체제에서 하나의 어플리케이션]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Spring Boot - AOP]]></title>
+            <link>https://heowc.dev/2018/02/07/spring-boot-aop</link>
+            <guid>2018/02/07/spring-boot-aop</guid>
+            <pubDate>Wed, 07 Feb 2018 23:48:38 GMT</pubDate>
+            <description><![CDATA[AOP는 Aspect Orient Programming 관점 지향 프로그래밍으로, 기능을 비지니스 로직과 공통 모듈로 구분한 후에 필요한 시점에 비지니스 로직에 삽입하여 실행되게끔 도와준다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Spring Boot - Interceptor]]></title>
+            <link>https://heowc.dev/2018/02/06/spring-boot-interceptor</link>
+            <guid>2018/02/06/spring-boot-interceptor</guid>
+            <pubDate>Tue, 06 Feb 2018 21:04:21 GMT</pubDate>
+            <description><![CDATA[Interceptor는 가로채는 것, 요격기 라는 뜻이다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Spring Boot - Cache]]></title>
+            <link>https://heowc.dev/2018/02/05/spring-boot-cache</link>
+            <guid>2018/02/05/spring-boot-cache</guid>
+            <pubDate>Mon, 05 Feb 2018 20:04:01 GMT</pubDate>
+            <description><![CDATA[캐시(cache, 문화어: 캐쉬, 고속완충기, 고속완충기억기)는 컴퓨터 과학에서 데이터나 값을 미리 복사해 놓는 임시 장소를 가리킨다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Spring Boot - Validation]]></title>
+            <link>https://heowc.dev/2018/01/14/spring-boot-hibernate-validation</link>
+            <guid>2018/01/14/spring-boot-hibernate-validation</guid>
+            <pubDate>Sun, 14 Jan 2018 22:26:30 GMT</pubDate>
+            <description><![CDATA[데이터에 대한 유효성 검증을 효과적으로 도와줄 수 있다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Spring Boot - Data JPA]]></title>
+            <link>https://heowc.dev/2018/01/09/spring-boot-data-jpa</link>
+            <guid>2018/01/09/spring-boot-data-jpa</guid>
+            <pubDate>Tue, 09 Jan 2018 23:52:42 GMT</pubDate>
+            <description><![CDATA[Spring Boot에서 간단한 설정으로 Hibernate를 사용할 수 있다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Spring Boot - 시작하기]]></title>
+            <link>https://heowc.dev/2018/01/08/spring-boot-start</link>
+            <guid>2018/01/08/spring-boot-start</guid>
+            <pubDate>Mon, 08 Jan 2018 21:51:59 GMT</pubDate>
+            <description><![CDATA[Spring Boot는 적은 설정만으로 독립 실행형 Spring 애플리케이션을 쉽게 만들 수 있다.]]></description>
+        </item>
+    </channel>
+</rss>
