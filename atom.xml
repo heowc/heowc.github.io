@@ -2,11 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://heowc.dev/</id>
     <title>허원철의 개발 블로그 Blog</title>
-    <updated>2021-12-29T01:00:00.000Z</updated>
+    <updated>2022-02-22T13:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://heowc.dev/"/>
     <subtitle>허원철의 개발 블로그 Blog</subtitle>
     <icon>https://heowc.dev/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[블로그 마이그레이션 (feat. docusaurus)]]></title>
+        <id>2022/02/22/blog-migrate-to-docusaurus-from-hexo</id>
+        <link href="https://heowc.dev/2022/02/22/blog-migrate-to-docusaurus-from-hexo"/>
+        <updated>2022-02-22T13:00:00.000Z</updated>
+        <summary type="html"><![CDATA[기존에 사용하던 SSG(Static Site Generator)를 hexo에서 docusaurus으로 변경한 작업을 공유해봅니다.]]></summary>
+        <category label="blog" term="blog"/>
+        <category label="migration" term="migration"/>
+        <category label="SSG" term="SSG"/>
+        <category label="hexo" term="hexo"/>
+        <category label="docusaurus" term="docusaurus"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[2021년 개발 회고]]></title>
         <id>2021/12/29/2021-develop-retrospection</id>

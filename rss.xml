@@ -4,9 +4,21 @@
         <title>허원철의 개발 블로그 Blog</title>
         <link>https://heowc.dev/</link>
         <description>허원철의 개발 블로그 Blog</description>
-        <lastBuildDate>Wed, 29 Dec 2021 01:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 22 Feb 2022 13:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[블로그 마이그레이션 (feat. docusaurus)]]></title>
+            <link>https://heowc.dev/2022/02/22/blog-migrate-to-docusaurus-from-hexo</link>
+            <guid>2022/02/22/blog-migrate-to-docusaurus-from-hexo</guid>
+            <pubDate>Tue, 22 Feb 2022 13:00:00 GMT</pubDate>
+            <description><![CDATA[기존에 사용하던 SSG(Static Site Generator)를 hexo에서 docusaurus으로 변경한 작업을 공유해봅니다.]]></description>
+            <category>blog</category>
+            <category>migration</category>
+            <category>SSG</category>
+            <category>hexo</category>
+            <category>docusaurus</category>
+        </item>
         <item>
             <title><![CDATA[2021년 개발 회고]]></title>
             <link>https://heowc.dev/2021/12/29/2021-develop-retrospection</link>
