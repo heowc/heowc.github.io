@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[7655],{35608:function(e){e.exports=JSON.parse('{"permalink":"/en/tags/spring-boot/page/2","page":2,"postsPerPage":10,"totalPages":2,"totalCount":11,"previousPage":"/en/tags/spring-boot","nextPage":null,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);
