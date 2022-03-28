@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[549],{77307:function(s){s.exports=JSON.parse('{"allTagsPath":"/tags","name":"spring-boot","count":11,"permalink":"/tags/spring-boot"}')}}]);

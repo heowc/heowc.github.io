@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[8393],{88405:function(s){s.exports=JSON.parse('{"allTagsPath":"/en/tags","name":"retrospection","count":4,"permalink":"/en/tags/retrospection"}')}}]);

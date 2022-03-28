@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[4553],{98035:function(s){s.exports=JSON.parse('{"allTagsPath":"/en/tags","slug":"/en/tags/graceful-shutdown","name":"graceful-shutdown","count":1,"permalink":"/en/tags/graceful-shutdown"}')}}]);

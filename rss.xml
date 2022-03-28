@@ -7,6 +7,7 @@
         <lastBuildDate>Tue, 22 Feb 2022 13:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <language>ko</language>
         <item>
             <title><![CDATA[블로그 마이그레이션 (feat. docusaurus)]]></title>
             <link>https://heowc.dev/2022/02/22/blog-migrate-to-docusaurus-from-hexo</link>

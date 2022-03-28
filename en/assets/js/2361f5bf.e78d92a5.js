@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[6248],{70133:function(s){s.exports=JSON.parse('{"allTagsPath":"/en/tags","slug":"/en/tags/rsyslog","name":"rsyslog","count":1,"permalink":"/en/tags/rsyslog"}')}}]);

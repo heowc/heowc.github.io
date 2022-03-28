@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[7571],{98384:function(e){e.exports=JSON.parse('{"allTagsPath":"/en/tags","slug":"/en/tags/interceptor","name":"interceptor","count":1,"permalink":"/en/tags/interceptor"}')}}]);

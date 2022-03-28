@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[5203],{27805:function(e){e.exports=JSON.parse('{"allTagsPath":"/en/tags","name":"hibernate","count":1,"permalink":"/en/tags/hibernate"}')}}]);
