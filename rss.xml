@@ -4,10 +4,22 @@
         <title>허원철의 개발 블로그 Blog</title>
         <link>https://heowc.dev/</link>
         <description>허원철의 개발 블로그 Blog</description>
-        <lastBuildDate>Tue, 22 Feb 2022 13:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 11 Apr 2022 20:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>ko</language>
+        <item>
+            <title><![CDATA[serverless-image-handler]]></title>
+            <link>https://heowc.dev/2022/04/11/serverless-image-handler</link>
+            <guid>2022/04/11/serverless-image-handler</guid>
+            <pubDate>Mon, 11 Apr 2022 20:00:00 GMT</pubDate>
+            <description><![CDATA[Serverless Image Handler는 AWS에서 제공하는 다양하고 검증된 서비스들을 조합하여 만들어진 솔루션(?)입니다.]]></description>
+            <category>aws</category>
+            <category>aws-solution</category>
+            <category>serverless</category>
+            <category>on-the-fly</category>
+            <category>image</category>
+        </item>
         <item>
             <title><![CDATA[블로그 마이그레이션 (feat. docusaurus)]]></title>
             <link>https://heowc.dev/2022/02/22/blog-migrate-to-docusaurus-from-hexo</link>
