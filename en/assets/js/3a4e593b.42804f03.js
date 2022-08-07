@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[5857],{35196:function(e){e.exports=JSON.parse('{"allTagsPath":"/en/tags","name":"dependabot","count":1,"permalink":"/en/tags/dependabot"}')}}]);

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[7754],{12574:function(a){a.exports=JSON.parse('{"allTagsPath":"/tags","name":"elasticache","count":1,"permalink":"/tags/elasticache"}')}}]);

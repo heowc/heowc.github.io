@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[1543],{13073:s=>{s.exports=JSON.parse('{"label":"batch-processing","permalink":"/en/tags/batch-processing","allTagsPath":"/en/tags","count":1}')}}]);

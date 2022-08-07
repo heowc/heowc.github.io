@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[5689],{95014:function(s){s.exports=JSON.parse('{"allTagsPath":"/en/tags","name":"serverless","count":1,"permalink":"/en/tags/serverless"}')}}]);

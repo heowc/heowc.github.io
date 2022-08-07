@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[6408],{58130:function(a){a.exports=JSON.parse('{"allTagsPath":"/tags","name":"autowired","count":1,"permalink":"/tags/autowired"}')}}]);

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[1480],{66681:function(s){s.exports=JSON.parse('{"allTagsPath":"/en/tags","name":"contributon","count":1,"permalink":"/en/tags/contributon"}')}}]);
