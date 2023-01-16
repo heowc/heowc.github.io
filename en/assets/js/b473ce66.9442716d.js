@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[5128],{4276:a=>{a.exports=JSON.parse('{"label":"elasticache","permalink":"/en/tags/elasticache","allTagsPath":"/en/tags","count":1}')}}]);

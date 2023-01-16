@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[2535],{8658:s=>{s.exports=JSON.parse('{"label":"2020","permalink":"/tags/2020","allTagsPath":"/tags","count":1}')}}]);

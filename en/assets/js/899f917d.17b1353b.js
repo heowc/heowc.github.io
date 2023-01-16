@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[9273],{4315:a=>{a.exports=JSON.parse('{"label":"failover","permalink":"/en/tags/failover","allTagsPath":"/en/tags","count":1}')}}]);

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[5334],{99663:a=>{a.exports=JSON.parse('{"label":"data-jpa","permalink":"/en/tags/data-jpa","allTagsPath":"/en/tags","count":1}')}}]);

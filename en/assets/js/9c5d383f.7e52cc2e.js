@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[8670],{9495:a=>{a.exports=JSON.parse('{"label":"woowahan-tech","permalink":"/en/tags/woowahan-tech","allTagsPath":"/en/tags","count":1}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[6372],{1403:a=>{a.exports=JSON.parse('{"label":"dynamodb","permalink":"/en/tags/dynamodb","allTagsPath":"/en/tags","count":1}')}}]);
