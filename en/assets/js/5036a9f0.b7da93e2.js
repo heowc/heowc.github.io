@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[9306],{78170:e=>{e.exports=JSON.parse('{"permalink":"/en/tags/spring","page":1,"postsPerPage":10,"totalPages":2,"totalCount":11,"nextPage":"/en/tags/spring/page/2","blogDescription":"Blog","blogTitle":"Blog"}')}}]);

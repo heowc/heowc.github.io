@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[2695],{9543:s=>{s.exports=JSON.parse('{"label":"cors","permalink":"/tags/cors","allTagsPath":"/tags","count":1}')}}]);

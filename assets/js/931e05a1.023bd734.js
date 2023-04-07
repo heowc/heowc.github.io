@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[7680],{7019:s=>{s.exports=JSON.parse('{"label":"websocket","permalink":"/tags/websocket","allTagsPath":"/tags","count":1}')}}]);
