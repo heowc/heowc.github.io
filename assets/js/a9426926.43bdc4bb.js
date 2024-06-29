@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[1372],{33681:a=>{a.exports=JSON.parse('{"tag":{"label":"blog","permalink":"/tags/blog","allTagsPath":"/tags","count":1,"unlisted":false},"listMetadata":{"permalink":"/tags/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);

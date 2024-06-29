@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[6342],{6877:s=>{s.exports=JSON.parse('{"tag":{"label":"cors","permalink":"/tags/cors","allTagsPath":"/tags","count":1,"unlisted":false},"listMetadata":{"permalink":"/tags/cors","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);

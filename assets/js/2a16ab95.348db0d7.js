@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[8872],{99729:a=>{a.exports=JSON.parse('{"label":"dependabot","permalink":"/tags/dependabot","allTagsPath":"/tags","count":1}')}}]);

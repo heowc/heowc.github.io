@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[2142],{278:s=>{s.exports=JSON.parse('{"label":"systemd-journald","permalink":"/tags/systemd-journald","allTagsPath":"/tags","count":1}')}}]);

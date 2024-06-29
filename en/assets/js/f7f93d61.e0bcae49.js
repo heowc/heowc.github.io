@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[561],{80891:s=>{s.exports=JSON.parse('{"label":"batch-insert","permalink":"/en/tags/batch-insert","allTagsPath":"/en/tags","count":1}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus_blog=self.webpackChunkdocusaurus_blog||[]).push([[9915],{43748:a=>{a.exports=JSON.parse('{"tag":{"label":"2019","permalink":"/tags/2019","allTagsPath":"/tags","count":3,"unlisted":false},"listMetadata":{"permalink":"/tags/2019","page":1,"postsPerPage":10,"totalPages":1,"totalCount":3,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
